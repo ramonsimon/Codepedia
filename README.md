@@ -1,1 +1,1 @@
-Dit is een mooi project
+Dit is een mooi project.

@@ -38,5 +38,7 @@
                     </a>
                 </div>
         </header>
+        <div>{{$slot}}</div>
+
     </body>
 </html>

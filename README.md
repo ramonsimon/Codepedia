@@ -1,11 +1,14 @@
-lees mij
+<img alt="Logo" src="http://codepedia3.herokuapp.com/codepedia_logo.png" width="200"/>
 
-Ik ben een heel interessant document wat houd van informatie vertellen. De mensen die mij hebben gecreeerd zijn heel slecht in programmeren, maar ze doen hun best.
+# Code Pedia
 
-Persoonlijk zou ik niet in dit project willen zitten en vertel ik liever andere nuttigere informatie.
+Codepedia wordt een soort Wikipedia + Stackoverflow. Studenten kunnen op de website artikelen lezen binnen bepaalde onderwerpen, bijvoorbeeld onder het onderwerp PHP heb je dan een artikel genaamd PHP API. Deze artikelen kunnen toegevoegd worden door docenten en kunnen daarna gelezen worden door studenten, waar zij vervolgens onderaan het artikel een vraag kunnen stellen over dit artikel. Deze vragen kunnen beantwoord worden door medestudenten en docenten. Er is ook de mogelijkheid om antwoorden en vragen plus/minpunten te geven zodat je de nuttigste eruit kan halen. 
 
-Heel erg bedankt voor het lezen!
+## :rocket:Installatie
 
-Liefs,
-
-README.md
+```bash
+  git clone https://github.com/ramonsimon/Codepedia.git 
+  cd codepedia
+  composer Install
+  npm install && run dev
+```

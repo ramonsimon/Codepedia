@@ -25,5 +25,18 @@
             </div>
         </div>
     </div> <!-- end filters -->
+
+    <div class="article-container space-y-6 my-6">
+        <div class="article-container bg-gray-100 rounded-xl flex">
+            <div class="border-r border-gray-200 px-5 py-8">
+                <div class="text-center">
+                    <div class="font-semibold text-2xl">12</div>
+                    <div class="text-gray-500">votes</div>
+                </div>
+            </div>
+        </div>
+
+    </div> <!-- end articles-->
+
 </x-app-layout>
 

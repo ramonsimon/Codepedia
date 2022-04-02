@@ -17,6 +17,14 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('artikel-beheer', function () {
+   return view('artikel_beheer');
+});
+
+Route::get('artikel-toevoegen', function(){
+    return view('artikel_toevoegen');
+});
+
 //Route::get('/dashboard', function () {
 //    return view('dashboard');
 //})->middleware(['auth'])->name('dashboard');

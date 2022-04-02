@@ -25,6 +25,10 @@ Route::get('artikel-toevoegen', function(){
     return view('artikel_toevoegen');
 });
 
+Route::get('artikel-wijzigen', function(){
+    return view('artikel_wijzigen');
+});
+
 //Route::get('/dashboard', function () {
 //    return view('dashboard');
 //})->middleware(['auth'])->name('dashboard');

@@ -7,7 +7,8 @@ use Livewire\Component;
 
 class ArtikelToevoegen extends Component
 {
-    public $user = 'tyfus';
+    public $user;
+
 
     public function render()
     {

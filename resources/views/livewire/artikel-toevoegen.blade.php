@@ -1,4 +1,4 @@
-<x-app-layout>
+
 
     <div class="flex flex-col items-center overflow-x-auto">
 
@@ -47,5 +47,5 @@
         </div>
     </div>
 
-</x-app-layout>
+
 

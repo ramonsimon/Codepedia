@@ -22,8 +22,10 @@ Route::get('artikel-beheer', function () {
 });
 
 Route::get('artikel-toevoegen', function(){
-    return view('livewire\artikel-toevoegen');
+    return view('livewire.artikel-toevoegen');
 });
+
+Route::get('/artikel-toevoegen',\App\Http\Livewire\ArtikelToevoegen::class)->name('kut');
 
 Route::get('artikel-wijzigen', function(){
     return view('artikel_wijzigen');

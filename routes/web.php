@@ -33,6 +33,10 @@ Route::get('profiel-bewerken', function(){
     return view('profiel_bewerken');
 });
 
+Route::get('docent-aanmaken', function(){
+    return view('docent_aanmaken');
+});
+
 //Route::get('/dashboard', function () {
 //    return view('dashboard');
 //})->middleware(['auth'])->name('dashboard');

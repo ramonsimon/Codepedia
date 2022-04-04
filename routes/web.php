@@ -17,31 +17,18 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('artikel-beheer', function () {
-   return view('artikel_beheer');
-});
+Route::get('/artikel-beheer',\App\Http\Livewire\ArtikelBeheer::class)->name('artikel-beheer');
 
-Route::get('artikel-toevoegen', function(){
-    return view('livewire.artikel-toevoegen');
-});
+Route::get('/artikel-toevoegen',\App\Http\Livewire\ArtikelToevoegen::class)->name('artikel-toevoegen');
 
-Route::get('/artikel-toevoegen',\App\Http\Livewire\ArtikelToevoegen::class)->name('kut');
+Route::get('/artikel-wijzigen',\App\Http\Livewire\ArtikelWijzigen::class)->name('artikel-wijzigen');
 
-Route::get('artikel-wijzigen', function(){
-    return view('artikel_wijzigen');
-});
+Route::get('/profiel-bewerken',\App\Http\Livewire\ProfielBewerken::class)->name('profiel-bewerken');
 
-Route::get('profiel-bewerken', function(){
-    return view('profiel_bewerken');
-});
+Route::get('/docent-aanmaken',\App\Http\Livewire\DocentAanmaken::class)->name('docent-aanmaken');
 
-Route::get('docent-aanmaken', function(){
-    return view('docent_aanmaken');
-});
+Route::get('/onderwerpen',\App\Http\Livewire\Onderwerpen::class)->name('onderwerpen');
 
-Route::get('onderwerpen', function(){
-    return view('onderwerpen');
-});
 
 //Route::get('/dashboard', function () {
 //    return view('dashboard');

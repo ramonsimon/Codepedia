@@ -7,12 +7,11 @@ use Livewire\Component;
 
 class ArtikelToevoegen extends Component
 {
-    public $user;
 
 
     public function render()
     {
-        $this->user = User::all();
+
         return view('livewire.artikel-toevoegen');
     }
 }

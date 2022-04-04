@@ -22,7 +22,7 @@ Route::get('artikel-beheer', function () {
 });
 
 Route::get('artikel-toevoegen', function(){
-    return view('artikel_toevoegen');
+    return view('livewire\artikel-toevoegen');
 });
 
 Route::get('artikel-wijzigen', function(){

@@ -28,8 +28,8 @@ class ComposerStaticInit3a542421b3b18a96a8fac28611a355a8
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         '3bd81c9b8fcc150b69d8b63b4d2ccf23' => __DIR__ . '/..' . '/spatie/flare-client-php/src/helpers.php',
-        '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
         '40275907c8566c390185147049ef6e5d' => __DIR__ . '/..' . '/livewire/livewire/src/helpers.php',
+        '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
     );
@@ -80,6 +80,7 @@ class ComposerStaticInit3a542421b3b18a96a8fac28611a355a8
             'Symfony\\Component\\ErrorHandler\\' => 31,
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
+            'Spatie\\LaravelPackageTools\\' => 27,
             'Spatie\\LaravelIgnition\\' => 23,
             'Spatie\\Ignition\\' => 16,
             'Spatie\\FlareClient\\' => 19,
@@ -114,6 +115,7 @@ class ComposerStaticInit3a542421b3b18a96a8fac28611a355a8
         'L' => 
         array (
             'Livewire\\' => 9,
+            'LivewireUI\\Modal\\' => 17,
             'League\\MimeTypeDetection\\' => 25,
             'League\\Flysystem\\' => 17,
             'League\\Config\\' => 14,
@@ -304,6 +306,10 @@ class ComposerStaticInit3a542421b3b18a96a8fac28611a355a8
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
         ),
+        'Spatie\\LaravelPackageTools\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/laravel-package-tools/src',
+        ),
         'Spatie\\LaravelIgnition\\' => 
         array (
             0 => __DIR__ . '/..' . '/spatie/laravel-ignition/src',
@@ -380,6 +386,10 @@ class ComposerStaticInit3a542421b3b18a96a8fac28611a355a8
         'Livewire\\' => 
         array (
             0 => __DIR__ . '/..' . '/livewire/livewire/src',
+        ),
+        'LivewireUI\\Modal\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/wire-elements/modal/src',
         ),
         'League\\MimeTypeDetection\\' => 
         array (
@@ -552,7 +562,12 @@ class ComposerStaticInit3a542421b3b18a96a8fac28611a355a8
         'App\\Http\\Controllers\\Auth\\VerifyEmailController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerifyEmailController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
+        'App\\Http\\Livewire\\ArtikelBeheer' => __DIR__ . '/../..' . '/app/Http/Livewire/ArtikelBeheer.php',
         'App\\Http\\Livewire\\ArtikelToevoegen' => __DIR__ . '/../..' . '/app/Http/Livewire/ArtikelToevoegen.php',
+        'App\\Http\\Livewire\\ArtikelWijzigen' => __DIR__ . '/../..' . '/app/Http/Livewire/ArtikelWijzigen.php',
+        'App\\Http\\Livewire\\DocentAanmaken' => __DIR__ . '/../..' . '/app/Http/Livewire/DocentAanmaken.php',
+        'App\\Http\\Livewire\\Onderwerpen' => __DIR__ . '/../..' . '/app/Http/Livewire/Onderwerpen.php',
+        'App\\Http\\Livewire\\ProfielBewerken' => __DIR__ . '/../..' . '/app/Http/Livewire/ProfielBewerken.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\PreventRequestsDuringMaintenance' => __DIR__ . '/../..' . '/app/Http/Middleware/PreventRequestsDuringMaintenance.php',
@@ -1369,7 +1384,6 @@ class ComposerStaticInit3a542421b3b18a96a8fac28611a355a8
         'Faker\\Provider\\nl_BE\\Payment' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/nl_BE/Payment.php',
         'Faker\\Provider\\nl_BE\\Person' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/nl_BE/Person.php',
         'Faker\\Provider\\nl_BE\\PhoneNumber' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/nl_BE/PhoneNumber.php',
-        'Faker\\Provider\\nl_BE\\Text' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/nl_BE/Text.php',
         'Faker\\Provider\\nl_NL\\Address' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/nl_NL/Address.php',
         'Faker\\Provider\\nl_NL\\Color' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/nl_NL/Color.php',
         'Faker\\Provider\\nl_NL\\Company' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/nl_NL/Company.php',
@@ -3134,6 +3148,10 @@ class ComposerStaticInit3a542421b3b18a96a8fac28611a355a8
         'League\\MimeTypeDetection\\GeneratedExtensionToMimeTypeMap' => __DIR__ . '/..' . '/league/mime-type-detection/src/GeneratedExtensionToMimeTypeMap.php',
         'League\\MimeTypeDetection\\MimeTypeDetector' => __DIR__ . '/..' . '/league/mime-type-detection/src/MimeTypeDetector.php',
         'League\\MimeTypeDetection\\OverridingExtensionToMimeTypeMap' => __DIR__ . '/..' . '/league/mime-type-detection/src/OverridingExtensionToMimeTypeMap.php',
+        'LivewireUI\\Modal\\Contracts\\ModalComponent' => __DIR__ . '/..' . '/wire-elements/modal/src/Contracts/ModalComponent.php',
+        'LivewireUI\\Modal\\LivewireModalServiceProvider' => __DIR__ . '/..' . '/wire-elements/modal/src/LivewireModalServiceProvider.php',
+        'LivewireUI\\Modal\\Modal' => __DIR__ . '/..' . '/wire-elements/modal/src/Modal.php',
+        'LivewireUI\\Modal\\ModalComponent' => __DIR__ . '/..' . '/wire-elements/modal/src/ModalComponent.php',
         'Livewire\\Castable' => __DIR__ . '/..' . '/livewire/livewire/src/Castable.php',
         'Livewire\\Commands\\ComponentParser' => __DIR__ . '/..' . '/livewire/livewire/src/Commands/ComponentParser.php',
         'Livewire\\Commands\\ComponentParserFromExistingComponent' => __DIR__ . '/..' . '/livewire/livewire/src/Commands/ComponentParserFromExistingComponent.php',
@@ -4956,6 +4974,9 @@ class ComposerStaticInit3a542421b3b18a96a8fac28611a355a8
         'Spatie\\LaravelIgnition\\Support\\StringComparator' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/Support/StringComparator.php',
         'Spatie\\LaravelIgnition\\Views\\BladeSourceMapCompiler' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/Views/BladeSourceMapCompiler.php',
         'Spatie\\LaravelIgnition\\Views\\ViewExceptionMapper' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/Views/ViewExceptionMapper.php',
+        'Spatie\\LaravelPackageTools\\Exceptions\\InvalidPackage' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Exceptions/InvalidPackage.php',
+        'Spatie\\LaravelPackageTools\\Package' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Package.php',
+        'Spatie\\LaravelPackageTools\\PackageServiceProvider' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/PackageServiceProvider.php',
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
         'Symfony\\Component\\Console\\Application' => __DIR__ . '/..' . '/symfony/console/Application.php',
         'Symfony\\Component\\Console\\Attribute\\AsCommand' => __DIR__ . '/..' . '/symfony/console/Attribute/AsCommand.php',

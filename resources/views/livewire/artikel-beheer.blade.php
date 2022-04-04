@@ -7,7 +7,7 @@
                 Alle artikelen
             </div>
             <div>
-                <a href="atrikel-toevoegen">
+                <a href="{{ route('artikel-toevoegen') }}">
                     <button type="button" class="py-2 px-4  bg-amber-500 hover:bg-amber-700 text-white w-full transition ease-in duration-200 text-center text-base font-semibold focus:outline-none rounded-lg ">
                         Artikel toevoegen
                     </button>

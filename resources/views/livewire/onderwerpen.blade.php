@@ -1,3 +1,5 @@
+<x-app-layout>
+
     <div class="flex flex-col items-center overflow-x-auto">
 
         <div class="flex bg-white ml-9 mt-5 rounded-xl items-center flex-col overflow-auto pb-10"
@@ -25,5 +27,31 @@
                 </div>
             </div>
 
+            <div class="flex flex-wrap overflow-hidden grid grid-cols-4 gap-4">
+
+                <button type="button" class="w-48 h-16 bg-amber-500 hover:bg-amber-700 text-white w-full transition ease-in duration-200 text-center text-base font-semibold focus:outline-none rounded-lg ">
+                    PHP
+                </button>
+
+                <button type="button" class="w-48 h-16 py-2 px-4  bg-amber-500 hover:bg-amber-700 text-white w-full transition ease-in duration-200 text-center text-base font-semibold focus:outline-none rounded-lg ">
+                    Javascript
+                </button>
+
+                <button type="button" class="w-48 h-16 py-2 px-4  bg-amber-500 hover:bg-amber-700 text-white w-full transition ease-in duration-200 text-center text-base font-semibold focus:outline-none rounded-lg ">
+                    C#
+                </button>
+
+                <button type="button" class="w-48 h-16 py-2 px-4  bg-amber-500 hover:bg-amber-700 text-white w-full transition ease-in duration-200 text-center text-base font-semibold focus:outline-none rounded-lg ">
+                    HTML
+                </button>
+
+                <button type="button" class="w-48 h-16 py-2 px-4  bg-amber-500 hover:bg-amber-700 text-white w-full transition ease-in duration-200 text-center text-base font-semibold focus:outline-none rounded-lg ">
+                    CSS
+                </button>
+
+            </div>
+
         </div>
     </div>
+
+</x-app-layout>

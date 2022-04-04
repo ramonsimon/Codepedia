@@ -15,13 +15,15 @@
                 </select>
             </div>
 
-            <!-- Alleen voor docenten -->
-            <div class="flex mb-5 mt-5">
-                    <button type="button" wire:click="$emit('openModal', 'onderwerpen')"
-                            class="py-2 px-4  bg-amber-500 hover:bg-amber-700 text-white w-full transition ease-in duration-200 text-center text-base font-semibold focus:outline-none rounded-lg ">
-                        Onderwerp toevoegen
-                    </button>
-            </div>
+            @if(Auth::user()->hasRole('admin'))
+                <div class="flex mb-5 mt-5">
+                        <button type="button" wire:click="$emit('openModal', 'onderwerpen')"
+                                class="py-2 px-4  bg-amber-500 hover:bg-amber-700 text-white w-full transition ease-in duration-200 text-center text-base font-semibold focus:outline-none rounded-lg ">
+                            Onderwerp toevoegen
+                        </button>
+                </div>
+            @endif
+
         </div>
 
         <div class="flex flex-wrap overflow-hidden grid grid-cols-4 gap-4">

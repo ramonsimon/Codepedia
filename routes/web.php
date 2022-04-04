@@ -29,6 +29,10 @@ Route::get('artikel-wijzigen', function(){
     return view('artikel_wijzigen');
 });
 
+Route::get('profiel-bewerken', function(){
+    return view('profiel_bewerken');
+});
+
 //Route::get('/dashboard', function () {
 //    return view('dashboard');
 //})->middleware(['auth'])->name('dashboard');

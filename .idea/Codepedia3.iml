@@ -124,6 +124,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/dragon-code/support" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laravel-lang/lang" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laravel-lang/publisher" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/livewire/livewire" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

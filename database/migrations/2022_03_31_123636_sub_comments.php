@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('articles', function (Blueprint $table) {
-            if(Schema::hasTable('articles')) return;
+        Schema::create('sub_comments', function (Blueprint $table) {
+            if(Schema::hasTable('sub_comments')) return;
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-            $table->string('title');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('comment_id');
+            $table->foreign('comment_id')->references('id')->on('comments')->onDelete('cascade');
             $table->string('description');
-            $table->string('sub_description');
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('articles');
+        Schema::dropIfExists('sub_comments');
     }
 };

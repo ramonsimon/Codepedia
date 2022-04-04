@@ -37,6 +37,10 @@ Route::get('docent-aanmaken', function(){
     return view('docent_aanmaken');
 });
 
+Route::get('onderwerpen', function(){
+    return view('onderwerpen');
+});
+
 //Route::get('/dashboard', function () {
 //    return view('dashboard');
 //})->middleware(['auth'])->name('dashboard');

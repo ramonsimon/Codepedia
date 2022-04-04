@@ -1,5 +1,3 @@
-<x-app-layout>
-
     <div class="flex flex-col items-center overflow-x-auto">
 
         <div class="flex bg-white ml-9 mt-5 rounded-xl items-center flex-col overflow-auto pb-10"
@@ -53,5 +51,3 @@
 
         </div>
     </div>
-
-</x-app-layout>

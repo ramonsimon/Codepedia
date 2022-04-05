@@ -745,6 +745,24 @@ select {
 .mb-8 {
   margin-bottom: 2rem;
 }
+.-mt-2 {
+  margin-top: -0.5rem;
+}
+.-mt-5 {
+  margin-top: -1.25rem;
+}
+.-mt-6 {
+  margin-top: -1.5rem;
+}
+.-mt-7 {
+  margin-top: -1.75rem;
+}
+.ml-16 {
+  margin-left: 4rem;
+}
+.ml-14 {
+  margin-left: 3.5rem;
+}
 .block {
   display: block;
 }
@@ -795,6 +813,12 @@ select {
 }
 .h-12 {
   height: 3rem;
+}
+.h-9 {
+  height: 2.25rem;
+}
+.h-11 {
+  height: 2.75rem;
 }
 .min-h-screen {
   min-height: 100vh;
@@ -855,6 +879,9 @@ select {
 }
 .w-96 {
   width: 24rem;
+}
+.w-12 {
+  width: 3rem;
 }
 .max-w-7xl {
   max-width: 80rem;
@@ -1191,6 +1218,9 @@ select {
 }
 .pt-8 {
   padding-top: 2rem;
+}
+.pl-16 {
+  padding-left: 4rem;
 }
 .text-left {
   text-align: left;

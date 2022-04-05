@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
-
-    protected $role;
+    use HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -22,8 +22,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'password',
-        'status'
+        'password'
     ];
 
     /**
@@ -44,28 +43,5 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function hasRole($i) {
-        switch ($this->status) {
-            case 0:
-                $this->role = 'pending';
-                break;
-            case 1:
-                $this->role = 'verified';
-                break;
-            case 2:
-                $this->role = 'user';
-                break;
-            case 3:
-                $this->role = 'admin';
-                break;
-        }
-
-        if ($i === $this->role) {
-            return true;
-        }
-
-        return false;
-    }
 
 }

@@ -706,6 +706,21 @@ select {
 .-mt-px {
   margin-top: -1px;
 }
+.ml-5 {
+  margin-left: 1.25rem;
+}
+.mb-24 {
+  margin-bottom: 6rem;
+}
+.mb-36 {
+  margin-bottom: 9rem;
+}
+.mb-20 {
+  margin-bottom: 5rem;
+}
+.mb-10 {
+  margin-bottom: 2.5rem;
+}
 .block {
   display: block;
 }
@@ -804,6 +819,12 @@ select {
 }
 .w-36 {
   width: 9rem;
+}
+.w-56 {
+  width: 14rem;
+}
+.w-72 {
+  width: 18rem;
 }
 .max-w-7xl {
   max-width: 80rem;

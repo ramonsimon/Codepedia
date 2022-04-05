@@ -69,7 +69,7 @@
             <div class="flex flex-wrap overflow-hidden grid grid-cols-2 gap-4">
                 <div>
                     <button type="button"
-                            class="w-48 h-16 mt-5 bg-amber-500 hover:bg-amber-700 text-white w-full transition ease-in duration-200 text-center text-base font-semibold focus:outline-none rounded-lg ">
+                            class="w-52 h-16 mt-5 bg-amber-500 hover:bg-amber-700 text-white w-full transition ease-in duration-200 text-center text-base font-semibold focus:outline-none rounded-lg ">
                         PHP
                     </button>
 

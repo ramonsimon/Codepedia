@@ -30,7 +30,7 @@
 
             <div>
                 <button type="button"
-                        class="w-48 h-16 bg-amber-500 hover:bg-amber-700 text-white w-full transition ease-in duration-200 text-center text-base font-semibold focus:outline-none rounded-lg ">
+                        class="w-52 h-16 bg-amber-500 hover:bg-amber-700 text-white w-full transition ease-in duration-200 text-center text-base font-semibold focus:outline-none rounded-lg ">
                     PHP
                 </button>
 

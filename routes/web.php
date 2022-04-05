@@ -17,23 +17,22 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ArticlesController::class, 'index'])->name('index');
 
-Route::get('/artikel/beheer',\App\Http\Livewire\ArtikelBeheer::class)->name('artikel-beheer');
+Route::group(['middleware' => ['role:admin']], function () {
+    Route::get('/artikel/beheer',\App\Http\Livewire\ArtikelBeheer::class)->name('artikel-beheer');
+    Route::get('/artikel/toevoegen',\App\Http\Livewire\ArtikelToevoegen::class)->name('artikel-toevoegen');
+    Route::get('/artikel/wijzigen',\App\Http\Livewire\ArtikelWijzigen::class)->name('artikel-wijzigen');
+    Route::get('/docent/aanmaken',\App\Http\Livewire\DocentAanmaken::class)->name('docent-aanmaken');
+});
 
-Route::get('/artikel/toevoegen',\App\Http\Livewire\ArtikelToevoegen::class)->name('artikel-toevoegen');
-
-Route::get('/artikel/wijzigen',\App\Http\Livewire\ArtikelWijzigen::class)->name('artikel-wijzigen');
+Route::group(['middleware' => ['role:user, admin']], function () {
+    Route::get('/profiel/bewerken',\App\Http\Livewire\ProfielBewerken::class)->name('profiel-bewerken');
+});
 
 Route::get('/artikel/overzicht',\App\Http\Livewire\ArtikelOverzicht::class)->name('artikel-overzicht');
 
 Route::get('/artikel/bekijken',\App\Http\Livewire\ArtikelBekijken::class)->name('artikel-bekijken');
 
-Route::get('/profiel/bewerken',\App\Http\Livewire\ProfielBewerken::class)->name('profiel-bewerken');
-
-Route::get('/docent/aanmaken',\App\Http\Livewire\DocentAanmaken::class)->name('docent-aanmaken');
-
 Route::get('/onderwerpen',\App\Http\Livewire\Onderwerpen::class)->name('onderwerpen');
-
-
 
 //Route::get('/dashboard', function () {
 //    return view('dashboard');

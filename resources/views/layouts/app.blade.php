@@ -19,7 +19,7 @@
     </head>
     <body class="font-sans antialiased bg-gray-300">
         <header class="flex items-center justify-between px-8 py-4 border-b-4 border-b-amber-500 bg-white">
-            <a href="#"><img src="{{asset('codepedia_logo.png')}}" class="h-14 w-14"/></a>
+            <a href="{{route('index')}}"><img src="{{asset('codepedia_logo.png')}}" class="h-14 w-14"/></a>
                 <div class="flex items-center">
                     @if (Route::has('login'))
                         <div class="fixed top-0 right-0 px-6 py-4 sm:block">

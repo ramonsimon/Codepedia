@@ -23,6 +23,8 @@ Route::get('/artikel-toevoegen',\App\Http\Livewire\ArtikelToevoegen::class)->nam
 
 Route::get('/artikel-wijzigen',\App\Http\Livewire\ArtikelWijzigen::class)->name('artikel-wijzigen');
 
+Route::get('/artikel-overzicht',\App\Http\Livewire\ArtikelOverzicht::class)->name('artikel-overzicht');
+
 Route::get('/profiel-bewerken',\App\Http\Livewire\ProfielBewerken::class)->name('profiel-bewerken');
 
 Route::get('/docent-aanmaken',\App\Http\Livewire\DocentAanmaken::class)->name('docent-aanmaken');

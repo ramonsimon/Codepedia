@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\ArticlesController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [ArticlesController::class, 'index'])->name('index');
 
 Route::get('/artikel-beheer',\App\Http\Livewire\ArtikelBeheer::class)->name('artikel-beheer');
 

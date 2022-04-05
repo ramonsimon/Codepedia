@@ -1,8 +1,8 @@
 <x-app-layout>
 
     <div class="flex flex-row justify-center overflow-x-auto">
-        @foreach($articles as $article)
         <div class="space-y-6 my-6" style="width: 600px">
+            @foreach($articles as $article)
             <div
                 class="idea-container hover:shadow-card transition duration-150 ease-in bg-white rounded-xl flex cursor-pointer">
                 <div class="border-r border-gray-100 px-5 py-8">

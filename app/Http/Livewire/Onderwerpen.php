@@ -1,10 +1,9 @@
 <?php
 
 namespace App\Http\Livewire;
+use Livewire\Component;
 
-use LivewireUI\Modal\ModalComponent;
-
-class Onderwerpen extends ModalComponent
+class Onderwerpen extends Component
 {
     public function render()
     {

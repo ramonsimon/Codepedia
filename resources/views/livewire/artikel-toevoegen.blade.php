@@ -1,7 +1,6 @@
     <div class="flex flex-col items-center overflow-x-auto">
         <x-head.tinymce-config/>
-        <div class="flex bg-white ml-9 mt-5 rounded-xl items-center flex-col overflow-auto pb-10"
-             style="width: 400px;">
+        <div class="flex bg-white ml-9 mt-5 rounded-xl items-center flex-col overflow-auto pb-10 px-4 max-w-2xl">
             <div class="flex space-x-96 mb-5 mt-5 items-center">
                 <div class="text-black uppercase font-bold text-center text-xl mt-5 mb-3">
                     Artikel toevoegen

@@ -24,7 +24,7 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/docent/aanmaken',\App\Http\Livewire\DocentAanmaken::class)->name('docent-aanmaken');
 });
 
-Route::group(['middleware' => ['role:user, admin']], function () {
+Route::group(['middleware' => ['role:user|role:admin']], function () {
     Route::get('/profiel/bewerken',\App\Http\Livewire\ProfielBewerken::class)->name('profiel-bewerken');
 });
 

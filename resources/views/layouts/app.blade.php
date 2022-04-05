@@ -34,9 +34,11 @@
                             @endauth
                         </div>
                     @endif
-                    <a href="">
-                        <img src=" https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp" alt="avatar" class="w-10 h-10 rounded-full">
-                    </a>
+                    @auth
+                        <a href="">
+                            <img src=" https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp" alt="avatar" class="w-10 h-10 rounded-full">
+                        </a>
+                    @endauth
                 </div>
         </header>
         <div>{{$slot}}</div>

@@ -56,5 +56,27 @@ class PermissionSeeder extends Seeder
         ]);
         $user->assignRole($role4);
 
+        $user = \App\Models\User::factory()->create([
+            'name' => 'pending',
+            'email' => 'pending@codepedia.nl',
+            'password' => '$2a$12$TAgZLf7PxDJQsVYqcgTep.cK7xiR9NIIiGxkQAJ47/AbOjwCsvvqK',
+        ]);
+        $user->assignRole($role1);
+
+        $user = \App\Models\User::factory()->create([
+            'name' => 'verified',
+            'email' => 'verified@codepedia.nl',
+            'password' => '$2a$12$TAgZLf7PxDJQsVYqcgTep.cK7xiR9NIIiGxkQAJ47/AbOjwCsvvqK',
+        ]);
+        $user->assignRole($role2);
+
+        $user = \App\Models\User::factory()->create([
+            'name' => 'user',
+            'email' => 'user@codepedia.nl',
+            'password' => '$2a$12$TAgZLf7PxDJQsVYqcgTep.cK7xiR9NIIiGxkQAJ47/AbOjwCsvvqK',
+        ]);
+        $user->assignRole($role3);
+
+
     }
 }

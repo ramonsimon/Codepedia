@@ -1,6 +1,37 @@
 <div class="flex flex-row justify-center overflow-x-auto">
 
     <div class="space-y-6 my-6" style="width: 800px">
+        <div class="flex mb-5 mt-5 ml-72" style="width: 400px;">
+            <div class="flex relative mr-3">
+                <select name="name" id="name"
+                        class="rounded-lg flex-1 appearance-none border border-amber-300 w-40 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent">
+                    <option>Onderwerpen</option>
+                </select>
+            </div>
+            <div class="flex relative mr-3">
+                <select name="name" id="name"
+                        class="rounded-lg flex-1 appearance-none border border-amber-300 w-36 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent">
+                    <option>Filter</option>
+                </select>
+            </div>
+            <div class="flex relative mr-3">
+                <input type="text" name="name" id="name"
+                       class="rounded-l-lg flex-1 appearance-none border border-amber-300 w-36 py-2 px-4
+                           bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base
+                           focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                       placeholder="Zoeken"/>
+                <span
+                    class="rounded-r-md inline-flex items-center px-3 border-t bg-amber-500 border-l border-b  border-amber-500 text-gray-500 shadow-sm text-sm"
+                    style="width: 40px">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="white">
+                                <path fill-rule="evenodd"
+                                      d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                      clip-rule="evenodd"/>
+                            </svg>
+                    </span>
+            </div>
+        </div>
+
         <div
             class="idea-container hover:shadow-card transition duration-150 ease-in bg-white rounded-xl flex cursor-pointer">
             <div class="border-r border-gray-100 px-5 py-8">

@@ -4,13 +4,13 @@
         <div class="flex mb-5 mt-5 ml-72" style="width: 400px;">
             <div class="flex relative mr-3">
                 <select name="name" id="name"
-                        class="rounded-lg flex-1 appearance-none border border-amber-300 w-40 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent">
+                        class="rounded-lg flex-1 appearance-none border border-amber-300 w-40 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent">
                     <option>Onderwerpen</option>
                 </select>
             </div>
             <div class="flex relative mr-3">
                 <select name="name" id="name"
-                        class="rounded-lg flex-1 appearance-none border border-amber-300 w-36 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent">
+                        class="rounded-lg flex-1 appearance-none border border-amber-300 w-36 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent">
                     <option>Filter</option>
                 </select>
             </div>
@@ -18,7 +18,7 @@
                 <input type="text" name="name" id="name"
                        class="rounded-l-lg flex-1 appearance-none border border-amber-300 w-36 py-2 px-4
                            bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base
-                           focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                           focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                        placeholder="Zoeken"/>
                 <span
                     class="rounded-r-md inline-flex items-center px-3 border-t bg-amber-500 border-l border-b  border-amber-500 text-gray-500 shadow-sm text-sm"
@@ -145,7 +145,7 @@
             </div>
             <div class="flex px-2 py-6">
                 <a href="#" class="flex-none">
-                    <img src="https://source.unsplash.com/200x200/?face&crop=face&v=2" alt="avatar"
+                    <img src="https://source.unsplash.com/200x200/?face&crop=face&v=3" alt="avatar"
                          class="w-14 h-14 rounded-xl">
                 </a>
                 <div class="mx-4">

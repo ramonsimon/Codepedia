@@ -32,7 +32,7 @@ Route::get('/artikel/overzicht',\App\Http\Livewire\ArtikelOverzicht::class)->nam
 
 Route::get('/artikel/bekijken',\App\Http\Livewire\ArtikelBekijken::class)->name('artikel-bekijken');
 
-Route::get('/vraag/overzicht',\App\Http\Livewire\vragenOverzicht::class)->name('vragen-overzicht');
+Route::get('/vragen/overzicht',\App\Http\Livewire\vragenOverzicht::class)->name('vragen-overzicht');
 
 Route::get('/vraag/bekijken',\App\Http\Livewire\VraagBekijken::class)->name('vraag-bekijken');
 

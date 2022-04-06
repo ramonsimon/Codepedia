@@ -22,16 +22,18 @@
             <a href="{{route('index')}}"><img src="{{asset('codepedia_logo.png')}}" class="h-14 w-14"/></a>
                 <div class="flex items-center">
                     @if (Route::has('login'))
-                        <div class="fixed top-0 right-0 px-6 py-4 sm:block">
-                            @auth
-                                <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
-                            @else
+                        <div class="px-6 py-4 sm:block">
+
+                            <a href="{{ route('vragen-overzicht') }}" class="mr-2 text-sm text-gray-700 dark:text-gray-500 underline">Vragen</a>
+                            <a href="{{ route('onderwerpen') }}" class="mr-2 text-sm text-gray-700 dark:text-gray-500 underline">Onderwerpen</a>
+
+                            @guest
                                 <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Inloggen</a>
 
                                 @if (Route::has('register'))
-                                    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Registreren</a>
+                                    <a href="{{ route('register') }}" class="ml-2 text-sm text-gray-700 dark:text-gray-500 underline">Registreren</a>
                                 @endif
-                            @endauth
+                            @endguest
                         </div>
                     @endif
                     @auth
@@ -79,28 +81,30 @@
                                     x-on:click.outside="close($refs.button)"
                                     :id="$id('dropdown-button')"
                                     style="display: none;"
-                                    class="absolute left-0 -ml-36 w-52 bg-white border border-black rounded shadow-md overflow-hidden"
+                                    class="absolute left-0 -ml-36 w-52 bg-white border border-black rounded shadow-md overflow-hidden z-10"
                                 >
                                     <div>
                                         <a href="{{route('profiel-bewerken')}}" class="block w-full px-4 py-2 text-center text-sm hover:bg-gray-100 disabled:text-gray-500" >
                                             Gegevens bewerken
                                         </a>
 
-                                        <a href="{{route('docent-aanmaken')}}" class="block w-full px-4 py-2 text-center text-sm hover:bg-gray-100 disabled:text-gray-500" >
-                                            Docentaccount maken
-                                        </a>
+                                        @role('admin')
+                                            <a href="{{route('docent-aanmaken')}}" class="block w-full px-4 py-2 text-center text-sm hover:bg-gray-100 disabled:text-gray-500" >
+                                                Docentaccount maken
+                                            </a>
 
-                                        <a href="{{route('index')}}" class="block w-full px-4 py-2 text-center text-sm hover:bg-gray-100 disabled:text-gray-500" >
-                                            Studentaccounts beheren
-                                        </a>
+                                            <a href="{{route('index')}}" class="block w-full px-4 py-2 text-center text-sm hover:bg-gray-100 disabled:text-gray-500" >
+                                                Studentaccounts beheren
+                                            </a>
 
-                                        <a href="{{route('artikel-beheer')}}" class="block w-full px-4 py-2 text-center text-sm hover:bg-gray-100 disabled:text-gray-500" >
-                                            Artikelen beheer
-                                        </a>
+                                            <a href="{{route('artikel-beheer')}}" class="block w-full px-4 py-2 text-center text-sm hover:bg-gray-100 disabled:text-gray-500" >
+                                                Artikelen beheer
+                                            </a>
 
-                                        <a href="{{route('vragen-overzicht')}}" class="block w-full px-4 py-2 text-center text-sm hover:bg-gray-100 disabled:text-gray-500" >
-                                            Vragen beheer
-                                        </a>
+                                            <a href="{{route('vragen-overzicht')}}" class="block w-full px-4 py-2 text-center text-sm hover:bg-gray-100 disabled:text-gray-500" >
+                                                Vragen beheer
+                                            </a>
+                                        @endrole
                                     </div>
 
                                     <div class="border-t border-black">

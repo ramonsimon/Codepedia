@@ -1,42 +1,57 @@
 <div class="flex flex-row justify-center overflow-x-auto">
 
-    <!-- moet allemaal diabled worden als je niet ingelogd bent -->
-    <div class="flex bg-white mr-9 mt-6 rounded-xl items-center flex-col pb-10"
-         style="width: 400px;">
+    @can('ask questions')
+        <div class="flex bg-white mr-9 mt-6 rounded-xl items-center flex-col pb-10"
+             style="width: 400px;">
 
-        <div class="flex ml-52 mb-5 mt-5 items-center">
-            <div class="text-black uppercase font-bold text-center text-xl mt-5 mb-3 mr-56" style="width: 300px;">
-                Vraag stellen
+            <div class="flex ml-52 mb-5 mt-5 items-center">
+                <div class="text-black uppercase font-bold text-center text-xl mt-5 mb-3 mr-56" style="width: 300px;">
+                    Vraag stellen
+                </div>
             </div>
+
+            <form method="post" action="">
+                <div class="flex flex-col mb-2">
+                    <input type="text" name="name" id="name"
+                           class="rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                           placeholder="Naam..."/>
+                </div>
+                <div class="mb-2">
+                    <select name="topic" id="topic"
+                            class=" rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent">
+                    </select>
+                </div>
+                <div class="mb-2">
+                    <textarea name="topic" id="topic"
+                              class=" rounded-lg flex-1 appearance-none border
+                               border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm
+                                text-base focus:outline-none focus:ring-2 focus:ring-purple-600
+                                focus:border-transparent" placeholder="Vraag..."></textarea>
+                </div>
+                <div style="width: 300px;">
+                    <button type="submit"
+                            class="py-2 px-4 bg-amber-500 hover:bg-amber-600 focus:ring-amber-400 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring rounded-lg">
+                        Stel vraag
+                    </button>
+                </div>
+            </form>
         </div>
+    @else
+        <div class="flex text-center bg-white mr-9 mt-6 rounded-xl items-center flex-col pb-10 "
+             style="width: 400px;">
 
-        <form method="post" action="">
-            <div class="flex flex-col mb-2">
-                <input type="text" name="name" id="name"
-                       class="rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                       placeholder="Naam..."/>
+            <div class="flex mb-5 mt-5 items-center justify-center text-center">
+                <a class="flex items-center mx-auto text-black uppercase font-bold text-center text-xl mt-5 mb-3 mr-56">
+                    Vraag stellen
+                </a>
             </div>
-            <div class="mb-2">
-                <select name="topic" id="topic"
-                        class=" rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent">
-                </select>
-            </div>
-            <div class="mb-2">
-                <textarea name="topic" id="topic"
-                          class=" rounded-lg flex-1 appearance-none border
-                           border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm
-                            text-base focus:outline-none focus:ring-2 focus:ring-purple-600
-                            focus:border-transparent" placeholder="Vraag..."></textarea>
-            </div>
-            <div style="width: 300px;">
-                <button type="submit"
-                        class="py-2 px-4 bg-amber-500 hover:bg-amber-600 focus:ring-amber-400 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring rounded-lg">
-                    Stel vraag
-                </button>
-            </div>
-        </form>
 
-    </div>
+            <div class="mt-16">
+                <a>Om vragen te stellen moet je <a href="{{route('login')}}" class="underline">inloggen</a></a>
+            </div>
+
+        </div>
+    @endcan
 
     <div class="space-y-6 my-6" style="width: 600px">
 

@@ -25,7 +25,7 @@ Route::group(['middleware' => ['role:admin']], function () {
 });
 
 Route::group(['middleware' => ['role:user|role:admin']], function () {
-    Route::get('/profiel/bewerken',\App\Http\Livewire\ProfielBewerken::class)->name('profiel-bewerken');
+    Route::get('/gegevens/bewerken',\App\Http\Livewire\ProfielBewerken::class)->name('profiel-bewerken');
 });
 
 Route::get('/artikel/overzicht',\App\Http\Livewire\ArtikelOverzicht::class)->name('artikel-overzicht');

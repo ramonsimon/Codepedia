@@ -35,12 +35,87 @@
                         </div>
                     @endif
                     @auth
-                        <a href="">
-                            <img src=" https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp" alt="avatar" class="w-10 h-10 rounded-full">
-                        </a>
+                        <div
+                            x-data="{
+                            open: false,
+                            toggle() {
+                                if (this.open) {
+                                    return this.close()
+                                }
+
+                                this.$refs.button.focus()
+
+                                this.open = true
+                            },
+                            close(focusAfter) {
+                                if (! this.open) return
+
+                                this.open = false
+
+                                focusAfter && focusAfter.focus()
+                            }
+                        }"
+                                x-on:keydown.escape.prevent.stop="close($refs.button)"
+                                x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
+                                x-id="['dropdown-button']"
+                                class="relative"
+                            >
+                                <!-- Button -->
+                                <button
+                                    x-ref="button"
+                                    x-on:click="toggle()"
+                                    :aria-expanded="open"
+                                    :aria-controls="$id('dropdown-button')"
+                                    type="button"
+                                >
+                                    <img src=" https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp" alt="avatar" class="w-10 h-10 rounded-full">
+                                </button>
+
+                                <!-- Panel -->
+                                <div
+                                    x-ref="panel"
+                                    x-show="open"
+                                    x-transition.origin.top.left
+                                    x-on:click.outside="close($refs.button)"
+                                    :id="$id('dropdown-button')"
+                                    style="display: none;"
+                                    class="absolute left-0 -ml-36 w-52 bg-white border border-black rounded shadow-md overflow-hidden"
+                                >
+                                    <div>
+                                        <a href="{{route('profiel-bewerken')}}" class="block w-full px-4 py-2 text-center text-sm hover:bg-gray-100 disabled:text-gray-500" >
+                                            Gegevens bewerken
+                                        </a>
+
+                                        <a href="{{route('docent-aanmaken')}}" class="block w-full px-4 py-2 text-center text-sm hover:bg-gray-100 disabled:text-gray-500" >
+                                            Docentaccount maken
+                                        </a>
+
+                                        <a href="{{route('index')}}" class="block w-full px-4 py-2 text-center text-sm hover:bg-gray-100 disabled:text-gray-500" >
+                                            Studentaccounts beheren
+                                        </a>
+
+                                        <a href="{{route('artikel-beheer')}}" class="block w-full px-4 py-2 text-center text-sm hover:bg-gray-100 disabled:text-gray-500" >
+                                            Artikelen beheer
+                                        </a>
+
+                                        <a href="{{route('vragen-overzicht')}}" class="block w-full px-4 py-2 text-center text-sm hover:bg-gray-100 disabled:text-gray-500" >
+                                            Vragen beheer
+                                        </a>
+                                    </div>
+
+                                    <div class="border-t border-black">
+                                        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" disabled class="block w-full px-4 py-2 text-center text-sm hover:bg-gray-100 disabled:text-gray-500">
+                                            Uitloggen
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                     @endauth
                 </div>
-        </header>
+            </header>
         <div>{{$slot}}</div>
         @livewireScripts
     </body>

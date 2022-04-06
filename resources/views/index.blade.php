@@ -1,7 +1,7 @@
 <x-app-layout>
 
-    <div class="flex flex-row justify-center overflow-x-auto">
-        <div class="space-y-6 my-6" style="width: 600px">
+    <div class="flex flex-row justify-center">
+        <div class="space-y-6 my-6 pr-2" style="width: 600px; ">
             @foreach($articles as $article)
             <div
                 class="idea-container hover:shadow-card transition duration-150 ease-in bg-white rounded-xl flex cursor-pointer">
@@ -57,9 +57,9 @@
             </div> <!-- end idea-container -->
             @endforeach
         </div>
-        <div class="flex bg-white ml-9 mt-6 rounded-xl items-center flex-col overflow-auto pb-10"
-             style="width: 500px; height: 500px;">
-
+        <div class="relative">
+        <div class="ml-9 mt-6" style="width: 500px; height: 500px;">
+<div class="flex flex-col fixed bg-white rounded-xl items-center pb-10" style="width: 500px; height: 500px;">
             <div class="flex mb-5 mt-5 items-center">
                 <div class="text-black uppercase font-bold text-center text-xl mt-5 mb-3 mr-56">
                     Onderwerpen
@@ -164,7 +164,8 @@
                     </button>
                 </a>
             </div>
-
+        </div>
+        </div>
         </div>
     </div>
 

@@ -1,5 +1,4 @@
-    <div class="flex flex-col items-center overflow-x-auto">
-        <x-head.tinymce-config/>
+    <div class="flex flex-col items-center overflow-x-auto" wire:ignore>
         <div class="flex bg-white ml-9 mt-5 mb-4 rounded-xl items-center flex-col overflow-auto pb-10 px-4 max-w-2xl">
             <div class="flex space-x-96 mb-5 mt-5 items-center">
                 <div class="text-black uppercase font-bold text-center text-xl mt-5 mb-3">
@@ -7,24 +6,30 @@
                 </div>
             </div>
 
-            <form method="post" action="">
+            <form wire:submit.prevent="submit">
                 <div class="flex flex-col mb-2">
-                    <input type="text" name="name" id="name"
+                    <input type="text" wire:model="title" id="name"
                            class="rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                            placeholder="Naam..."/>
                 </div>
                 <div class="mb-2">
-                    <select name="topic" id="topic"
+                    <select name="topic" id="topic89]01O23$%y 8
                             class=" rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent">
                     </select>
                 </div>
+                @error('title') <span class="error">{{ $message }}</span> @enderror
+                @error('description') <span class="error">{{ $message }}</span> @enderror
                 <div class="mb-2">
-                    <input type="text" name="description" id="description"
+                    <input type="text"  id="description"
                            class="rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                            placeholder="Korte omschrijving..."/>
                 </div>
                 <div class="mb-2">
-                    <x-forms.tinymce-editor/>
+                    <div class="mb-2" wire:ignore>
+                        <label class="block font-medium text-sm text-gray-700" for="page-text-editor">Текст страницы</label>
+
+                    </div>
+                    <x-head.tinymce-config wire:model="description"/>
                 </div>
                 <div style="width: 300px;">
                     <button type="submit"

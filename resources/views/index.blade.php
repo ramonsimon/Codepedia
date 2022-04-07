@@ -27,10 +27,8 @@
                         <h4 class="text-xl font-semibold">
                             <a href="#" class="hover:underline">{{$article->title}}</a>
                         </h4>
-                        <div class="text-gray-600 mt-3 line-clamp-3">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum possimus quasi reprehenderit
-                            earum incidunt. Ad reprehenderit repudiandae dolorem ducimus modi accusamus beatae
-                            perferendis? Eum eligendi nulla aliquam numquam!
+                        <div class=" mt-3 line-clamp-3">
+                            {!! $article->description !!}
                         </div>
 
                         <div class="flex items-center justify-between mt-6">

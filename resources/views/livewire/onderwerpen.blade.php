@@ -17,10 +17,12 @@
 
             @role('admin')
                 <div class="flex mb-5 mt-5">
-                        <button type="button" wire:click="$emit('openModal', 'onderwerpen')"
+                    <a href="{{route("onderwerp-toevoegen")}}">
+                        <button type="button"
                                 class="py-2 px-4  bg-amber-500 hover:bg-amber-700 text-white w-full transition ease-in duration-200 text-center text-base font-semibold focus:outline-none rounded-lg ">
                             Onderwerp toevoegen
                         </button>
+                    </a>
                 </div>
             @endrole
 

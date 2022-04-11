@@ -53,9 +53,8 @@ class ArticlesController extends Controller
     public function show(Articles $articles)
     {
 
-        return view('livewire.artikel-bekijken',[
-            'Articles' => $Article,
-        ]);
+        return view('livewire.artikel-bekijken')
+        ;
     }
 
     /**

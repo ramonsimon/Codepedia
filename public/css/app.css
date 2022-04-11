@@ -766,9 +766,6 @@ select {
 .h-7 {
   height: 1.75rem;
 }
-.h-10 {
-  height: 2.5rem;
-}
 .h-8 {
   height: 2rem;
 }
@@ -786,6 +783,9 @@ select {
 }
 .h-32 {
   height: 8rem;
+}
+.h-10 {
+  height: 2.5rem;
 }
 .h-4 {
   height: 1rem;
@@ -816,9 +816,6 @@ select {
 }
 .w-28 {
   width: 7rem;
-}
-.w-10 {
-  width: 2.5rem;
 }
 .w-52 {
   width: 13rem;
@@ -852,6 +849,9 @@ select {
 }
 .w-6 {
   width: 1.5rem;
+}
+.w-10 {
+  width: 2.5rem;
 }
 .max-w-6xl {
   max-width: 72rem;

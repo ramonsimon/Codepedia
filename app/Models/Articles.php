@@ -10,4 +10,20 @@ class Articles extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+
 }

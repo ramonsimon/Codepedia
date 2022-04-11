@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [ArticlesController::class, 'index'])->name('index');
+Route::get('/articles/{article}', [ArticlesController::class, 'show'])->name('artikel-bekijken');
 
 Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/artikel/beheer',\App\Http\Livewire\ArtikelBeheer::class)->name('artikel-beheer');
@@ -37,6 +38,8 @@ Route::get('/vragen/overzicht',\App\Http\Livewire\vragenOverzicht::class)->name(
 Route::get('/vraag/bekijken',\App\Http\Livewire\VraagBekijken::class)->name('vraag-bekijken');
 
 Route::get('/onderwerpen',\App\Http\Livewire\Onderwerpen::class)->name('onderwerpen');
+Route::get('/onderwerp-toevoegen',\App\Http\Livewire\OnderwerpToevoegen::class)->name('onderwerp-toevoegen');
+
 
 //Route::get('/dashboard', function () {
 //    return view('dashboard');

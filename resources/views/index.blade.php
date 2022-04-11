@@ -25,7 +25,7 @@
                     </a>
                     <div class="mx-4">
                         <h4 class="text-xl font-semibold">
-                            <a href="#" class="hover:underline">{{$article->title}}</a>
+                            <a href="{{route('artikel-bekijken', $article)}}" class="hover:underline">{{$article->title}}</a>
                         </h4>
                         <div class=" mt-3 line-clamp-3">
                             {!! $article->description !!}
@@ -33,7 +33,7 @@
 
                         <div class="flex items-center justify-between mt-6">
                             <div class="flex items-center text-xs text-gray-400 font-semibold space-x-2">
-                                <div>10 hours ago</div>
+                                <div>{{ $article->created_at->diffForHumans() }}</div>
                                 <div>&bull;</div>
                                 <div>Category 1</div>
                                 <div>&bull;</div>

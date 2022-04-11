@@ -70,7 +70,8 @@
                                     :aria-controls="$id('dropdown-button')"
                                     type="button"
                                 >
-                                    <img src="{{ auth()->user()->getAvatar() }}" alt="avatar" class="w-10 h-10 rounded-full">
+                                    //TODO fix gravatar load
+{{--                                    <img src="{{ auth()->user()->getAvatar() }}" alt="avatar" class="w-10 h-10 rounded-full">--}}
                                 </button>
 
                                 <!-- Panel -->
@@ -84,8 +85,7 @@
                                     class="absolute left-0 -ml-36 w-52 bg-white border border-black rounded shadow-md overflow-hidden z-10"
                                 >
                                     <div>
-                                        <a href="{{route('profiel-bewerken')}}" class="block w-full px-4 py-2 text-center text-sm hover:bg-gray-100 disabled:text-gray-500" >
-                                            Gegevens bewerken
+                                        <a href="{{route('profiel-bewerken')}}" class="block w-full px-4 py-2 text-center text-sm hover:bg-gray-100 disabled:text-gray-500" >Gegevens bewerken
                                         </a>
 
                                         @role('admin')
@@ -94,11 +94,11 @@
                                             </a>
 
                                             <a href="{{route('index')}}" class="block w-full px-4 py-2 text-center text-sm hover:bg-gray-100 disabled:text-gray-500" >
-                                                Studentaccounts beheren
+                                                Studentaccountsbeheer
                                             </a>
 
                                             <a href="{{route('artikel-beheer')}}" class="block w-full px-4 py-2 text-center text-sm hover:bg-gray-100 disabled:text-gray-500" >
-                                                Artikelen beheer
+                                                Artikelenbeheer
                                             </a>
 
                                             <a href="{{route('vragen-overzicht')}}" class="block w-full px-4 py-2 text-center text-sm hover:bg-gray-100 disabled:text-gray-500" >

@@ -19,7 +19,7 @@ class ArticlesController extends Controller
     public function index(): View|Factory|Application
     {
         return view('index', [
-            'articles' => Articles::all(),
+            'articles' => Articles::simplePaginate(10),
         ]);
     }
 
@@ -52,7 +52,10 @@ class ArticlesController extends Controller
      */
     public function show(Articles $articles)
     {
-        //
+
+        return view('livewire.artikel-bekijken',[
+            'Articles' => $Article,
+        ]);
     }
 
     /**

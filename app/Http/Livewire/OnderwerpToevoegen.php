@@ -8,12 +8,11 @@ use Livewire\Component;
 
 class OnderwerpToevoegen extends Component
 {
-    public string $name;
+    public $name;
 
 
     protected $rules = [
-        'name' => 'required',
-
+        'name' => 'required|max:20|string'
     ];
 
     public function submit()

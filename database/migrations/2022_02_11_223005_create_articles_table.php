@@ -15,8 +15,10 @@ return new class extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
-//            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('topic_id')->nullable();
+            $table->foreign('topic_id')->references('id')->on('topics')->onDelete('cascade');
             $table->string('title');
             $table->string('slug')->nullable();
             $table->text('description');

@@ -26,7 +26,6 @@
                 </div>
                 <div class="mb-2">
                     <div class="mb-2" wire:ignore>
-                        <label class="block font-medium text-sm text-gray-700" for="page-text-editor">Текст страницы</label>
 
                     </div>
                     <x-head.tinymce-config wire:model="description"/>

@@ -49,6 +49,12 @@ class User extends Authenticatable
         return $this->hasMany(Articles::class);
     }
 
+    public function votes()
+    {
+        return $this->belongsToMany(Article::class, 'votes');
+    }
+
+
 
     public function getAvatar()
     {

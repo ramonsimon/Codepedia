@@ -67,7 +67,7 @@
                         </div>
                     </div>
 
-                    <div class="flex flex-wrap overflow-hidden grid grid-cols-2 gap-4">
+                    <div class="flex flex-wrap justify-center overflow-hidden">
                         <div>
                             <button type="button"
                                     class="w-52 h-16 mt-5 bg-amber-500 hover:bg-amber-700 text-white w-full transition ease-in duration-200 text-center text-base font-semibold focus:outline-none rounded-lg ">

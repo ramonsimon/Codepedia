@@ -37,16 +37,16 @@
             </form>
         </div>
     @else
-        <div class="flex text-center bg-white mr-9 mt-6 rounded-xl items-center flex-col pb-10 "
+        <div class="flex bg-white mr-9 mt-6 rounded-xl items-center flex-col pb-10"
              style="width: 400px;">
 
-            <div class="flex mb-5 mt-5 items-center justify-center text-center">
-                <a class="flex items-center mx-auto text-black uppercase font-bold text-center text-xl mt-5 mb-3 mr-56">
+            <div class="flex ml-52 mb-5 mt-5 items-center">
+                <div class="text-black uppercase font-bold text-center text-xl mt-5 mb-3 mr-56" style="width: 300px;">
                     Vraag stellen
-                </a>
+                </div>
             </div>
 
-            <div class="mt-16">
+            <div>
                 <a>Om vragen te stellen moet je <a href="{{route('login')}}" class="underline">inloggen</a></a>
             </div>
 
@@ -87,20 +87,8 @@
         </div>
         <div
             class="idea-container hover:shadow-card transition duration-150 ease-in bg-white rounded-xl flex cursor-pointer">
-            <div class="border-r border-gray-100 px-5 py-8">
-                <div class="text-center">
-                    <div class="font-semibold text-2xl">12</div>
-                    <div class="text-gray-500">Votes</div>
-                </div>
 
-                <div class="mt-8">
-                    <button
-                        class="w-20 bg-gray-200 border border-gray-200 hover:border-gray-400 font-bold text-xxs uppercase rounded-xl transition duration-150 ease-in px-4 py-3">
-                        Vote
-                    </button>
-                </div>
-            </div>
-            <div class="flex px-2 py-6">
+            <div class="flex px-2 py-6 ml-5">
                 <a href="#" class="flex-none">
                     <img src="https://source.unsplash.com/200x200/?face&crop=face&v=1" alt="avatar"
                          class="w-14 h-14 rounded-xl">
@@ -123,11 +111,11 @@
                             <div>&bull;</div>
                             <div class="text-gray-900">3 Comments</div>
                         </div>
-                        <div class="flex items-center space-x-2">
-                            <div
-                                class="bg-amber-500 text-white text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">
-                                Open
-                            </div>
+                    </div>
+                    <div class="flex items-center space-x-2 mt-3">
+                        <div
+                            class="bg-amber-500 text-white text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">
+                            Open
                         </div>
                     </div>
                 </div>

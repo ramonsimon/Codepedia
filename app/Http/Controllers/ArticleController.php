@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
+use App\Models\Topics;
 use Illuminate\Http\Request;
 use App\Models\Article;
 
@@ -17,8 +18,10 @@ class ArticleController extends Controller
      */
     public function index()
     {
+
         return view('index', [
             'articles' => Article::simplePaginate(10),
+            'topics' => Topics::skip(0)->take(4)->orderBy("name", "ASC")->get()
         ]);
 
     }

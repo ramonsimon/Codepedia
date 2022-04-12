@@ -18,6 +18,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('article_id')->nullable();
             $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
+            $table->string('text');
             $table->timestamps();
         });
     }

@@ -33,8 +33,6 @@ Route::get('/gegevens/bewerken',\App\Http\Livewire\ProfielBewerken::class)->name
 
 Route::get('/', [\App\Http\Controllers\ArticleController::class, 'index'])->name('index');
 Route::get('/artikel/{article:slug}', [ArticleController::class, 'show'])->name('artikel-bekijken');
-Route::get('/artikel/beheer',\App\Http\Livewire\ArtikelBeheer::class)->name('artikel-beheer');
-Route::get('/artikel/toevoegen',\App\Http\Livewire\ArtikelToevoegen::class)->name('artikel-toevoegen');
 
 //Route::get('/dashboard', function () {
 //    return view('dashboard');

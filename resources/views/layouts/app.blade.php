@@ -70,8 +70,7 @@
                                     :aria-controls="$id('dropdown-button')"
                                     type="button"
                                 >
-                                    //TODO fix gravatar load
-{{--                                    <img src="{{ auth()->user()->getAvatar() }}" alt="avatar" class="w-10 h-10 rounded-full">--}}
+                                    <img src="{{ auth()->user()->getAvatar() }}" alt="avatar" class="w-10 h-10 rounded-full">
                                 </button>
 
                                 <!-- Panel -->
@@ -102,7 +101,7 @@
                                             </a>
 
                                             <a href="{{route('vragen-overzicht')}}" class="block w-full px-4 py-2 text-center text-sm hover:bg-gray-100 disabled:text-gray-500" >
-                                                Vragen beheer
+                                                Vragenbeheer
                                             </a>
                                         @endrole
                                     </div>

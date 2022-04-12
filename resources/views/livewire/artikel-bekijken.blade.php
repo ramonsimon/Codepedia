@@ -1,3 +1,4 @@
+<x-app-layout>
 <div class="flex flex-row justify-center overflow-x-auto">
 
     <div class="flex bg-white ml-9 mt-5 rounded-xl items-center flex-col pb-10 mb-10"
@@ -167,3 +168,4 @@
 
     </div>
 </div>
+</x-app-layout>

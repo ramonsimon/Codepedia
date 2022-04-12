@@ -1,5 +1,4 @@
 <x-app-layout>
-
     <div class="flex flex-row justify-center">
         <div class="space-y-6 my-6 pr-2" style="width: 600px; ">
             @foreach($articles as $article)
@@ -25,7 +24,7 @@
                     </a>
                     <div class="mx-4">
                         <h4 class="text-xl font-semibold">
-                            <a href="{{route('artikel-bekijken', $article)}}" class="hover:underline">{{$article->title}}</a>
+                            <a href="{{ route('artikel-bekijken', $article) }}" class="hover:underline">{{$article->title}}</a>
                         </h4>
                         <div class=" mt-3 line-clamp-3">
                             {!! $article->description !!}
@@ -55,6 +54,10 @@
             </div> <!-- end idea-container -->
             @endforeach
         </div>
+        <div class="my-8">
+            {{ $articles->links() }}
+        </div>
+
         <div class="relative z-0">
             <div class="ml-9 mt-6 z-0" style="width: 500px; height: 500px;">
                 <div class="flex flex-col fixed bg-white rounded-xl items-center pb-10 z-0" style="width: 500px; height: 500px;">
@@ -166,5 +169,4 @@
             </div>
         </div>
     </div>
-
 </x-app-layout>

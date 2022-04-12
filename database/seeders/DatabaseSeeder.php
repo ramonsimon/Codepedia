@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Articles;
+use App\Models\Article;
 use Database\Factories\ArticlesFactory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -17,6 +17,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        Articles::factory(30)->create();
+        Article::factory(30)->create();
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ArticlesController;
+use App\Http\Controllers\ArticleController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -15,8 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [ArticlesController::class, 'index'])->name('index');
-Route::get('/articles/{article}', [ArticlesController::class, 'show'])->name('artikel-bekijken');
+Route::get('/', [\App\Http\Controllers\ArticleController::class, 'index'])->name('index');
+Route::get('/artikel/{article:slug}', [ArticleController::class, 'show'])->name('artikel-bekijken');
+
 
 Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/artikel/beheer',\App\Http\Livewire\ArtikelBeheer::class)->name('artikel-beheer');
@@ -31,7 +32,6 @@ Route::group(['middleware' => ['role:user|role:admin']], function () {
 
 Route::get('/artikel/overzicht',\App\Http\Livewire\ArtikelOverzicht::class)->name('artikel-overzicht');
 
-Route::get('/artikel/bekijken',\App\Http\Livewire\ArtikelBekijken::class)->name('artikel-bekijken');
 
 Route::get('/vragen/overzicht',\App\Http\Livewire\vragenOverzicht::class)->name('vragen-overzicht');
 

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign('topic_id')->references('id')->on('topics')->onDelete('cascade');
             $table->string('title');
             $table->string('slug')->nullable();
-            $table->text('description');
+            $table->string('description', 10000);
             $table->text('sub_description');
             $table->timestamps();
         });

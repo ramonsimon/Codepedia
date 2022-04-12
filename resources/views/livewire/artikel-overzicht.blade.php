@@ -1,6 +1,6 @@
 <div class="flex flex-row justify-center overflow-x-auto">
     <div class="space-y-6 my-6" style="width: 800px">
-        <div class="flex mb-5 mt-5 ml-72" style="width: 400px;">
+        <div class="flex mb-5 mt-5" style="width: 400px;">
             <div class="flex relative mr-3">
                 <select name="name" id="name" wire:model="topic"
                         class="rounded-lg flex-1 appearance-none border border-amber-300 w-40 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent">
@@ -43,8 +43,8 @@
         @if(!$articles->isEmpty())
             @foreach($articles as $article)
                 <div
-                    class="px-4 idea-container hover:shadow-card transition duration-150 ease-in bg-white rounded-xl flex cursor-pointer">
-                    <div class="flex px-2 py-6">
+                    class="idea-container hover:shadow-card transition duration-150 ease-in bg-white rounded-xl flex cursor-pointer">
+                    <div class="flex px-2 py-6 ml-5">
                         <a href="#" class="flex-none">
                             <img src="https://source.unsplash.com/200x200/?face&crop=face&v=1" alt="avatar"
                                  class="w-14 h-14 rounded-xl">
@@ -65,10 +65,11 @@
                                     <div>&bull;</div>
                                     <div class="text-gray-900">3 Comments</div>
                                 </div>
-                                <div class="flex items-center space-x-2">
-                                    <div class="bg-amber-500 text-white text-xxs font-bold uppercase leading-none rounded-full text-center w-36 h-7 py-2 px-4">
-                                        Lees meer
-                                    </div>
+                            </div>
+
+                            <div class="flex items-center space-x-2 mt-3">
+                                <div class="bg-amber-500 text-white text-xxs font-bold uppercase leading-none rounded-full text-center w-36 h-7 py-2 px-4">
+                                    Lees meer
                                 </div>
                             </div>
                         </div>

@@ -28,7 +28,6 @@ class ArticleFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::factory(),
             'title' => $this->faker->words(4,true),
             'description' => $this->faker->paragraph(5),
             'sub_description' => $this->faker->paragraph(2),

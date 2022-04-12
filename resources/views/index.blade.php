@@ -1,9 +1,19 @@
 <x-app-layout>
     <div class="flex flex-row justify-center">
         <div class="space-y-6 my-6 pr-2" style="width: 600px; ">
+            <div class="my-8">
+                {{ $articles->links() }}
+            </div>
             @foreach($articles as $article)
-            <div
-                class="idea-container hover:shadow-card transition duration-150 ease-in bg-white rounded-xl flex cursor-pointer">
+                <div
+                    x-data
+                    @click="const ignores = ['button','a','svg','path'];
+                if(!ignores.includes($el.tagName.toLowerCase())){
+                    window.location=$refs.link.href;
+                }"
+
+                    class="idea-container hover:shadow-card transition duration-150 ease-in bg-white rounded-xl flex cursor-pointer"
+                >
                 <div class="border-r border-gray-100 px-5 py-8">
                     <div class="text-center">
                         <div class="font-semibold text-2xl">12</div>
@@ -24,10 +34,10 @@
                     </a>
                     <div class="mx-4">
                         <h4 class="text-xl font-semibold">
-                            <a href="{{ route('artikel-bekijken', $article) }}" class="hover:underline">{{$article->title}}</a>
+                            <a href="{{ route('artikel-bekijken', $article) }}" x-ref="link" class=hover:underline">{{$article->title}}</a>
                         </h4>
                         <div class=" mt-3 line-clamp-3">
-                            {!! $article->description !!}
+                            {{$article->sub_description}}
                         </div>
 
                         <div class="flex items-center justify-between mt-6">
@@ -54,9 +64,7 @@
             </div> <!-- end idea-container -->
             @endforeach
         </div>
-        <div class="my-8">
-            {{ $articles->links() }}
-        </div>
+
 
         <div class="relative z-0">
             <div class="ml-9 mt-6 z-0" style="width: 500px; height: 500px;">

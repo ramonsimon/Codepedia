@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Articles;
+use App\Models\Article;
 use App\Models\User;
 use Livewire\Component;
 
@@ -11,7 +11,7 @@ class ArtikelToevoegen extends Component
 public $title;
 public $onderwerp;
 public $description;
-public $sub_description = 'fuck you Stefan';
+public $sub_description;
 
 
     protected $rules = [
@@ -25,7 +25,7 @@ public $sub_description = 'fuck you Stefan';
     {
         $validatedData = $this->validate();
 
-        Articles::create($validatedData);
+        Article::create($validatedData);
 
     }
 

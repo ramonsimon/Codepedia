@@ -10,6 +10,8 @@ class Article extends Model
 {
     use HasFactory, Sluggable;
 
+    const PAGINATION_COUNT = 10;
+
     protected $guarded = [];
 
     /**
@@ -29,5 +31,11 @@ class Article extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+
+    public function articles_rating()
+    {
+        return $this->belongsToMany(User::class, 'articles_rating');
     }
 }

@@ -88,7 +88,7 @@
         <div
             class="idea-container hover:shadow-card transition duration-150 ease-in bg-white rounded-xl flex cursor-pointer">
             <div class="flex px-2 py-6">
-                <div class="border-r border-gray-100 px-5 py-8 mt-7">
+                <div class="border-r border-gray-100 px-5 py-8 flex items-center">
                     <div class="text-center">
                         <div class="font-semibold text-2xl">12</div>
                         <div class="text-gray-500">Votes</div>

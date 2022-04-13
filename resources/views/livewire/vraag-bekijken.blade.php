@@ -4,11 +4,34 @@
          style="width: 1000px;">
 
         <div class="flex ml-5 px-2 py-6 mb-8">
+
+            <div class="border-r border-gray-100 px-5 py-8 mr-8">
+                <div class="text-center">
+                    <div class="font-semibold text-2xl">12</div>
+                    <div class="text-gray-500">Votes</div>
+                </div>
+
+                <div class="flex justify-center mt-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                              d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
+                              clip-rule="evenodd"/>
+                    </svg>
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                              d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z"
+                              clip-rule="evenodd"/>
+                    </svg>
+                </div>
+
+            </div>
+
             <a href="#" class="flex-none">
                 <img src="https://source.unsplash.com/200x200/?face&crop=face&v=1" alt="avatar"
                      class="w-14 h-14 rounded-xl">
             </a>
-            <div class="mx-4">
+            <div class="mx-4 mr-10">
                 <h4 class="text-xl font-semibold">
                     <a href="#" class="hover:underline">A random title can go here</a>
                 </h4>
@@ -93,18 +116,24 @@
                             Nulla consequat massa quis enim.
                         </div>
 
-                        <div class="flex flex-col ml-3 -mt-7">
+                        <div class="flex flex-col ml-3 -mt-5">
                             <div class="text-center">
                                 <div class="font-semibold text-xl">33</div>
                                 <div class="text-gray-500 text-l">Votes</div>
                             </div>
 
-                            <div class="mt-1">
-                                <button
-                                    class="w-15 h-11 bg-gray-200 border border-gray-200 hover:border-gray-400 font-bold text-xxs uppercase rounded-xl transition duration-150 ease-in px-4 py-3"
-                                    style="font-size: 12px;">
-                                    Vote
-                                </button>
+                            <div class="flex justify-center mt-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
+                                          clip-rule="evenodd"/>
+                                </svg>
+
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                          d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z"
+                                          clip-rule="evenodd"/>
+                                </svg>
                             </div>
                         </div>
                     </div>
@@ -153,18 +182,24 @@
                                 Aenean commodo ligula eget dolor.
                             </div>
 
-                            <div class="flex flex-col ml-3 -mt-7">
+                            <div class="flex flex-col ml-3 -mt-5">
                                 <div class="text-center">
                                     <div class="font-semibold text-m">12</div>
                                     <div class="text-gray-500 text-s">Votes</div>
                                 </div>
 
-                                <div class="mt-1">
-                                    <button
-                                        class="w-15 h-11 bg-gray-200 border border-gray-200 hover:border-gray-400 font-bold uppercase rounded-xl transition duration-150 ease-in px-4 py-3"
-                                        style="font-size: 12px;">
-                                        Vote
-                                    </button>
+                                <div class="flex justify-center mt-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd"
+                                              d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
+                                              clip-rule="evenodd"/>
+                                    </svg>
+
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd"
+                                              d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z"
+                                              clip-rule="evenodd"/>
+                                    </svg>
                                 </div>
                             </div>
                         </div>

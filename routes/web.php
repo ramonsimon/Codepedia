@@ -24,6 +24,7 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/artikel/wijzigen',\App\Http\Livewire\ArtikelWijzigen::class)->name('artikel-wijzigen');
     Route::get('/docent/aanmaken',\App\Http\Livewire\DocentAanmaken::class)->name('docent-aanmaken');
     Route::get('/artikel/beheer',\App\Http\Livewire\ArtikelBeheer::class)->name('artikel-beheer');
+    Route::get('/vraag/beheer',\App\Http\Livewire\VraagBeheer::class)->name('vraag-beheer');
 });
 
 Route::get('/artikel/overzicht',\App\Http\Livewire\ArtikelOverzicht::class)->name('artikel-overzicht');

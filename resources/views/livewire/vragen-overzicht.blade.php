@@ -87,9 +87,16 @@
         </div>
         <div
             class="idea-container hover:shadow-card transition duration-150 ease-in bg-white rounded-xl flex cursor-pointer">
+            <div class="flex px-2 py-6">
+                <div class="border-r border-gray-100 px-5 py-8 mt-7">
+                    <div class="text-center">
+                        <div class="font-semibold text-2xl">12</div>
+                        <div class="text-gray-500">Votes</div>
+                    </div>
 
-            <div class="flex px-2 py-6 ml-5">
-                <a href="#" class="flex-none">
+                </div>
+
+                <a href="#" class="flex-none ml-5 mt-4">
                     <img src="https://source.unsplash.com/200x200/?face&crop=face&v=1" alt="avatar"
                          class="w-14 h-14 rounded-xl">
                 </a>

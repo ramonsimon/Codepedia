@@ -14,7 +14,7 @@ class ArticleController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return \Illuminate\Coxntracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
@@ -55,7 +55,7 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        return view('livewire.artikel-bekijken', [
+        return view('index-bekijken', [
         'article' => $article,
     ]);
     }

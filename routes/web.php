@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Livewire\VragenOverzicht;
 use Illuminate\Support\Facades\Route;
 
 
@@ -26,7 +27,7 @@ Route::group(['middleware' => ['role:admin']], function () {
 });
 
 Route::get('/artikel/overzicht',\App\Http\Livewire\ArtikelOverzicht::class)->name('artikel-overzicht');
-Route::get('/vragen/overzicht',\App\Http\Livewire\vragenOverzicht::class)->name('vragen-overzicht');
+Route::get('/vragen/overzicht',vragenOverzicht::class)->name('vragen-overzicht');
 Route::get('/vraag/bekijken',\App\Http\Livewire\VraagBekijken::class)->name('vraag-bekijken');
 Route::get('/gegevens/bewerken',\App\Http\Livewire\ProfielBewerken::class)->name('profiel-bewerken');
 

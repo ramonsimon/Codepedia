@@ -14,6 +14,11 @@ class Article extends Model
 
     protected $guarded = [];
 
+    public function comments()
+    {
+        return $this->hasMany(Comments::class);
+    }
+
     /**
      * Return the sluggable configuration array for this model.
      *

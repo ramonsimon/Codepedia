@@ -68,13 +68,12 @@
                 </div>
 
                 <!-- alleen zichtbaar als er reacties zijn -->
+                @foreach($article->comments as $comment)
                 <div class="flex flex-col items-center justify-center">
                     <div class="flex space-x-96 mb-5">
                         <div class="text-black uppercase font-bold text-center text-l mt-5 mb-3">
                             Reacties
                         </div>
-                    </div>
-
                     <div style="width: 600px;">
                         <div class="flex flex-row">
                             <h4 class="text-l font-semibold uppercase font-bold">
@@ -101,11 +100,7 @@
 
                         <div class="flex flex-row">
                             <div class="flex text-gray-600 mt-3 line-clamp-3">
-                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                                Aenean commodo ligula eget dolor. Aenean massa.
-                                Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                                Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
-                                Nulla consequat massa quis enim.
+                                {{$comment->body}}
                             </div>
 
                             <div class="flex flex-col ml-3 -mt-5">
@@ -144,6 +139,8 @@
                             </div>
                         </form>
 
+
+{{--                        Sub comment--}}
                         <div class="mt-2" style="width: 550px; margin-left: 52px;">
                             <div class="flex flex-row">
                                 <h4 class="text-l font-semibold uppercase font-bold">
@@ -159,7 +156,7 @@
                                           d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
                                           clip-rule="evenodd"/>
                                 </svg>
-
+                                @endforeach
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20"
                                      fill="gray">
                                     <path fill-rule="evenodd"

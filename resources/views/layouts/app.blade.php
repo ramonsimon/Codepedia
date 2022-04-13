@@ -99,7 +99,7 @@
                             Docentaccount maken
                         </a>
 
-                        <a href="{{route('index')}}"
+                        <a href="{{route('studenten-beheer')}}"
                            class="block w-full px-4 py-2 text-center text-sm hover:bg-gray-100 disabled:text-gray-500">
                             Studentaccountsbeheer
                         </a>

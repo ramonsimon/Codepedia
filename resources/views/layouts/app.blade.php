@@ -25,7 +25,7 @@
                         <div class="px-6 py-4 sm:block">
 
                             <a href="{{ route('vragen-overzicht') }}" class="mr-2 text-sm text-gray-700 dark:text-gray-500 underline">Vragen</a>
-                            <a href="{{ route('onderwerpen') }}" class="mr-2 text-sm text-gray-700 dark:text-gray-500 underline">Onderwerpen</a>
+                            <a href="{{ route('artikel-overzicht') }}" class="mr-2 text-sm text-gray-700 dark:text-gray-500 underline">Artikelen</a>
 
                             @guest
                                 <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Inloggen</a>

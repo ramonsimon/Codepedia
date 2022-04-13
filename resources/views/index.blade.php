@@ -39,7 +39,7 @@
                                 <div class="flex items-center text-xs text-gray-400 font-semibold space-x-2">
                                     <div>{{ $article->created_at->diffForHumans() }}</div>
                                     <div>&bull;</div>
-                                    <div>Category 1</div>
+                                    <div>{{ $article->topic->name }}</div>
                                     <div>&bull;</div>
                                     <div class="text-gray-900">3 Comments</div>
                                 </div>
@@ -102,6 +102,8 @@
                                         </svg>
                                     </div>
                                 </div>
+
+                            @endforeach
                                 <div style="width: 300px;">
                                     <a href="{{route('artikel-overzicht')}}">
                                         <button type="submit"
@@ -110,8 +112,6 @@
                                         </button>
                                     </a>
                                 </div>
-                            @endforeach
-
                         @else
 
                             <div class="flex justify-between text-center">

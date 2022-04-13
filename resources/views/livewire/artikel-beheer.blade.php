@@ -45,7 +45,7 @@
                             {{$article->title}}
                         </td>
                         <td class="border-b-2 p-4 dark:border-dark-5">
-                            PHP
+                            {{ $article->topic->name }}
                         </td>
                         <td class="border-b-2 p-4 dark:border-dark-5">
                             {{$article->sub_description}}

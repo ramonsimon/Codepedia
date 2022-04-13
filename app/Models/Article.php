@@ -34,6 +34,11 @@ class Article extends Model
     }
 
 
+    public function topic()
+    {
+        return $this->belongsTo(Topics::class);
+    }
+
     public function articles_rating()
     {
         return $this->belongsToMany(User::class, 'articles_rating');

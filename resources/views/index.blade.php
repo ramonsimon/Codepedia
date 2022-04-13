@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="flex flex-row justify-center">
         <div class="space-y-6 my-6 pr-2" style="width: 600px; ">
-            <div class="my-8">
+            <div class="mb-5">
                 {{ $articles->links() }}
             </div>
             @foreach($articles as $article)

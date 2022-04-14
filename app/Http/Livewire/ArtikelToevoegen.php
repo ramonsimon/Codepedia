@@ -12,8 +12,8 @@ class ArtikelToevoegen extends Component
 public $title;
 public $onderwerpen;
 public $topic_id = 1;
-public $description = '<div> <script>alert`1`</script> </div> // Example Attack
-';
+public $description;
+
 public $sub_description;
 
 

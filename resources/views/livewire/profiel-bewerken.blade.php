@@ -14,7 +14,7 @@
                     <div class="flex-col mb-2">
                         <input type="text" name="name" id="name"
                                class="rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                               placeholder="Naam..."/>
+                               placeholder="Naam..." value="{{$user->name}}"/>
                     </div>
                     <div class="flex-col mb-2">
                         <input type="text" name="surname" id="surname"
@@ -24,12 +24,12 @@
                     <div class="flex-col mb-2">
                         <input type="email" name="email" id="email"
                                class="rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                               placeholder="Email..."/>
+                               placeholder="Email..." value="{{$user->email}}"/>
                     </div>
                     <div class="flex-col mb-2">
                         <input type="password" name="password" id="password"
                                class="rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                               placeholder="Wachtwoord..."/>
+                               placeholder="Wachtwoord..."`/>
                     </div>
                     <div class="flex-col mb-2">
                         <input type="password" name="passwordrep" id="passwordrep"

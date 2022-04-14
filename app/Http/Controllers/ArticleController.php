@@ -20,7 +20,10 @@ class ArticleController extends Controller
     {
 
         return view('index', [
-            'articles' => Article::simplePaginate(10),
+            'articles' => Article::with('user')
+                ->withCount('articles_rating')
+                ->orderBy('id', 'desc')
+                ->simplePaginate(Article::PAGINATION_COUNT),
             'topics' => Topics::skip(0)->take(4)->orderBy("name", "ASC")->get()
         ]);
 

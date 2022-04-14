@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('articles_rating', function (Blueprint $table) {
             $table->id();
-            $table->unique(['articles_id', 'user_id']);
-            $table->foreignId('articles_id')->constrained();
+            $table->unique(['article_id', 'user_id']);
+            $table->foreignId('article_id')->constrained();
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });

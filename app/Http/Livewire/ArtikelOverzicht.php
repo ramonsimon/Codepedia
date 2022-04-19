@@ -8,7 +8,7 @@ use App\Models\Article;
 
 class ArtikelOverzicht extends Component
 {
-    public $topic;
+    public $topic = 'all';
     public $search;
 
     public function render()

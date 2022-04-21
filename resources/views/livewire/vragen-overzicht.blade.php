@@ -88,6 +88,9 @@
                     </span>
             </div>
         </div>
+
+        @if(!$questions->isEmpty())
+            @foreach($questions as $question)
         <div
             class="idea-container hover:shadow-card transition duration-150 ease-in bg-white rounded-xl flex cursor-pointer">
             <div class="flex px-2 py-6">
@@ -105,12 +108,10 @@
                 </a>
                 <div class="mx-4">
                     <h4 class="text-xl font-semibold">
-                        <a href="#" class="hover:underline"></a>
+                        <a href="#" class="hover:underline">{{$question->title}}</a>
                     </h4>
                     <div class="text-gray-600 mt-3 line-clamp-3">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum possimus quasi reprehenderit
-                        earum incidunt. Ad reprehenderit repudiandae dolorem ducimus modi accusamus beatae
-                        perferendis? Eum eligendi nulla aliquam numquam!
+                        {{$question->sub_description}}
                     </div>
 
                     <div class="flex items-center justify-between mt-6">
@@ -131,5 +132,11 @@
                 </div>
             </div>
         </div> <!-- end idea-container -->
+            @endforeach
+        @else
+            <div class="flex justify-center items-center text-center">
+                <a>Geen vragen gevonden.</a>
+            </div>
+        @endif
     </div>
 </div>

@@ -25,7 +25,7 @@ class VragenOverzicht extends Component
 
         return view('livewire.vragen-overzicht', [
             'topics' => Topics::get(),
-            'articles' => $question,
-        ]);;
+            'questions' => $question,
+        ]);
     }
 }

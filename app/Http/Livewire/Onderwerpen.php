@@ -7,6 +7,8 @@ use Livewire\Component;
 class Onderwerpen extends Component
 {
     public $topics;
+    public $message;
+
     public function render()
     {
         $this->topics = Topics::all();

@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="flex flex-row justify-center overflow-x-auto">
-        <div class="flex bg-white ml-9 mt-5 rounded-xl items-center flex-col pb-10 mb-10"
+        <div class="flex bg-white ml-9 mt-5 rounded-xl flex-col pb-10 mb-10"
              style="width: 1000px;">
             <div class="flex ml-1 px-2 py-6 mb-8">
                 <div class="border-r border-gray-100 px-5 py-8 mr-8">
@@ -21,10 +21,6 @@
                         </svg>
                     </div>
                 </div>
-                <a href="#" class="flex-none">
-                    <img src="https://source.unsplash.com/200x200/?face&crop=face&v=1" alt="avatar"
-                         class="w-14 h-14 rounded-xl">
-                </a>
                 <div class="mx-4 mr-10">
                     <h4 class="text-xl font-semibold">
                         <a href="#" class="hover:underline">{{$article->title}}</a>
@@ -35,8 +31,10 @@
                 </div>
             </div>
 
-            <!--alleen reageren mogelijk voor docenten en studenten die ingelod zijn -->
+
             <div class="flex flex-col items-center justify-center">
+
+
                 <div class="flex flex-col items-center justify-center">
                     <div class="flex space-x-96 mb-5">
                         <div class="text-black uppercase font-bold text-center text-l mt-5 mb-3">
@@ -44,19 +42,17 @@
                         </div>
                     </div>
 
-                    <form method="post" action="" class="w-72">
+                    <form wire:submit.prevent="submit">
                         <div class="flex mb-2 w-72">
-                    <textarea type="text" name="name" id="name"
+                    <input type="text" id="name" wire:model="comment"
                               class="rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                              placeholder="Naam..."></textarea>
+                              placeholder="Reactie..."/>
                         </div>
 
-                        <div style="width: 300px;">
                             <button type="submit"
                                     class="w-72 py-2 px-4 bg-amber-500 hover:bg-amber-600 focus:ring-amber-400 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring rounded-lg">
                                 Reageer
                             </button>
-                        </div>
                     </form>
                 </div>
 
@@ -70,7 +66,7 @@
                             <div style="width: 600px;">
                                 <div class="flex flex-row">
                                     <h4 class="text-l font-semibold uppercase font-bold">
-                                        <a href="#">Naam reaguurder</a>
+                                        <a href="#">Naam reageerder</a>
                                     </h4>
 
                                     <!-- alleen zichtbaar voor docenten en gebruiker die heeft gereageerd -->
@@ -150,15 +146,7 @@
                                                   d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
                                                   clip-rule="evenodd"/>
                                         </svg>
-                                        @endforeach
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20"
-                                             fill="gray">
-                                            <path fill-rule="evenodd"
-                                                  d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                                                  clip-rule="evenodd"/>
-                                        </svg>
                                     </div>
-
                                     <div class="flex flex-row">
                                         <div class="text-gray-600 mt-3 line-clamp-3">
                                             Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
@@ -189,6 +177,8 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endforeach
+
                             </div>
                         </div>
                     </div>

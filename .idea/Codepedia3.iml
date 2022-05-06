@@ -129,6 +129,8 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/tinymce/tinymce" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/mews/purifier" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/ezyang/htmlpurifier" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/wire-elements/modal" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/laravel-package-tools" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

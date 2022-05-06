@@ -2,15 +2,19 @@
 
 namespace App\Http\Controllers;
 
-
+use Livewire\Component;
 use App\Http\Requests\StoreArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
 use App\Models\Topics;
+use App\Models\Comments;
 use Illuminate\Http\Request;
 use App\Models\Article;
 
 class ArticleController extends Controller
 {
+
+    public $article;
+
     /**
      * Display a listing of the resource.
      *

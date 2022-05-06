@@ -21,12 +21,12 @@ class OnderwerpToevoegen extends Component
 
         Topics::create($validatedData);
 
+        return redirect('/onderwerpen');
     }
 
 
     public function render()
     {
-
         return view('livewire.onderwerp-toevoegen');
     }
 }

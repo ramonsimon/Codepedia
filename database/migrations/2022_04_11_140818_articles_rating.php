@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unique(['article_id', 'user_id']);
             $table->foreignId('article_id')->constrained();
             $table->foreignId('user_id')->constrained();
+            $table->tinyInteger('rating');
             $table->timestamps();
         });
     }

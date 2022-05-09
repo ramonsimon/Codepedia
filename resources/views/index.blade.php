@@ -67,8 +67,6 @@
 
             @endif
         </div>
-
-
         <div class="relative z-0">
             <div class="ml-9 mt-6 z-0" style="width: 500px; height: 500px;">
                 <div class="flex flex-col fixed bg-white rounded-xl items-center pb-10 z-0" style="width: 500px; height: 500px;">

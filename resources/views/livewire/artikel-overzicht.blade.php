@@ -72,7 +72,7 @@
                                     <div>&bull;</div>
                                     <div>Category 1</div>
                                     <div>&bull;</div>
-                                    <div class="text-gray-900">3 Comments</div>
+                                    <div class="text-gray-900">{{$article->comments->count()}}</div>
                                 </div>
                             </div>
 

@@ -57,7 +57,7 @@
                 </div>
 
                 <!-- alleen zichtbaar als er reacties zijn -->
-                @foreach($article->comments as $comment)
+                @forelse($article->comments as $comment)
                     <div class="flex flex-col items-center justify-center">
                         <div class="flex space-x-96 mb-5">
                             <div class="text-black uppercase font-bold text-center text-l mt-5 mb-3">
@@ -177,7 +177,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                @endforeach
+                                @empty
+                                    <div class="mx-auto w70 mt-12">
+                                        <div class="text-gray-400 text-center font-bold mt-6">Geen reacties</div>
+                                    </div>
+                                @endforelse
 
                             </div>
                         </div>

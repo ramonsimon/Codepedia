@@ -41,7 +41,7 @@
                                     <div>&bull;</div>
                                     <div>{{ $article->topic->name }}</div>
                                     <div>&bull;</div>
-                                    <div class="text-gray-900">3 Comments</div>
+                                    <div class="text-gray-900">{{$article->comments->count()}} reacties</div>
                                 </div>
                                 <!--<div class="flex items-center space-x-2">
                                     <div class="bg-gray-200 text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">Open</div>

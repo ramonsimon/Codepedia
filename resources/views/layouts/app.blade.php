@@ -19,7 +19,7 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 <body class="font-sans antialiased bg-gray-300 overflow-x-hidden">
-<header class="fixed w-screen flex items-center justify-between px-8 py-4 border-b-4 border-b-amber-500 bg-white">
+<header class="fixed w-screen flex items-center justify-between px-8 py-4 z-10 border-b-4 border-b-amber-500 bg-white">
     <a href="{{route('index')}}"><img src="{{asset('codepedia_logo.png')}}" class="h-14 w-14"/></a>
     <div class="flex items-center">
         @if (Route::has('login'))

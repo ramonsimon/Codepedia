@@ -15,7 +15,7 @@
 
     <div class="flex flex-col items-center overflow-x-auto">
 
-        <div class="flex bg-white mt-5 rounded-xl items-center flex-col overflow-auto pb-10 px-7 w-1/2">
+        <div class="flex bg-white mt-5 rounded-xl items-center flex-col overflow-auto pb-10 px-7 w-3/5">
 
             <div class="flex flex-wrap mb-5 mt-5 items-center">
                 <div class="text-black uppercase font-bold text-center text-xl mt-5 mb-3 mr-56">
@@ -40,7 +40,7 @@
 
             </div>
 
-            <div class="flex flex-wrap overflow-hidden overflow-y-auto">
+            <div class="flex flex-wrap justify-center overflow-hidden overflow-y-auto ">
                 @if(!$topics->isEmpty())
                 @foreach($topics as $topic)
                 <div class="mb-5">

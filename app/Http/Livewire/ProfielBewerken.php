@@ -10,15 +10,27 @@ use phpDocumentor\Reflection\Types\This;
 class ProfielBewerken extends Component
 {
     public $user;
+    public $name;
+    public $email;
+    public $password;
+
+    protected $rules = [
+
+        'name' => 'required',
+        'email' => 'required|email',
+
+    ];
 
     public function render()
     {
         $this->user = Auth::user();
+
         return view('livewire.profiel-bewerken');
     }
 
 
     public function submit(){
+
         $this->user->save();
     }
 }

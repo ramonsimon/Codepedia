@@ -36,7 +36,7 @@
                 <div class="mb-2" wire:ignore>
 
                 </div>
-                <x-head.tinymce-config wire:model="description"/>
+                <x-head.tinymce-config wire:model="description" value="{{$body}}"/>
             </div>
             <div style="width: 300px;">
                 <button type="submit" wire:click="submit"

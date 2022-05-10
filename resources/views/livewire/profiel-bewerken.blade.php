@@ -9,7 +9,7 @@
             </div>
 
             <div class="flex justify-center">
-                <form method="post" action="">
+                <form wire:submit.prevent="submit" method="post" action="">
                     <div class="flex-col mb-2">
                         <input wire:model="name" type="text" name="name" id="name"
                                class="rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"

@@ -18,6 +18,7 @@ class ProfielBewerken extends Component
 
         'name' => 'required',
         'email' => 'required|email',
+        'password' => 'required'
 
     ];
 
@@ -30,6 +31,10 @@ class ProfielBewerken extends Component
 
 
     public function submit(){
+
+        $this->user->name = $this->name;
+        $this->user->email = $this->email;
+        $this->user->password = bcrypt(request('password'));
 
         $this->user->save();
     }

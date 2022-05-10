@@ -12,23 +12,34 @@ class ArtikelBekijken extends Component
 
     public $article;
     public $comment;
+    public $hasVoted;
+    public $votesCount;
 
-    protected $rules = [
-        'comment' => 'required|max:20|string'
-    ];
 
     public function mount(Article $article)
     {
         $this->article = $article;
+        $this->hasVoted = $article->isVotedByUser(auth()->user());
 
     }
 
-    public function submit()
+    public function vote()
     {
-        $validatedData = $this->validate();
+        if (! auth()->check()) {
+            return redirect(route('login'));
+        }
 
-        Comments::Create($validatedData);
+        if ($this->hasVoted) {
+            $this->article->removeVote(auth()->user());
+            $this->votesCount--;
+            $this->hasVoted = false;
+        } else {
+            $this->article->vote(auth()->user());
+            $this->votesCount++;
+            $this->hasVoted = true;
+        }
     }
+
 
     public function render()
     {

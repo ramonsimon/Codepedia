@@ -13,7 +13,7 @@ class ProfielBewerken extends Component
 
     public function render()
     {
-        $this->user = Auth::user();;
+        $this->user = Auth::user();
         return view('livewire.profiel-bewerken');
     }
 

@@ -38,8 +38,37 @@ class Article extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function isVotedByUser(?User $user)
+    {
+        if (!$user) {
+            return false;
+        }
 
-    public function topic()
+        return articles_rating::where('user_id', $user->id)
+            ->where('article_id', $this->id)
+            ->exists();
+    }
+
+
+    public function vote(User $user)
+    {
+        articles_rating::create([
+            'article_id' => $this->id,
+            'user_id' => $user->id,
+        ]);
+    }
+
+    public function removeVote(User $user)
+    {
+        articles_rating::where('article_id', $this->id)
+            ->where('user_id', $user->id)
+            ->first()
+            ->delete();
+    }
+
+
+
+public function topic()
     {
         return $this->belongsTo(Topics::class);
     }

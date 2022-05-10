@@ -9,11 +9,13 @@ use App\Models\Topics;
 use App\Models\Comments;
 use Illuminate\Http\Request;
 use App\Models\Article;
+use App\Models\articles_rating;
 
 class ArticleController extends Controller
 {
 
     public $article;
+    public $hasVoted;
 
     /**
      * Display a listing of the resource.
@@ -25,6 +27,9 @@ class ArticleController extends Controller
 
         return view('index', [
             'articles' => Article::with('user')
+                ->addSelect(['voted_by_user' => articles_rating::select('id')
+                    ->where('user_id',auth()->id())
+                    ->whereColumn('article_id', 'articles.id')])
                 ->withCount('articles_rating')
                 ->orderBy('id', 'desc')
                 ->simplePaginate(Article::PAGINATION_COUNT),

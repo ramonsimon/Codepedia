@@ -5,21 +5,25 @@
             <div class="flex ml-1 px-2 py-6 mb-8">
                 <div class="border-r border-gray-100 px-5 py-8 mr-8">
                     <div class="text-center">
-                        <div class="font-semibold text-2xl">{{$article->articles_rating()->count()}}</div>
+                        <div class="text-sm font-bold leading-none  @if($hasVoted) text-blue-600 @endif ">{{$article->articles_rating()->count()}}</div>
                         <div class="text-gray-500">Votes</div>
                     </div>
                     <div class="flex justify-center mt-4">
+                    <button wire:click.prevent="vote" type="button">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd"
                                   d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
                                   clip-rule="evenodd"/>
                         </svg>
+                    </button>
+                    <button type="button">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd"
                                   d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z"
                                   clip-rule="evenodd"/>
                         </svg>
-                    </div>
+                    </button>
+                </div>
                 </div>
                 <div class="mx-4 mr-10">
                     <h4 class="text-xl font-semibold">
@@ -115,7 +119,7 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                <liveiwre:reactiesToevoegen :article="$article">
                                 <form class="flex flex-row h-12 mt-3">
                                     <div class="flex mb-2 w-96 mr-3">
                             <textarea type="text" name="name" id="name"
@@ -123,6 +127,7 @@
                                       placeholder="Naam..."></textarea>
                                     </div>
                                     <div style="width: 300px;">
+
                                         <button type="submit"
                                                 class="w-36 py-2 px-4 bg-amber-500 hover:bg-amber-600 focus:ring-amber-400 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring rounded-lg">
                                             Reageer

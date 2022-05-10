@@ -29,7 +29,12 @@ class OnderwerpWijzigen extends ModalComponent
         update(['name' => $this->name]);
         $this->forceClose()->closeModal();
 
-        return redirect('/onderwerpen');
+        return redirect('/onderwerpen')->with([
+            'title' => 'Gelukt!',
+            'message' => 'Het onderwerp ' . $this->topic['name'] . ' is veranderd naar ' . $this->name,
+            'bg' => 'bg-green-200',
+            'border' => 'border-green-600'
+        ]);
     }
 
     public function mount($topic)

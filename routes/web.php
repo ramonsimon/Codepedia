@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Route;
 
 // Admin
 Route::group(['middleware' => ['verified', 'role:admin']], function () {
-    Route::get('/onderwerp/toevoegen',\App\Http\Livewire\OnderwerpToevoegen::class)->name('onderwerp-toevoegen');
     Route::get('/onderwerpen',\App\Http\Livewire\Onderwerpen::class)->name('onderwerpen');
     Route::get('/artikel/toevoegen',\App\Http\Livewire\ArtikelToevoegen::class)->name('artikel-toevoegen');
     Route::get('/artikel/wijzigen',\App\Http\Livewire\ArtikelWijzigen::class)->name('artikel-wijzigen');

@@ -18,8 +18,8 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
-<body class="font-sans antialiased bg-gray-300">
-<header class="flex items-center justify-between px-8 py-4 border-b-4 border-b-amber-500 bg-white">
+<body class="font-sans antialiased bg-gray-300 overflow-x-hidden">
+<header class="fixed w-screen flex items-center justify-between px-8 py-4 border-b-4 border-b-amber-500 bg-white">
     <a href="{{route('index')}}"><img src="{{asset('codepedia_logo.png')}}" class="h-14 w-14"/></a>
     <div class="flex items-center">
         @if (Route::has('login'))
@@ -133,6 +133,7 @@
         @endauth
     </div>
 </header>
+<div class="w-screen px-8 py-12 border-b-4 invisible"></div>
 <div>{{$slot}}</div>
 @livewireScripts
 @livewire('livewire-ui-modal')

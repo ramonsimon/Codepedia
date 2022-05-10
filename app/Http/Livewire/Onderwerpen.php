@@ -14,4 +14,5 @@ class Onderwerpen extends Component
         $this->topics = Topics::all();
         return view('livewire.onderwerpen');
     }
+
 }

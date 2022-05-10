@@ -4,7 +4,6 @@ namespace App\Http\Livewire;
 
 use LivewireUI\Modal\ModalComponent;
 use App\Models\Topics;
-use function PHPUnit\Framework\directoryExists;
 
 class OnderwerpVerwijderModal extends ModalComponent
 {
@@ -22,7 +21,12 @@ class OnderwerpVerwijderModal extends ModalComponent
 
         $this->forceClose()->closeModal();
 
-        return redirect('/onderwerpen');
+        return redirect('/onderwerpen')->with([
+            'title' => 'Gelukt!',
+            'message' => 'Het onderwerp is verwijderd.',
+            'bg' => 'bg-green-600',
+            'border' => 'border-green-800'
+        ]);
 
     }
 

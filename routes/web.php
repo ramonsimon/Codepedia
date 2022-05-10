@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Livewire\VragenOverzicht;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
@@ -15,6 +16,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes(['verify' => true]);
+
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
 
 // Admin
 Route::group(['middleware' => ['verified', 'role:admin']], function () {
@@ -40,3 +46,5 @@ Route::get('/artikel/{article:slug}', [ArticleController::class, 'show'])->name(
 //})->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+

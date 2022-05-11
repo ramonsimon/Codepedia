@@ -29,6 +29,7 @@ class ArtikelBekijken extends Component
             return redirect(route('login'));
         }
 
+        // Check if user has already voted
         if ($this->hasVoted) {
             $this->article->removeVote(auth()->user());
             $this->votesCount--;

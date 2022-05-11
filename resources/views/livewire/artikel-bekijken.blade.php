@@ -8,6 +8,7 @@
                         <div class="text-sm font-bold leading-none  @if($hasVoted) text-blue-600 @endif ">{{$article->articles_rating()->count()}}</div>
                         <div class="text-gray-500">Votes</div>
                     </div>
+
                     <div class="flex justify-center mt-4">
                     <button wire:click.prevent="vote" type="button">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">

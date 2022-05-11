@@ -49,26 +49,65 @@ class Article extends Model
             ->exists();
     }
 
+    public function ratingType(User $user)
+    {
+        $rating = articles_rating::where('user_id', $user->id)
+            ->where('article_id', $this->id)
+            ->get('rating');
+
+        if ($rating) {
+            return 1;
+        }
+
+        return 0;
+    }
 
     public function vote(User $user)
+    {
+
+            articles_rating::create([
+                'article_id' => $this->id,
+                'user_id' => $user->id,
+                'rating' => 1
+            ]);
+
+            Article::find($this->id)->increment('rating', 1);
+
+    }
+
+    public function downvote(User $user)
     {
         articles_rating::create([
             'article_id' => $this->id,
             'user_id' => $user->id,
+            'rating' => 0
         ]);
+
+        Article::find($this->id)->decrement('rating', 1);
     }
 
-    public function removeVote(User $user)
+    public function removevote(User $user, $type)
     {
-        articles_rating::where('article_id', $this->id)
-            ->where('user_id', $user->id)
-            ->first()
-            ->delete();
+        if ($type) {
+            articles_rating::where([
+                'article_id' => $this->id,
+                'user_id' => $user->id
+            ])->delete();
+
+            Article::find($this->id)->decrement('rating', 1);
+        } else {
+            articles_rating::where([
+                'article_id' => $this->id,
+                'user_id' => $user->id
+            ])->delete();
+
+            Article::find($this->id)->increment('rating', 1);
+        }
     }
 
 
 
-public function topic()
+    public function topic()
     {
         return $this->belongsTo(Topics::class);
     }

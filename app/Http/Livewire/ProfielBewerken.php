@@ -18,7 +18,7 @@ class ProfielBewerken extends Component
 
         'name' => 'required',
         'email' => 'required|email',
-        'password' => 'required'
+        'password' => 'required|min:8'
 
     ];
 

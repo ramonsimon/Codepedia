@@ -2,15 +2,33 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use App\Models\Topics;
 use App\Models\Question;
 
 class VragenOverzicht extends Component
 {
-
+    public $onderwerp = 1;
     public $topic = 'all';
     public $search;
+    public $title;
+    public $description;
+
+
+    protected $rules = [
+        'title' => 'required',
+        'topic' => 'required',
+        'description' => 'required'
+
+    ];
+
+
+    public function submit(){
+        $this->validate();
+        Question::create(['title'=> $this->title,'user_id'=> Auth::id(),'topic_id' => $this->onderwerp,'description' => $this->description]);
+
+    }
 
     public function render()
     {
@@ -27,5 +45,8 @@ class VragenOverzicht extends Component
             'topics' => Topics::get(),
             'questions' => $question,
         ]);
+
+
+
     }
 }

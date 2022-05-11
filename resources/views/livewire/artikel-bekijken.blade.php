@@ -1,11 +1,10 @@
 <x-app-layout>
     <div class="flex flex-row justify-center overflow-x-auto">
-        <div class="flex bg-white ml-9 mt-5 rounded-xl flex-col pb-10 mb-10"
-             style="width: 1000px;">
+        <div class="flex bg-white ml-9 mt-5 rounded-xl flex-col pb-10 mb-10 w-1/2"         >
             <div class="flex ml-1 px-2 py-6 mb-8">
                 <div class="border-r border-gray-100 px-5 py-8 mr-8">
                     <div class="text-center">
-                        <div class="text-sm font-bold leading-none  @if($hasVoted) text-blue-600 @endif ">{{$article->articles_rating()->count()}}</div>
+                        <div class="text-sm font-bold leading-none  @if($has_voted) text-blue-600 @elseif($has_downvoted) text-ted-600 @endif">{{$article->rating}}</div>
                         <div class="text-gray-500">Votes</div>
                     </div>
 
@@ -17,7 +16,7 @@
                                   clip-rule="evenodd"/>
                         </svg>
                     </button>
-                    <button type="button">
+                    <button wire:click.prevent="downvote" type="button">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd"
                                   d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z"
@@ -26,7 +25,7 @@
                     </button>
                 </div>
                 </div>
-                <div class="mx-4 mr-10">
+                <div class="">
                     <h4 class="text-xl font-semibold">
                         <a href="#" class="hover:underline">{{$article->title}}</a>
                     </h4>
@@ -47,18 +46,17 @@
                         </div>
                     </div>
 
-                    <form wire:submit.prevent="submit">
-                        <div class="flex mb-2 w-72">
-                    <input type="text" id="name" wire:model="comment"
-                              class="rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                              placeholder="Reactie..."/>
-                        </div>
 
-                            <button type="submit"
-                                    class="w-72 py-2 px-4 bg-amber-500 hover:bg-amber-600 focus:ring-amber-400 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring rounded-lg">
-                                Reageer
-                            </button>
-                    </form>
+                    <div class="flex mb-2 w-72">
+                        <input type="text" id="comment" wire:model="body"
+                               class="rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                               placeholder="Reactie..."/>
+                    </div>
+                    <button wire:click.prevent="submit"
+                            class="w-72 py-2 px-4 bg-amber-500 hover:bg-amber-600 focus:ring-amber-400 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring rounded-lg">
+                        Reageer
+                    </button>
+                    @error('comment') <span class="error">{{ $message }}</span> @enderror
                 </div>
 
                 <!-- alleen zichtbaar als er reacties zijn -->

@@ -34,7 +34,7 @@ class ProfielBewerken extends Component
 
         $this->user->name = $this->name;
         $this->user->email = $this->email;
-        $this->user->password = bcrypt(request('password'));
+        $this->user->password = bcrypt($this->password);
 
         $this->user->save();
     }

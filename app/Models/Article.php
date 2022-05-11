@@ -38,10 +38,17 @@ class Article extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function isVotedByUser(?User $user)
+    public function isVotedByUser(?User $user, $type)
     {
         if (!$user) {
             return false;
+        }
+
+        if ($type) {
+            return articles_rating::where('user_id', $user->id)
+                ->where('article_id', $this->id)
+                ->where('rating', 1)
+                ->exists();
         }
 
         return articles_rating::where('user_id', $user->id)

@@ -82,6 +82,13 @@ class PermissionSeeder extends Seeder
         ]);
         $user->assignRole($role3);
 
+        $user = \App\Models\User::factory()->create([
+            'name' => 'Admin',
+            'email' => 'docent@codepedia.nl',
+            'password' => '$2a$12$TAgZLf7PxDJQsVYqcgTep.cK7xiR9NIIiGxkQAJ47/AbOjwCsvvqK',
+        ]);
+        $user->assignRole($role4);
+
 
     }
 }

@@ -40,6 +40,7 @@ class OnderwerpWijzigen extends ModalComponent
     public function mount($topic)
     {
         $this->topic = $topic;
+        $this->name = $this->topic['name'];
     }
 
     public function render()

@@ -17,8 +17,6 @@ class ArtikelWijzigen extends ModalComponent
     public $sub_description;
     public $body;
 
-
-
     protected $rules = [
         'title' => 'required|min:4',
         'topic_id' => 'required|integer',

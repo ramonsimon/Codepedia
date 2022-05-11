@@ -50,14 +50,15 @@ class ArtikelWijzigen extends ModalComponent
     public function mount($article)
     {
         $this->article = $article;
+        $this->onderwerpen = Topics::all();
+        $this->title = $this->article['title'];
+        $this->body = $this->article['description'];
+        $this->topic_id = $this->article['topic_id'];
+        $this->sub_description = $this->article['sub_description'];
     }
 
     public function render()
     {
-        $this->onderwerpen = Topics::all();
-        $this->body = $this->article['description'];
-        $this->topic_id = $this->article['topic_id'];
-        $this->sub_description = $this->article['sub_description'];
         return view('livewire.artikel-wijzigen');
     }
 }

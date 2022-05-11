@@ -9,7 +9,7 @@ use App\Models\Question;
 
 class VragenOverzicht extends Component
 {
-    public $onderwerp = 1;
+    public $onderwerp;
     public $topic = 'all';
     public $search;
     public $title;
@@ -23,6 +23,10 @@ class VragenOverzicht extends Component
 
     ];
 
+
+    public function mount(){
+        $this->onderwerp = 1;
+}
 
     public function submit(){
         $this->validate();

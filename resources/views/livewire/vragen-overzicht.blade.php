@@ -95,7 +95,12 @@
 
         @if(!$questions->isEmpty())
             @foreach($questions as $question)
-        <div
+        <div x-data
+             @click="const ignores = ['button','a','svg','path'];
+                    if(!ignores.includes($el.tagName.toLowerCase())){
+                        window.location=$refs.link.href;
+                    }"
+
             class="idea-container hover:shadow-card transition duration-150 ease-in bg-white rounded-xl flex cursor-pointer">
             <div class="flex px-2 py-6">
                 <div class="border-r border-gray-100 px-5 py-8 flex items-center">
@@ -112,7 +117,7 @@
                 </a>
                 <div class="mx-4">
                     <h4 class="text-xl font-semibold">
-                        <a href="#" class="hover:underline">{{$question->title}}</a>
+                        <a href="{{ route('vraag-bekijken', $question) }}" x-ref="link" class="hover:underline">{{$question->title}}</a>
                     </h4>
                     <div class="text-gray-600 mt-3 line-clamp-3">
                         {{$question->sub_description}}

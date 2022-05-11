@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('slug')->nullable();
             $table->string('description', 10000);
             $table->text('sub_description');
-            $table->bigInteger('rating')->nullable();
+            $table->bigInteger('rating')->nullable()->default(0);
             $table->timestamps();
         });
     }

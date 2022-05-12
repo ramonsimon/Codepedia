@@ -18,8 +18,8 @@ class Onderwerpen extends Component
             $this->topics = match ($this->filter) {
                 'ascending' => $this->topics->sortBy('name', 0),
                 'descending' => $this->topics->sortBy('name', 0, true),
-                'newest' => $this->topics->sortBy('created_at', 0),
-                'oldest' => $this->topics->sortBy('created_at', 0, true),
+                'newest' => $this->topics->sortBy('created_at', 0, true),
+                'oldest' => $this->topics->sortBy('created_at', 0),
             };
         }
 

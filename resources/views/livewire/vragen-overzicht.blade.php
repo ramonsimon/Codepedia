@@ -1,7 +1,7 @@
 <div class="flex flex-row justify-center overflow-x-auto">
 
     @can('ask questions')
-        <div class="flex bg-white mr-9 mt-6 rounded-xl items-center flex-col pb-10"
+        <div class="flex bg-white mr-9 mt-6 rounded-xl items-center flex-col pb-10 h-1/4"
              style="width: 400px;">
 
             <div class="flex ml-52 mb-5 mt-5 items-center">
@@ -41,7 +41,7 @@
             </form>
         </div>
     @else
-        <div class="flex bg-white mr-9 mt-6 rounded-xl items-center flex-col pb-10"
+        <div class="flex bg-white mr-9 mt-6 rounded-xl items-center flex-col pb-10 h-1/4"
              style="width: 400px;">
 
             <div class="flex ml-52 mb-5 mt-5 items-center">
@@ -59,7 +59,7 @@
 
     <div class="space-y-6 my-6" style="width: 600px">
 
-        <div class="flex mb-5 mt-5 ml-10" style="width: 400px;">
+        <div class="flex mb-5 mt-5 ml-10 style="width: 400px;">
             <div class="flex relative mr-3">
                 <select name="name" id="name" wire:model="topic"
                         class="rounded-lg flex-1 appearance-none border border-amber-300 w-40 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent">

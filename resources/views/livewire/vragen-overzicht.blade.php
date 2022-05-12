@@ -16,7 +16,7 @@
                            class="rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                            placeholder="Naam..."/>
                 </div>
-                <select wire:model name="onderwerp" id="" class=" rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent">
+                <select wire:model="onderwerp" name="onderwerp" id="" class=" rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent">
                 @foreach($topics as $topic)
 
                     <option value="{{$topic->id}}">{{$topic->name}}</option>
@@ -117,7 +117,7 @@
                 </a>
                 <div class="mx-4">
                     <h4 class="text-xl font-semibold">
-                        <a href="{{ route('vraag-bekijken', $question) }}" x-ref="link" class="hover:underline">{{$question->title}}</a>
+                        <a href="{{ route('vraag-bekijken') }}" x-ref="link" class="hover:underline">{{$question->title}}</a>
                     </h4>
                     <div class="text-gray-600 mt-3 line-clamp-3">
                         {{$question->sub_description}}

@@ -36,7 +36,7 @@
                     <a href="#" class="hover:underline">A random title can go here</a>
                 </h4>
                 <div class="text-gray-600 mt-3 line-clamp-3">
-                    {!! $question->description !!}
+
                 </div>
             </div>
         </div>

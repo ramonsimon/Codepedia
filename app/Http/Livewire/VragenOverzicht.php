@@ -31,7 +31,7 @@ class VragenOverzicht extends Component
     public function submit(){
         $this->validate();
         Question::create(['title'=> $this->title,'user_id'=> Auth::id(),'topic_id' => $this->onderwerp,'description' => $this->description]);
-
+        $this->reset();
     }
 
     public function render()

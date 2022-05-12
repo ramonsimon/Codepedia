@@ -2,9 +2,11 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 use App\Models\Topics;
 use App\Models\Article;
+use Symfony\Component\Console\Input\Input;
 
 class ArtikelOverzicht extends Component
 {
@@ -14,6 +16,10 @@ class ArtikelOverzicht extends Component
     public function render()
     {
         $search = '%' . $this->search . '%';
+
+        if (Session::has('topic')) {
+            $this->topic = Session::get('topic');
+        }
 
         if ($this->topic == "all") {
             $articles = Article::where('title', 'like', $search)->get();

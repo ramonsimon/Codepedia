@@ -15,7 +15,6 @@ class ArticleController extends Controller
 {
 
     public $article;
-    public $hasVoted;
 
     /**
      * Display a listing of the resource.

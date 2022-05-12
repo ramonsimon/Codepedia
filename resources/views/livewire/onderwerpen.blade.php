@@ -2,7 +2,7 @@
     @if(Session::has('message'))
         <script>setTimeout(function(){document.getElementById("message").classList.add("opacity-0")},3000);setTimeout(function(){document.getElementById("message").classList.add("hidden")},3700);</script>
         <div id="message" class="flex justify-center items-center duration-1000 transition-opacity">
-            <div class="{{ Session::get('border') . ' ' . Session::get('bg') }} text-black border-l-4 p-4 w-3/5 mt-5">
+            <div class="{{ Session::get('border') . ' ' . Session::get('bg') }} text-black border-l-4 p-4 w-3/5mt-5">
                 <p class="font-bold">
                     {{ Session::get('title') }}
                 </p>
@@ -44,10 +44,12 @@
                 @if(!$topics->isEmpty())
                     @foreach($topics as $topic)
                         <div class="mb-5">
-                            <button type="button"
-                                    class="mx-2 w-52 h-16 bg-amber-500 hover:bg-amber-700 text-white transition ease-in duration-200 text-center text-base font-semibold focus:outline-none rounded-lg ">
-                                {{$topic->name}}
-                            </button>
+                            <a wire:click="goToArticles('{{ $topic->id }}')">
+                                <button type="button"
+                                        class="mx-2 w-52 h-16 bg-amber-500 hover:bg-amber-700 text-white transition ease-in duration-200 text-center text-base font-semibold focus:outline-none rounded-lg ">
+                                    {{$topic->name}}
+                                </button>
+                            </a>
 
                             <div class="flex flex-row justify-center mt-1">
                                 <button wire:click='$emit("openModal", "onderwerp-wijzigen", {{ json_encode(["topic" => $topic]) }})'>

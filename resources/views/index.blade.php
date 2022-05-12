@@ -24,10 +24,6 @@
                     </div>
 
                     <div class="flex px-2 py-6">
-                        <a href="#" class="flex-none">
-                            <img src="https://source.unsplash.com/200x200/?face&crop=face&v=1" alt="avatar"
-                                 class="w-14 h-14 rounded-xl">
-                        </a>
                         <div class="mx-4">
                             <h4 class="text-xl font-semibold">
                                 <a href="{{ route('artikel-bekijken', $article) }}" x-ref="link" class=hover:underline">{{$article->title}}</a>
@@ -80,12 +76,12 @@
                     <div class="flex flex-wrap justify-center overflow-hidden">
                         @if(!$topics->isEmpty())
                             @foreach($topics as $topic)
-                                <div>
+                                <a href="">
                                     <button type="button"
                                             class="w-52 h-16 mt-5 mx-2 bg-amber-500 hover:bg-amber-700 text-white w-full transition ease-in duration-200 text-center text-base font-semibold focus:outline-none rounded-lg ">
                                         {{$topic->name}}
                                     </button>
-                                </div>
+                                </a>
 
                             @endforeach
                                 <div style="width: 300px;">

@@ -15,4 +15,11 @@ class Onderwerpen extends Component
         return view('livewire.onderwerpen');
     }
 
+    public function goToArticles($topic)
+    {
+        return redirect('artikel/overzicht')->with([
+            'topic' => $topic
+        ]);
+    }
+
 }

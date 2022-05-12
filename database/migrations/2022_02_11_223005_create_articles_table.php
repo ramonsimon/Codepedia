@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('topic_id')->constrained()->onDelete('cascade');
             $table->string('title');
             $table->string('slug')->nullable();
-            $table->string('description', 10000);
+            $table->text('description');
             $table->text('sub_description');
             $table->bigInteger('rating')->nullable()->default(0);
             $table->timestamps();

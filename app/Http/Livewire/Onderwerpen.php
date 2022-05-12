@@ -14,19 +14,13 @@ class Onderwerpen extends Component
     {
         $this->topics = Topics::all();
 
-        switch ($this->filter) {
-            case 'ascending':
-                $this->topics = $this->topics->sortBy('name', 0);
-                break;
-            case 'descending':
-                $this->topics = $this->topics->sortBy('name', 0, true);
-                break;
-            case 'newest':
-                $this->topics = $this->topics->sortBy('created_at', 0);
-                break;
-            case 'oldest':
-                $this->topics = $this->topics->sortBy('created_at', 0, true);
-                break;
+        if ($this->filter) {
+            $this->topics = match ($this->filter) {
+                'ascending' => $this->topics->sortBy('name', 0),
+                'descending' => $this->topics->sortBy('name', 0, true),
+                'newest' => $this->topics->sortBy('created_at', 0),
+                'oldest' => $this->topics->sortBy('created_at', 0, true),
+            };
         }
 
         return view('livewire.onderwerpen');

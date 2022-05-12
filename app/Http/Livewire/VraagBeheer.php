@@ -7,9 +7,12 @@ use Livewire\Component;
 
 class VraagBeheer extends Component
 {
+    public $questions;
 
+    public function mount(){
+        $this->questions = Question::all();
 
-
+    }
 
 
     public function render()

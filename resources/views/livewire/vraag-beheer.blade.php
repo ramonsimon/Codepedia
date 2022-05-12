@@ -29,13 +29,13 @@
                 </tr>
                 </thead>
                 <tbody>
-
+                    @foreach($questions as $question)
                     <tr class="text-gray-700">
                         <td class="border-b-2 p-4 dark:border-dark-5">
-                            Hier komt een vraagje te staan
+                           {{$question->title}}
                         </td>
                         <td class="border-b-2 p-4 dark:border-dark-5">
-                            hier komt een kort stukkie van een vraagie, want ja truncation...
+                           {{$question->description}}
                         </td>
                         <td class="border-b-2 p-4 dark:border-dark-5">
                             <button class="bg-amber-500 text-white w-24 h-8 rounded-lg">
@@ -48,6 +48,9 @@
                             </svg>
                         </td>
                     </tr>
+                    @endforeach
+
+
                 </tbody>
             </table>
 

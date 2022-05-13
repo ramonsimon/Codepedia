@@ -1,29 +1,30 @@
 <x-app-layout>
     <div class="flex flex-row justify-center overflow-x-auto">
-        <div class="flex bg-white ml-9 mt-5 rounded-xl flex-col pb-10 mb-10 w-1/2"         >
+        <div class="flex bg-white ml-9 mt-5 rounded-xl flex-col pb-10 mb-10 w-1/2">
             <div class="flex ml-1 px-2 py-6 mb-8">
                 <div class="border-r border-gray-100 px-5 py-8 mr-8">
                     <div class="text-center">
-                        <div class="text-sm font-bold leading-none  @if($has_voted) text-blue-600 @elseif($has_downvoted) text-ted-600 @endif">{{$article->rating}}</div>
+                        <div class="text-sm font-bold leading-none  @if($has_voted) text-blue-600 @elseif($has_downvoted) text-red-600 @endif">
+                            <a>{{ $this->article->rating }}</a>
+                        </div>
                         <div class="text-gray-500">Votes</div>
                     </div>
-
                     <div class="flex justify-center mt-4">
-                    <button wire:click.prevent="vote" type="button">
+                    <button wire:click="vote(true)" type="button">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd"
                                   d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
                                   clip-rule="evenodd"/>
                         </svg>
                     </button>
-                    <button wire:click.prevent="downvote" type="button">
+                    <button wire:click="vote(false)" type="button">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd"
                                   d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z"
                                   clip-rule="evenodd"/>
                         </svg>
                     </button>
-                </div>
+                    </div>
                 </div>
                 <div class="">
                     <h4 class="text-xl font-semibold">
@@ -48,7 +49,7 @@
 
 
                     <div class="flex mb-2 w-72">
-                        <input type="text" id="comment" wire:model="body"
+                        <input type="text" wire:model="body"
                                class="rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                                placeholder="Reactie..."/>
                     </div>
@@ -121,7 +122,7 @@
                                 <liveiwre:reactiesToevoegen :article="$article">
                                 <form class="flex flex-row h-12 mt-3">
                                     <div class="flex mb-2 w-96 mr-3">
-                            <textarea type="text" name="name" id="name"
+                            <textarea type="text" name="name"
                                       class="rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                                       placeholder="Naam..."></textarea>
                                     </div>

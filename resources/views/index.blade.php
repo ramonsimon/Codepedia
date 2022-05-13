@@ -17,7 +17,7 @@
                     >
                     <div class="border-r border-gray-100 px-5 py-8 flex items-center">
                         <div class="text-center">
-                            <div class="font-semibold text-2xl">{{ $article->articles_rating()->count() }}</div>
+                            <div class="font-semibold text-2xl">{{ $article->rating }}</div>
                             <div class="text-gray-500">Votes</div>
                         </div>
 

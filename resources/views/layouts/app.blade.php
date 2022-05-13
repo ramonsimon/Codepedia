@@ -80,7 +80,7 @@
                     x-show="open"
                     x-transition.origin.top.left
                     x-on:click.outside="close($refs.button)"
-                    :id="$id('dropdown-button')"
+
                     style="display: none;"
                     class="absolute left-0 -ml-36 w-52 bg-white border border-black rounded shadow-md overflow-hidden z-10"
                 >

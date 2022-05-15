@@ -32,19 +32,19 @@
                 </tr>
                 </thead>
                 <tbody>
-
+                @foreach($astudents as $astudent )
                 <tr class="text-gray-700">
                     <td class="border-b-2 p-4 dark:border-dark-5">
-                        Hier komt naam student
+                        {{$astudent->name}}
                     </td>
                     <td class="border-b-2 p-4 dark:border-dark-5">
                         hier komt achternaam student
                     </td>
                     <td class="border-b-2 p-4 dark:border-dark-5">
-                        hier komt email student
+                        {{$astudent->email}}
                     </td>
                     <td class="border-b-2 p-4 dark:border-dark-5">
-                        <button class="bg-green-500 text-white w-24 h-8 rounded-lg">
+                        <button wire:click="acceptStudent({{$astudent->id}})" class="bg-green-500 text-white w-24 h-8 rounded-lg">
                             Accepteren
                         </button>
                     </td>
@@ -54,6 +54,7 @@
                         </button>
                     </td>
                 </tr>
+                @endforeach
                 </tbody>
             </table>
 
@@ -92,51 +93,29 @@
                 </tr>
                 </thead>
                 <tbody>
-
-                <tr class="text-gray-700">
-                    <td class="border-b-2 p-4 dark:border-dark-5">
-                        Hier komt naam student
-                    </td>
-                    <td class="border-b-2 p-4 dark:border-dark-5">
-                        hier komt achternaam student
-                    </td>
-                    <td class="border-b-2 p-4 dark:border-dark-5">
-                        hier komt email student
-                    </td>
-                    <td class="border-b-2 p-4 dark:border-dark-5">
-                        <button class="bg-green-500 text-white w-24 h-8 rounded-lg">
-                            Blokkeren
-                        </button>
-                    </td>
-                    <td class="border-b-2 p-4 dark:border-dark-5">
-                        <button class="bg-red-500 text-white w-24 h-8 rounded-lg disabled:opacity-60" disabled>
-                            Deblokkeren
-                        </button>
-                    </td>
-                </tr>
-
-                <tr class="text-gray-700">
-                    <td class="border-b-2 p-4 dark:border-dark-5">
-                        Hier komt naam student
-                    </td>
-                    <td class="border-b-2 p-4 dark:border-dark-5">
-                        hier komt achternaam student
-                    </td>
-                    <td class="border-b-2 p-4 dark:border-dark-5">
-                        hier komt email student
-                    </td>
-                    <td class="border-b-2 p-4 dark:border-dark-5">
-                        <button class="bg-green-500 text-white w-24 h-8 rounded-lg disabled:opacity-60" disabled>
-                            Blokkeren
-                        </button>
-                    </td>
-                    <td class="border-b-2 p-4 dark:border-dark-5">
-                        <button class="bg-red-500 text-white w-24 h-8 rounded-lg">
-                            Deblokkeren
-                        </button>
-                    </td>
-                </tr>
-
+                @foreach($users as $user )
+                    <tr class="text-gray-700">
+                        <td class="border-b-2 p-4 dark:border-dark-5">
+                            {{$user->name}}
+                        </td>
+                        <td class="border-b-2 p-4 dark:border-dark-5">
+                            hier komt achternaam student
+                        </td>
+                        <td class="border-b-2 p-4 dark:border-dark-5">
+                            {{$user->email}}
+                        </td>
+                        <td class="border-b-2 p-4 dark:border-dark-5">
+                            <button class="bg-green-500 text-white w-24 h-8 rounded-lg">
+                                Blokkeren
+                            </button>
+                        </td>
+                        <td class="border-b-2 p-4 dark:border-dark-5">
+                            <button class="bg-red-500 text-white w-24 h-8 rounded-lg disabled:opacity-60" disabled>
+                                Deblokkeren
+                            </button>
+                        </td>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
 

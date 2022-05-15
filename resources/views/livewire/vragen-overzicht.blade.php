@@ -41,6 +41,22 @@
             </form>
         </div>
     @else
+        @auth
+            <div class="flex bg-white mr-9 mt-6 rounded-xl items-center flex-col pb-10 h-1/4"
+                 style="width: 400px;">
+
+                <div class="flex ml-52 mb-5 mt-5 items-center">
+                    <div class="text-black uppercase font-bold text-center text-xl mt-5 mb-3 mr-56" style="width: 300px;">
+                        Vraag stellen
+                    </div>
+                </div>
+
+                <div>
+                    <a>Je hebt nog geen rechten </a>
+                </div>
+
+            </div>
+        @else
         <div class="flex bg-white mr-9 mt-6 rounded-xl items-center flex-col pb-10 h-1/4"
              style="width: 400px;">
 
@@ -55,6 +71,7 @@
             </div>
 
         </div>
+            @endauth
     @endcan
 
     <div class="space-y-6 my-6" style="width: 600px">

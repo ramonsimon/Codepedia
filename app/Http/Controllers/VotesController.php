@@ -14,14 +14,11 @@ use App\Models\SubComments;
 
 class VotesController extends Controller
 {
-    public function isVotedByUser(?User $user, $type, $table, $id, $query)
+    public function isVotedByUser(?User $user, $type, $id, $query, $info)
     {
         if (!$user) {
             return false;
         }
-
-        // Get the right table according to the rating table
-        $info = $this->getColumn($table);
 
         // Checks if we should check upvote
         if ($type) {
@@ -39,7 +36,7 @@ class VotesController extends Controller
             ->exists();
     }
 
-    public function ratingType(User $user, $table, $id, $query)
+    public function ratingType(User $user, $id, $query, $info)
     {
 
         // Get the users rating
@@ -55,9 +52,8 @@ class VotesController extends Controller
         return 0;
     }
 
-    public function vote(User $user, $vote, $downvote, $type, $table, $id, $query)
+    public function vote(User $user, $vote, $downvote, $type, $id, $query, $info)
     {
-        $info = $this->getColumn($table);
 
         // Check if for voting type. True = vote, false = downvote
         if ($type) {
@@ -103,9 +99,8 @@ class VotesController extends Controller
 
     }
 
-    public function removevote(User $user, $type, $table, $id, $query)
+    public function removevote(User $user, $type, $table, $id, $query, $info)
     {
-        $info = $this->getColumn($table);
 
         // Remove a users vote
         $query->where([

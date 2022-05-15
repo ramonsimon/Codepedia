@@ -14,9 +14,9 @@ use App\Http\Controllers\VotesController;
 class ArtikelBekijken extends Component
 {
 
+    public $info;
     public $body;
     public $article;
-    public $comment;
     public $rating;
     public $has_voted;
     public $has_downvoted;
@@ -33,10 +33,11 @@ class ArtikelBekijken extends Component
     public function mount(Article $article)
     {
         $votes_controller = new VotesController();
+        $this->info = $votes_controller->getColumn('articles_rating');
         $this->article->rating = $votes_controller->getRating('Article', $article->id);
         $this->article = $article;
-        $this->has_voted = $votes_controller->isVotedByUser(auth()->user(), true, 'articles_rating', $article->id, articles_rating::query());
-        $this->has_downvoted = $votes_controller->isVotedByUser(auth()->user(), false, 'articles_rating', $article->id, articles_rating::query());
+        $this->has_voted = $votes_controller->isVotedByUser(auth()->user(), true, $article->id, articles_rating::query(), $this->info);
+        $this->has_downvoted = $votes_controller->isVotedByUser(auth()->user(), false, $article->id, articles_rating::query(), $this->info);
         $this->user_id = Auth::id();
         $this->article_id = $article->id;
     }
@@ -52,18 +53,18 @@ class ArtikelBekijken extends Component
         // Check if user has already voted and if they clicked vote
         if ($this->has_voted && $type) {
             // Remove the users vote
-            $this->article->rating = $votes_controller->removeVote(auth()->user(), true, 'articles_rating', $this->article->id, articles_rating::query());
+            $this->article->rating = $votes_controller->removeVote(auth()->user(), true, 'articles_rating', $this->article->id, articles_rating::query(), $this->info);
             // Set has_voted to false, this removes the blue text
             $this->has_voted = false;
         // Check if user has already downvoted and if they clicked downvote
         } elseif($this->has_downvoted && !$type) {
             // Remove the users vote
-            $this->article->rating = $votes_controller->removeVote(auth()->user(), false, 'articles_rating', $this->article->id, articles_rating::query());
+            $this->article->rating = $votes_controller->removeVote(auth()->user(), false, 'articles_rating', $this->article->id, articles_rating::query(), $this->info);
             // Set has_downvoted to false, this removes the red text
             $this->has_downvoted = false;
         // Goes here if the user selected vote while having a downvote currently on the article (or the other way around)
         } else {
-            $this->article->rating = $votes_controller->vote(auth()->user(), $this->has_voted, $this->has_downvoted, $type, 'articles_rating', $this->article->id, articles_rating::query());
+            $this->article->rating = $votes_controller->vote(auth()->user(), $this->has_voted, $this->has_downvoted, $type, $this->article->id, articles_rating::query(), $this->info);
 
             // Sets has_voted/has_downvoted to true according to which button the user clicked
             if ($type) {
@@ -75,31 +76,19 @@ class ArtikelBekijken extends Component
 
     }
 
-    public function downvote()
-    {
-        if (! auth()->check()) {
-            return redirect(route('login'));
-        }
-
-        // Check if user has already voted
-        if ($this->has_downvoted) {
-            $this->article->rating = $this->article->removeVote(auth()->user(), false)->rating;
-            $this->has_downvoted = false;
-        } else {
-            $this->article->rating = $this->article->downvote(auth()->user())->rating;
-            $this->has_downvoted = true;
-        }
-    }
-
     public function submit()
     {
         if (! auth()->check()) {
             return redirect(route('login'));
         }
 
-        $validatedData = $this->validate();
+        $this->validate();
 
-        Comments::create($validatedData);
+        Comments::create([
+            'body' => $this->body,
+            'user_id' => auth()->id(),
+            'article_id' => $this->article->id
+        ]);
 
     }
 

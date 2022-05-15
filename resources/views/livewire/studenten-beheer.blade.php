@@ -49,7 +49,7 @@
                         </button>
                     </td>
                     <td class="border-b-2 p-4 dark:border-dark-5">
-                        <button class="bg-red-500 text-white w-24 h-8 rounded-lg">
+                        <button wire:click="blockStudent({{$astudent->id}})" class="bg-red-500 text-white w-24 h-8 rounded-lg">
                             Weigeren
                         </button>
                     </td>
@@ -105,12 +105,12 @@
                             {{$user->email}}
                         </td>
                         <td class="border-b-2 p-4 dark:border-dark-5">
-                            <button class="bg-green-500 text-white w-24 h-8 rounded-lg">
+                            <button wire:click="blockStudent({{$user->id}})" class="bg-green-500 text-white w-24 h-8 rounded-lg @if($user->hasRole('verified')) disabled:opacity-60" disabled @else " @endif">
                                 Blokkeren
                             </button>
                         </td>
                         <td class="border-b-2 p-4 dark:border-dark-5">
-                            <button class="bg-red-500 text-white w-24 h-8 rounded-lg disabled:opacity-60" disabled>
+                            <button wire:click="acceptStudent({{$user->id}})" class="bg-red-500 text-white w-24 h-8 rounded-lg @if(!$user->hasRole('verified')) disabled:opacity-60" disabled @else " @endif>
                                 Deblokkeren
                             </button>
                         </td>

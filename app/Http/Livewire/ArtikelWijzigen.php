@@ -17,6 +17,11 @@ class ArtikelWijzigen extends ModalComponent
     public $sub_description;
     public $body;
 
+    public static function modalMaxWidth(): string
+    {
+        return '7xl';
+    }
+
     protected $rules = [
         'title' => 'required|min:4',
         'topic_id' => 'required|integer',
@@ -28,6 +33,10 @@ class ArtikelWijzigen extends ModalComponent
     {
         $this->forceClose()->closeModal();
     }
+
+
+
+
 
     public function submit()
     {

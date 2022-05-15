@@ -1,5 +1,5 @@
-<div class="flex flex-col items-center overflow-x-auto" wire:ignore>
-    <div class="flex bg-white ml-9 mt-5 mb-4 rounded-xl items-center flex-col overflow-auto pb-10 px-4 max-w-2xl">
+<div class="flex flex-col items-center" wire:ignore>
+    <div class="flex bg-white  rounded-xl items-center flex-col  ">
         <div class="flex space-x-96 mb-5 mt-5 items-center">
             <div class="text-black uppercase font-bold text-center text-xl mt-5 mb-3">
                 Artikel Wijzigen
@@ -33,11 +33,12 @@
                        class="rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                        placeholder="Korte omschrijving..."/>
             </div>
+            <x-head.tinymce-config wire:model="description" value="{{$body}}"/>
             <div class="mb-2">
                 <div class="mb-2" wire:ignore>
 
                 </div>
-                <x-head.tinymce-config wire:model="description" value="{{$body}}"/>
+
             </div>
             <div style="width: 300px;">
                 <button type="submit" wire:click="submit"

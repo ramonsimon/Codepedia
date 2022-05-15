@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\articles_rating;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Models\Comments;
 use App\Models\Article;
@@ -19,12 +20,14 @@ class ArtikelBekijken extends Component
     public $rating;
     public $has_voted;
     public $has_downvoted;
-    public $user_id = 3;
-    public $article_id = 8;
+    public $user_id;
+    public $article_id;
     public $votes_controller;
 
     protected $rules = [
         'body' => 'required|min:4|string',
+        'user_id' => 'required',
+        'article_id' => 'required'
     ];
 
     public function mount(Article $article)
@@ -34,6 +37,8 @@ class ArtikelBekijken extends Component
         $this->article = $article;
         $this->has_voted = $votes_controller->isVotedByUser(auth()->user(), true, 'articles_rating', $article->id, articles_rating::query());
         $this->has_downvoted = $votes_controller->isVotedByUser(auth()->user(), false, 'articles_rating', $article->id, articles_rating::query());
+        $this->user_id = Auth::id();
+        $this->article_id = $article->id;
     }
 
     public function vote($type)

@@ -34,7 +34,7 @@ Route::group(['middleware' => ['verified-or-guest']], function () {
     Route::get('/gegevens/bewerken',\App\Http\Livewire\ProfielBewerken::class)->name('profiel-bewerken');
 
     Route::get('/', [\App\Http\Controllers\ArticleController::class, 'index'])->name('index');
-    Route::get('/artikel/{article:slug}', [ArticleController::class, 'show'])->name('artikel-bekijken');
+    Route::get('/artikel/{article:slug}', \App\Http\Livewire\ArtikelBekijken::class)->name('artikel-bekijken');
 
 
 });

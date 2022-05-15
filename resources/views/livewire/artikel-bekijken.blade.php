@@ -1,4 +1,4 @@
-<x-app-layout>
+
 <div class="flex flex-row justify-center overflow-x-auto">
         <div class="flex bg-white ml-9 mt-5 rounded-xl flex-col pb-10 mb-10 w-1/2">
 
@@ -68,7 +68,7 @@
 
                                 <div class="flex flex-col border-b border-gray-400 shadow-md pb-2 px-4 justify-center items-center mb-4 w-1/2">
                                     <h4 class="text-l font-semibold uppercase font-bold w-full">
-                                        <a>{{ $comment->user_id }}</a>
+                                        <a>{{ $comment->user->name }}</a>
                                     </h4>
                                     <div class="flex text-gray-600 mt-3 line-clamp-3 w-full">
                                         {{ $comment->body }}
@@ -106,4 +106,4 @@
         </div>
     </div>
 
-</x-app-layout>
+

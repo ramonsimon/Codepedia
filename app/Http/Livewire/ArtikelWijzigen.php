@@ -35,7 +35,7 @@ class ArtikelWijzigen extends ModalComponent
         $this->validate();
 
         Article::where('id', $this->articleId)->
-        update(['title' => $this->title]);
+        update(['title' => $this->title,'description' => $this->description,'topic_id' => $this->topic_id]);
 
         return redirect('/artikel/beheer')->with([
             'title' => 'Gelukt!',
@@ -43,6 +43,7 @@ class ArtikelWijzigen extends ModalComponent
             'bg' => 'bg-green-200',
             'border' => 'border-green-600'
         ]);
+
     }
 
     public function mount($article)

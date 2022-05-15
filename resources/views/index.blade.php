@@ -77,7 +77,7 @@
                         @if(!$topics->isEmpty())
                             @foreach($topics as $topic)
 
-                                <a href="">
+                                <a wire:click="goToArticles('{{ $topic->id }}')" href="">
                                     <button type="button"
                                             class="w-52 h-16 mt-5 mx-2 bg-amber-500 hover:bg-amber-700 text-white w-full transition ease-in duration-200 text-center text-base font-semibold focus:outline-none rounded-lg ">
                                         {{$topic->name}}

@@ -22,9 +22,15 @@ class ProfielBewerken extends Component
 
     ];
 
+    public function mount(){
+        $this->name = Auth::user()->name;
+        $this->email = Auth::user()->email;
+        $this->user = Auth::user();
+    }
+
     public function render()
     {
-        $this->user = Auth::user();
+
 
         return view('livewire.profiel-bewerken');
     }

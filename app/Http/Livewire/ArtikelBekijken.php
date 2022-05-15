@@ -90,6 +90,13 @@ class ArtikelBekijken extends Component
             'article_id' => $this->article->id
         ]);
 
+        return redirect('/artikel/' . $this->article->slug)->with([
+            'title' => 'Gelukt!',
+            'message' => 'Uw reactie is geplaatst.',
+            'bg' => 'bg-green-200',
+            'border' => 'border-green-600'
+        ]);
+
     }
 
     public function render()

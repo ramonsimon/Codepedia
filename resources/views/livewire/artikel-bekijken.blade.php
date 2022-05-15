@@ -1,4 +1,16 @@
-
+@if(Session::has('message'))
+    <script>setTimeout(function(){document.getElementById("message").classList.add("opacity-0")},3000);setTimeout(function(){document.getElementById("message").classList.add("hidden")},3700);</script>
+    <div id="message" class="flex justify-center items-center duration-1000 transition-opacity">
+        <div class="{{ Session::get('border') . ' ' . Session::get('bg') }} text-black border-l-4 p-4 w-3/5 mt-5">
+            <p class="font-bold">
+                {{ Session::get('title') }}
+            </p>
+            <p>
+                {{ Session::get('message') }}
+            </p>
+        </div>
+    </div>
+@endif
 <div class="flex flex-row justify-center overflow-x-auto">
         <div class="flex bg-white ml-9 mt-5 rounded-xl flex-col pb-10 mb-10 w-1/2">
 
@@ -67,7 +79,7 @@
                     <div class="flex flex-col items-center justify-center w-full">
 
                                 <div class="flex flex-col border-b border-gray-400 shadow-md pb-2 px-4 justify-center items-center mb-4 w-1/2">
-                                    <h4 class="text-l font-semibold uppercase font-bold w-full">
+                                    <h4 class="text-l font-semibold font-bold w-full">
                                         <a>{{ $comment->user->name }}</a>
                                     </h4>
                                     <div class="flex text-gray-600 mt-3 line-clamp-3 w-full">

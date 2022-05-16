@@ -16,12 +16,10 @@ return new class extends Migration
         Schema::create('sub_comments', function (Blueprint $table) {
             if(Schema::hasTable('sub_comments')) return;
             $table->bigIncrements('id');
-//            $table->unsignedBigInteger('user_id');
-//            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-//            $table->unsignedBigInteger('comment_id');
-//            $table->foreign('comment_id')->references('id')->on('comments')->onDelete('cascade');
-//            $table->string('description');
-//            $table->timestamps();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('comment_id')->constrained()->onDelete('cascade');
+            $table->string('description');
+            $table->timestamps();
         });
     }
 

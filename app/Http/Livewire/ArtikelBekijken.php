@@ -9,6 +9,7 @@ use App\Models\Comments;
 use App\Models\Article;
 use Livewire\Component;
 use App\Models\User;
+use App\Models\CommentsRating;
 use App\Http\Controllers\VotesController;
 
 class ArtikelBekijken extends Component
@@ -78,6 +79,34 @@ class ArtikelBekijken extends Component
 
     }
 
+    public function commentVote($type, $id)
+    {
+        if (! auth()->check()) {
+            return redirect(route('login'));
+        }
+
+
+        $votes_controller = new VotesController();
+
+        $info = $votes_controller->getColumn('CommentsRating');
+        $c_has_voted = $votes_controller->isVotedByUser(auth()->user(), true, $id, CommentsRating::query(), $info);
+        $c_has_downvoted = $votes_controller->isVotedByUser(auth()->user(), false, $id, CommentsRating::query(), $info);
+
+        // Check if user has already voted and if they clicked vote
+        if ($c_has_voted && $type) {
+            // Remove the users vote
+            $votes_controller->removeVote(auth()->user(), true, 'comments_rating', $id, CommentsRating::query(), $info);
+            // Check if user has already downvoted and if they clicked downvote
+        } elseif($c_has_downvoted && !$type) {
+            // Remove the users vote
+            $votes_controller->removeVote(auth()->user(), false, 'comments_rating', $id, CommentsRating::query(), $info);
+            // Goes here if the user selected vote while having a downvote currently on the article (or the other way around)
+        } else {
+            $votes_controller->vote(auth()->user(), $c_has_voted, $c_has_downvoted, $type, $id, CommentsRating::query(), $info);
+        }
+
+    }
+
     public function subComment($comment)
     {
         if (! auth()->check()) {
@@ -99,6 +128,12 @@ class ArtikelBekijken extends Component
             'border' => 'border-green-600'
         ]);
 
+    }
+
+    public function commentRating($id)
+    {
+        $votes_controller = new VotesController();
+        return $votes_controller->getRating('Comments', $id);
     }
 
     public function submit()

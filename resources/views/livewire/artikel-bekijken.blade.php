@@ -82,8 +82,37 @@
                                     <h4 class="text-l font-semibold font-bold w-full">
                                         <a>{{ ucfirst(strtolower($comment->user->name)) . ' ' . ucfirst(strtolower($comment->user->last_name)) }}</a>
                                     </h4>
-                                    <div class="flex text-gray-600 mt-3 line-clamp-3 w-full">
+                                    <div class="text-gray-600 mt-3 line-clamp-3 w-full">
                                         {{ $comment->body }}
+
+                                        <div class="float-right">
+                                            <div class="text-center">
+                                                <div class="text-sm font-bold leading-none">
+                                                    <a>{{ $this->commentRating($comment->id) }}</a>
+                                                </div>
+                                                <div class="text-gray-500">Votes</div>
+                                            </div>
+                                        @if(auth()->id() != $comment->user->id)
+                                            <div class="flex justify-center">
+                                                    <button wire:click="commentVote(true, {{ $comment->id }})" type="button">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                                                            <path fill-rule="evenodd"
+                                                                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
+                                                                  clip-rule="evenodd"/>
+                                                        </svg>
+                                                    </button>
+                                                    <button wire:click="commentVote(false, {{ $comment->id }})" type="button">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                                                            <path fill-rule="evenodd"
+                                                                  d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z"
+                                                                  clip-rule="evenodd"/>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    </div>
+
                                     </div>
 
                                     <div class="flex flex-row items-center justify-center">
@@ -108,28 +137,9 @@
                                             </svg>
                                         </button>
                                         @endif
-                                            <button wire:click="showDiv">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20"
-                                                     fill="gray">
-                                                    <path fill-rule="evenodd"
-                                                          d="M7.707 3.293a1 1 0 010 1.414L5.414 7H11a7 7 0 017 7v2a1 1 0 11-2 0v-2a5 5 0 00-5-5H5.414l2.293 2.293a1 1 0 11-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                                                          clip-rule="evenodd"/>
-                                                </svg>
-                                            </button>
+
                                     </div>
                                 </div>
-
-                                @if($showDiv)
-                                    <input type="text" wire:model="sub_comment"
-                                           class="rounded-lg flex-1 appearance-none border border-amber-300 w-1/4 py-2 px-4 mb-1 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                                           placeholder="Reactie...">
-
-                                    <a wire:click.prevent="subComment({{ $comment->id }})"
-                                            class="cursor-pointer w-1/4 py-1 px-2 bg-amber-500 hover:bg-amber-600 focus:ring-amber-400 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring rounded-lg">
-                                        Reageer
-                                    </a>
-                                    @error('sub_comment') <span class="error">{{ $message }}</span> @enderror
-                                @endif
 
                                 @empty
                                     <div class="mx-auto w70 mt-12">

@@ -12,34 +12,36 @@ class ProfielBewerken extends Component
     public $user;
     public $name;
     public $email;
+    public $lastname;
     public $password;
 
     protected $rules = [
 
         'name' => 'required',
-        'email' => 'required|email',
         'password' => 'required|min:8'
 
     ];
 
-    public function mount(){
-        $this->name = Auth::user()->name;
-        $this->email = Auth::user()->email;
+    public function mount()
+    {
         $this->user = Auth::user();
+        $this->name = $this->user->name;
+        $this->email = $this->user->email;
+        $this->lastname = $this->user->last_name;
     }
 
     public function render()
     {
-
-
         return view('livewire.profiel-bewerken');
     }
 
 
-    public function submit(){
+    public function submit()
+    {
+        $this->validate();
 
         $this->user->name = $this->name;
-        $this->user->email = $this->email;
+        $this->user->lastname = $this->lastname;
         $this->user->password = bcrypt($this->password);
 
         $this->user->save();

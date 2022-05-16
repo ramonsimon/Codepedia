@@ -78,7 +78,7 @@
 
         <div class="flex mb-5 mt-5 ml-10 style="width: 400px;">
             <div class="flex relative mr-3">
-                <select name="name" id="name" wire:model="topic"
+                <select wire:model="onderwerp" name="name" id="name"
                         class="rounded-lg flex-1 appearance-none border border-amber-300 w-40 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent">
                     <option>Onderwerpen</option>
                     @foreach($topics as $topic)
@@ -146,7 +146,7 @@
                             <div>&bull;</div>
                             <div>{{$question->topic->name }}</div>
                             <div>&bull;</div>
-                            <div class="text-gray-900">3 Comments</div>
+                            <div class="text-gray-900">{{$question->comments->count()}} reacties</div>
                         </div>
                     </div>
                     <div class="flex items-center space-x-2 mt-3">

@@ -19,7 +19,7 @@ class VragenOverzicht extends Component
 
     protected $rules = [
         'title' => 'required',
-        'topic' => 'required',
+        'onderwerp' => 'required|exists:topics,id',
         'description' => 'required'
 
     ];

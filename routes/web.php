@@ -28,7 +28,7 @@ Route::group(['middleware' => ['verified', 'role:admin']], function () {
 });
 
 Route::group(['middleware' => ['verified-or-guest']], function () {
-    Route::get('/artikel/overzicht',\App\Http\Livewire\ArtikelOverzicht::class)->name('artikel-overzicht')->middleware('verified');;
+    Route::get('/artikel/overzicht',\App\Http\Livewire\ArtikelOverzicht::class)->name('artikel-overzicht');
     Route::get('/vragen/overzicht',vragenOverzicht::class)->name('vragen-overzicht');
     Route::get('/vraag/{question:slug}',\App\Http\Livewire\VraagBekijken::class)->name('vraag-bekijken');
     Route::get('/gegevens/bewerken',\App\Http\Livewire\ProfielBewerken::class)->name('profiel-bewerken');

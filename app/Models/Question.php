@@ -25,4 +25,10 @@ class Question extends Model
     {
         return $this->belongsTo(Topics::class);
     }
+
+
+    public function comments()
+    {
+        return $this->hasMany(SubComments::class);
+    }
 }

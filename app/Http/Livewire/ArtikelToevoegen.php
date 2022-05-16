@@ -19,7 +19,7 @@ public $sub_description;
 
     protected $rules = [
         'title' => 'required|min:4',
-        'topic_id' => 'required|integer',
+        'topic_id' => 'required|integer|exists:topics,id',
         'description' => 'required|min:4',
         'sub_description' =>'required|min:4',
 

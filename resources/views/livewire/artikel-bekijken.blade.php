@@ -64,7 +64,7 @@
                                class="rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                                placeholder="Reactie..."/>
                     </div>
-                    <button wire:click.prevent="submit"
+                    <button wire:click="submit"
                             class="w-72 py-2 px-4 bg-amber-500 hover:bg-amber-600 focus:ring-amber-400 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring rounded-lg">
                         Reageer
                     </button>
@@ -80,7 +80,7 @@
 
                                 <div class="flex flex-col border-b border-gray-400 shadow-md pb-2 px-4 justify-center items-center mb-4 w-1/2">
                                     <h4 class="text-l font-semibold font-bold w-full">
-                                        <a>{{ $comment->user->name }}</a>
+                                        <a>{{ ucfirst(strtolower($comment->user->name)) . ' ' . ucfirst(strtolower($comment->user->last_name)) }}</a>
                                     </h4>
                                     <div class="flex text-gray-600 mt-3 line-clamp-3 w-full">
                                         {{ $comment->body }}
@@ -108,8 +108,29 @@
                                             </svg>
                                         </button>
                                         @endif
+                                            <button wire:click="showDiv">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20"
+                                                     fill="gray">
+                                                    <path fill-rule="evenodd"
+                                                          d="M7.707 3.293a1 1 0 010 1.414L5.414 7H11a7 7 0 017 7v2a1 1 0 11-2 0v-2a5 5 0 00-5-5H5.414l2.293 2.293a1 1 0 11-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                                                          clip-rule="evenodd"/>
+                                                </svg>
+                                            </button>
                                     </div>
                                 </div>
+
+                                @if($showDiv)
+                                    <input type="text" wire:model="sub_comment"
+                                           class="rounded-lg flex-1 appearance-none border border-amber-300 w-1/4 py-2 px-4 mb-1 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                                           placeholder="Reactie...">
+
+                                    <a wire:click.prevent="subComment({{ $comment->id }})"
+                                            class="cursor-pointer w-1/4 py-1 px-2 bg-amber-500 hover:bg-amber-600 focus:ring-amber-400 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring rounded-lg">
+                                        Reageer
+                                    </a>
+                                    @error('sub_comment') <span class="error">{{ $message }}</span> @enderror
+                                @endif
+
                                 @empty
                                     <div class="mx-auto w70 mt-12">
                                         <div class="text-gray-400 text-center font-bold mt-6">Geen reacties</div>

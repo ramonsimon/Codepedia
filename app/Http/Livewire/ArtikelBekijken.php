@@ -3,8 +3,8 @@
 namespace App\Http\Livewire;
 
 use App\Models\articles_rating;
+use App\Models\SubComments;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
 use App\Models\Comments;
 use App\Models\Article;
 use Livewire\Component;
@@ -16,12 +16,14 @@ class ArtikelBekijken extends Component
 
     public $info;
     public $body;
-    public $article;
     public $rating;
-    public $has_voted;
-    public $has_downvoted;
+    public $article;
+    public $showDiv;
     public $user_id;
+    public $has_voted;
     public $article_id;
+    public $sub_comment;
+    public $has_downvoted;
     public $votes_controller;
 
     protected $rules = [
@@ -76,6 +78,29 @@ class ArtikelBekijken extends Component
 
     }
 
+    public function subComment($comment)
+    {
+        if (! auth()->check()) {
+            return redirect(route('login'));
+        }
+
+        $this->validate(['sub_comment' => 'required|min:4|string']);
+
+        SubComments::create([
+            'description' => $this->sub_comment,
+            'user_id' => auth()->id(),
+            'comment_id' => $comment
+        ]);
+
+        return redirect('/artikel/' . $this->article->slug)->with([
+            'title' => 'Gelukt!',
+            'message' => 'Uw reactie is geplaatst.',
+            'bg' => 'bg-green-200',
+            'border' => 'border-green-600'
+        ]);
+
+    }
+
     public function submit()
     {
         if (! auth()->check()) {
@@ -96,7 +121,11 @@ class ArtikelBekijken extends Component
             'bg' => 'bg-green-200',
             'border' => 'border-green-600'
         ]);
+    }
 
+    public function showDiv()
+    {
+        $this->showDiv =! $this->showDiv;
     }
 
     public function render()

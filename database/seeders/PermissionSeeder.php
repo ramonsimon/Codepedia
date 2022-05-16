@@ -42,6 +42,7 @@ class PermissionSeeder extends Seeder
         // create demo users
         $user = \App\Models\User::factory()->create([
             'name' => 'Stefan',
+            'last_name' => 'Hoekstra',
             'email' => 'stefan.hoekstra02@gmail.com',
             'password' => '$2a$12$VarfVkgCqUH0dQ/dgABcnu368QddcGtbxnE8t7KHBE4hGNSb9aY8G',
         ]);
@@ -49,6 +50,7 @@ class PermissionSeeder extends Seeder
 
         $user = \App\Models\User::factory()->create([
             'name' => 'Ramon',
+            'last_name' => 'Visser',
             'email' => 'ramonsimon8@gmail.com',
             'password' => '$2a$12$p5SAIglgniLFlOMxOp3HBuNhTILeobK5ONMH8bOj55mQTsT0duC/u',
         ]);
@@ -56,6 +58,7 @@ class PermissionSeeder extends Seeder
 
         $user = \App\Models\User::factory()->create([
             'name' => 'Quelly',
+            'last_name' => 'Steuper',
             'email' => 'q.steuper@gmail.com',
             'password' => '$2a$12$TAgZLf7PxDJQsVYqcgTep.cK7xiR9NIIiGxkQAJ47/AbOjwCsvvqK',
         ]);
@@ -63,6 +66,7 @@ class PermissionSeeder extends Seeder
 
         $user = \App\Models\User::factory()->create([
             'name' => 'pending',
+            'last_name' => 'codepedia',
             'email' => 'pending@codepedia.nl',
             'password' => '$2a$12$TAgZLf7PxDJQsVYqcgTep.cK7xiR9NIIiGxkQAJ47/AbOjwCsvvqK',
         ]);
@@ -70,6 +74,7 @@ class PermissionSeeder extends Seeder
 
         $user = \App\Models\User::factory()->create([
             'name' => 'verified',
+            'last_name' => 'codepedia',
             'email' => 'verified@codepedia.nl',
             'password' => '$2a$12$TAgZLf7PxDJQsVYqcgTep.cK7xiR9NIIiGxkQAJ47/AbOjwCsvvqK',
         ]);
@@ -77,6 +82,7 @@ class PermissionSeeder extends Seeder
 
         $user = \App\Models\User::factory()->create([
             'name' => 'user',
+            'last_name' => 'codepedia',
             'email' => 'user@codepedia.nl',
             'password' => '$2a$12$TAgZLf7PxDJQsVYqcgTep.cK7xiR9NIIiGxkQAJ47/AbOjwCsvvqK',
         ]);
@@ -84,6 +90,7 @@ class PermissionSeeder extends Seeder
 
         $user = \App\Models\User::factory()->create([
             'name' => 'Admin',
+            'last_name' => 'codepedia',
             'email' => 'docent@codepedia.nl',
             'password' => '$2a$12$TAgZLf7PxDJQsVYqcgTep.cK7xiR9NIIiGxkQAJ47/AbOjwCsvvqK',
         ]);

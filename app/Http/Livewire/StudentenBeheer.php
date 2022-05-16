@@ -17,7 +17,7 @@ class StudentenBeheer extends Component
 
     private function loadArrays() {
         $this->astudents = User::whereDoesntHave('roles')->get();
-        $this->users = User::role(['user'])->get();
+        $this->users = User::role(['pending', 'verified','user'])->get();
 
     }
 

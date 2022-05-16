@@ -9,15 +9,17 @@ use Spatie\Permission\Models\Role;
 class DocentAanmaken extends Component
 {
     public $name;
+    public $last_name;
     public $email;
     public $password;
     public $passwordrep;
 
     protected $rules = [
-        'name' => 'required|',
-        'email' => 'required|email',
-        'password' => 'required',
-        'passwordrep' => 'required',
+        'name' => 'required|string',
+        'last_name' => 'required|string',
+        'email' => 'required|string|email|max:255|unique:users',
+        'password' => 'required|string',
+        'passwordrep' => 'required|string',
 
     ];
 
@@ -29,6 +31,7 @@ class DocentAanmaken extends Component
         $user->password = bcrypt($this->password);
         $user->email = $this->email;
         $user->name = $this->name;
+        $user->last_name = $this->last_name;
         $user->assignRole('admin');
         $user->save();
 

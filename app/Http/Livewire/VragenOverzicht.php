@@ -14,6 +14,7 @@ class VragenOverzicht extends Component
     public $search;
     public $title;
     public $description;
+    public $question = 4;
 
 
     protected $rules = [

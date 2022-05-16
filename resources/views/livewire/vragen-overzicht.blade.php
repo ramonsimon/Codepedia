@@ -134,7 +134,7 @@
                 </a>
                 <div class="mx-4">
                     <h4 class="text-xl font-semibold">
-                        <a href="{{ route('vraag-bekijken') }}" x-ref="link" class="hover:underline">{{$question->title}}</a>
+                        <a href="{{ route('vraag-bekijken', $question )}}" x-ref="link" class="hover:underline">{{$question->title}}</a>
                     </h4>
                     <div class="text-gray-600 mt-3 line-clamp-3">
                         {{$question->sub_description}}

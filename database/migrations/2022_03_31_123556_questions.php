@@ -22,6 +22,7 @@ return new class extends Migration
             $table->foreign('topic_id')->references('id')->on('topics')->onDelete('cascade');
             $table->string('title');
             $table->string('description');
+            $table->string('slug')->nullable();
             $table->timestamps();
         });
     }

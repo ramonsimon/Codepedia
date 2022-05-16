@@ -33,9 +33,10 @@
             </a>
             <div class="mx-4 mr-10">
                 <h4 class="text-xl font-semibold">
-                    <a href="#" class="hover:underline">A random title can go here</a>
+                    <a href="#" class="hover:underline">{{$question->title}}</a>
                 </h4>
                 <div class="text-gray-600 mt-3 line-clamp-3">
+                    {!! $question->description !!}
 
                 </div>
             </div>

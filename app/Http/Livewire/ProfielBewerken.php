@@ -41,9 +41,11 @@ class ProfielBewerken extends Component
         $this->validate();
 
         $this->user->name = $this->name;
-        $this->user->lastname = $this->lastname;
+        $this->user->last_name = $this->lastname;
         $this->user->password = bcrypt($this->password);
 
         $this->user->save();
+
+        return redirect('/');
     }
 }

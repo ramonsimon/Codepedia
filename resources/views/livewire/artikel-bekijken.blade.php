@@ -23,20 +23,22 @@
                         <div class="text-gray-500">Votes</div>
                     </div>
                     <div class="flex justify-center mt-4">
-                    <button wire:click="vote(true)" type="button">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd"
-                                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
-                                  clip-rule="evenodd"/>
-                        </svg>
-                    </button>
-                    <button wire:click="vote(false)" type="button">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd"
-                                  d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z"
-                                  clip-rule="evenodd"/>
-                        </svg>
-                    </button>
+                    @can('ask questions')
+                        <button wire:click="vote(true)" type="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd"
+                                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
+                                      clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                        <button wire:click="vote(false)" type="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd"
+                                      d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z"
+                                      clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                        @endcan
                     </div>
                 </div>
                 <div class="">
@@ -59,15 +61,19 @@
                         </div>
                     </div>
 
-                    <div class="flex mb-2 w-72">
-                        <input type="text" wire:model="body"
-                               class="rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                               placeholder="Reactie..."/>
-                    </div>
-                    <button wire:click="submit"
-                            class="w-72 py-2 px-4 bg-amber-500 hover:bg-amber-600 focus:ring-amber-400 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring rounded-lg">
-                        Reageer
-                    </button>
+                    @can('ask questions')
+                        <div class="flex mb-2 w-72">
+                            <input type="text" wire:model="body"
+                                   class="rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                                   placeholder="Reactie..."/>
+                        </div>
+                        <button wire:click="submit"
+                                class="w-72 py-2 px-4 bg-amber-500 hover:bg-amber-600 focus:ring-amber-400 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring rounded-lg">
+                            Reageer
+                        </button>
+                    @else
+                        <h3>Je hebt geen rechten om te reageren</h3>
+                    @endcan
 
                     @error('body') <span class="error">{{ $message }}</span> @enderror
                 </div>
@@ -92,7 +98,8 @@
                                                 </div>
                                                 <div class="text-gray-500">Votes</div>
                                             </div>
-                                        @if(auth()->id() != $comment->user->id)
+                                            @can('ask questions')
+                                            @if(auth()->id() != $comment->user->id)
                                             <div class="flex justify-center">
                                                     <button wire:click="commentVote(true, {{ $comment->id }})" type="button">
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
@@ -109,6 +116,7 @@
                                                         </svg>
                                                     </button>
                                                 </div>
+                                                @endcan
                                             </div>
                                         @endif
                                     </div>
@@ -116,32 +124,34 @@
                                     </div>
 
                                     <div class="flex flex-row items-center justify-center">
-                                        @if($comment->user->id == auth()->id())
-                                        <button wire:click='$emit("openModal", "reactie-wijzigen", {{ json_encode(["comment" => $comment, 'slug' => $article->slug]) }})'>
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
-                                                 fill="gray">
-                                                <path
-                                                    d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"/>
-                                                <path fill-rule="evenodd"
-                                                      d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
-                                                      clip-rule="evenodd"/>
-                                            </svg>
-                                        </button>
+                                        @can('ask questions')
+                                            @if($comment->user->id == auth()->id())
+                                            <button wire:click='$emit("openModal", "reactie-wijzigen", {{ json_encode(["comment" => $comment, 'slug' => $article->slug]) }})'>
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
+                                                     fill="gray">
+                                                    <path
+                                                        d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"/>
+                                                    <path fill-rule="evenodd"
+                                                          d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
+                                                          clip-rule="evenodd"/>
+                                                </svg>
+                                            </button>
 
-                                        <button wire:click='$emit("openModal", "reactie-verwijderen", {{ json_encode(["comment" => $comment, 'slug' => $article->slug]) }})'>
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20"
-                                                 fill="gray">
-                                                <path fill-rule="evenodd"
-                                                      d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                                                      clip-rule="evenodd"/>
-                                            </svg>
-                                        </button>
-                                        @endif
-                                        <button wire:click="showDiv()">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="gray">
-                                                <path fill-rule="evenodd" d="M7.707 3.293a1 1 0 010 1.414L5.414 7H11a7 7 0 017 7v2a1 1 0 11-2 0v-2a5 5 0 00-5-5H5.414l2.293 2.293a1 1 0 11-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
-                                            </svg>
-                                        </button>
+                                            <button wire:click='$emit("openModal", "reactie-verwijderen", {{ json_encode(["comment" => $comment, 'slug' => $article->slug]) }})'>
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20"
+                                                     fill="gray">
+                                                    <path fill-rule="evenodd"
+                                                          d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                                                          clip-rule="evenodd"/>
+                                                </svg>
+                                            </button>
+                                            @endif
+                                            <button wire:click="showDiv()">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="gray">
+                                                    <path fill-rule="evenodd" d="M7.707 3.293a1 1 0 010 1.414L5.414 7H11a7 7 0 017 7v2a1 1 0 11-2 0v-2a5 5 0 00-5-5H5.414l2.293 2.293a1 1 0 11-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                                </svg>
+                                            </button>
+                                        @endcan
                                     </div>
                                 </div>
                                 @if($showDiv)

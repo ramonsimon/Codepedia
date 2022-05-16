@@ -137,14 +137,24 @@
                                             </svg>
                                         </button>
                                         @endif
-                                        <button>
+                                        <button wire:click="showDiv()">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="gray">
                                                 <path fill-rule="evenodd" d="M7.707 3.293a1 1 0 010 1.414L5.414 7H11a7 7 0 017 7v2a1 1 0 11-2 0v-2a5 5 0 00-5-5H5.414l2.293 2.293a1 1 0 11-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
                                             </svg>
                                         </button>
                                     </div>
                                 </div>
-
+                                @if($showDiv)
+                                    <div class="mb-1 w-1/4">
+                                        <input type="text" wire:model="sub_comment"
+                                               class="rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                                               placeholder="Reactie..."/>
+                                    </div>
+                                    <button wire:click="submit"
+                                            class="w-1/4 py-1 px-2 bg-amber-500 hover:bg-amber-600 focus:ring-amber-400 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring rounded-lg">
+                                        Reageer
+                                    </button>
+                                @endif
                                 @empty
                                     <div class="mx-auto w70 mt-12">
                                         <div class="text-gray-400 text-center font-bold mt-6">Geen reacties</div>

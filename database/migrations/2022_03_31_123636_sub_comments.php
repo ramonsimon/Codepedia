@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('sub_comments', function (Blueprint $table) {
             if(Schema::hasTable('sub_comments')) return;
-            $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('question_id')->constrained();
-            $table->text('body');
+            $table->bigIncrements('id');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('comment_id')->constrained()->onDelete('cascade');
+            $table->string('description');
             $table->timestamps();
         });
     }

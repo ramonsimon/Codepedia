@@ -29,6 +29,6 @@ class Question extends Model
 
     public function comments()
     {
-        return $this->hasMany(SubComments::class);
+        return $this->hasMany(question_comments::class);
     }
 }

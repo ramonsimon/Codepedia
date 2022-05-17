@@ -6,10 +6,16 @@ use App\Models\Article;
 use App\Models\articles_rating;
 use App\Models\Topics;
 use Livewire\Component;
+use App\Http\Controllers\VotesController;
 
 class Index extends Component
 {
 
+    public function getVotes($id)
+    {
+        $votes_controller = new VotesController();
+        return $votes_controller->getRating('Article', $id);
+    }
 
     public function goToArticles($topic)
     {
@@ -20,14 +26,12 @@ class Index extends Component
 
     public function render()
     {
+
+        $articles = Article::orderBy('updated_at', 'DESC')
+            ->simplePaginate(Article::PAGINATION_COUNT);
+
         return view('livewire.index', [
-            'articles' => Article::with('user')
-                ->addSelect(['voted_by_user' => articles_rating::select('id')
-                    ->where('user_id',auth()->id())
-                    ->whereColumn('article_id', 'articles.id')])
-                ->withCount('articles_rating')
-                ->orderBy('id', 'desc')
-                ->simplePaginate(Article::PAGINATION_COUNT),
+            'articles' => $articles,
             'topics' => Topics::skip(0)->take(4)->orderBy("name", "ASC")->get()
         ]);
     }

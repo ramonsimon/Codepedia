@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Http\Controllers\VotesController;
 use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 use App\Models\Topics;
@@ -12,6 +13,12 @@ class ArtikelOverzicht extends Component
 {
     public $topic = 'all';
     public $search;
+
+    public function getVotes($id)
+    {
+        $votes_controller = new VotesController();
+        return $votes_controller->getRating('Article', $id);
+    }
 
     public function render()
     {

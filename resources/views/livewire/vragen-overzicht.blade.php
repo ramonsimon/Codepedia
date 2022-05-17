@@ -16,7 +16,7 @@
                            class="rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                            placeholder="Naam..."/>
                 </div>
-                <select wire:model="onderwerp" name="onderwerp" id="" class=" rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent">
+                <select wire:model="onderwerp_keuze" name="onderwerp_keuze" id="" class=" rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent">
                 @foreach($topics as $topic)
 
                     <option value="{{$topic->id}}">{{$topic->name}}</option>
@@ -78,9 +78,9 @@
 
         <div class="flex mb-5 mt-5 ml-10 style="width: 400px;">
             <div class="flex relative mr-3">
-                <select wire:model="onderwerp" name="name" id="name"
+                <select wire:model="topic" name="name" id="name"
                         class="rounded-lg flex-1 appearance-none border border-amber-300 w-40 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent">
-                    <option>Onderwerpen</option>
+                    <option value="all">Onderwerpen</option>
                     @foreach($topics as $topic)
                         <option value="{{$topic->id}}">{{$topic->name}}</option>
                     @endforeach

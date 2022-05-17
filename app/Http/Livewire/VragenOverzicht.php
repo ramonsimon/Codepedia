@@ -15,23 +15,24 @@ class VragenOverzicht extends Component
     public $title;
     public $description;
     public $question = 4;
+    public $onderwerp_keuze;
 
 
     protected $rules = [
         'title' => 'required',
-        'onderwerp' => 'required|exists:topics,id',
+        'onderwerp_keuze' => 'required|exists:topics,id',
         'description' => 'required'
 
     ];
 
 
     public function mount(){
-        $this->onderwerp = 1;
+        $this->onderwerp_keuze = 1;
 }
 
     public function submit(){
         $this->validate();
-        Question::create(['title'=> $this->title,'user_id'=> Auth::id(),'topic_id' => $this->onderwerp,'description' => $this->description]);
+        Question::create(['title'=> $this->title,'user_id'=> Auth::id(),'topic_id' => $this->onderwerp_keuze,'description' => $this->description]);
         $this->reset();
     }
 

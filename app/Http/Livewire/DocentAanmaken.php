@@ -37,6 +37,8 @@ class DocentAanmaken extends Component
 
     }
 
+
+
     public function render()
     {
         return view('livewire.docent-aanmaken');

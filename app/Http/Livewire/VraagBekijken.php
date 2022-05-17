@@ -5,6 +5,8 @@ namespace App\Http\Livewire;
 use App\Models\Comments;
 use App\Models\Question;
 use App\Models\question_comments;
+use App\Models\SubComments;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 

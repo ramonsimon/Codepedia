@@ -107,13 +107,14 @@ class ArtikelBekijken extends Component
 
     }
 
+
+
     public function subComment($comment)
     {
         if (! auth()->check()) {
             return redirect(route('login'));
         }
 
-        $this->validate(['sub_comment' => 'required|min:4|string']);
 
         SubComments::create([
             'description' => $this->sub_comment,

@@ -14,10 +14,7 @@ class Article extends Model
 
     protected $guarded = [];
 
-    public function comments()
-    {
-        return $this->hasMany(Comments::class);
-    }
+
 
     /**
      * Return the sluggable configuration array for this model.
@@ -47,4 +44,11 @@ class Article extends Model
     {
         return $this->belongsToMany(User::class, 'articles_rating');
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comments::class);
+    }
+
+
 }

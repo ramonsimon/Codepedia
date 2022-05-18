@@ -20,4 +20,10 @@ class Comments extends Model
     {
         return $this->hasMany(Comments::class);
     }
+
+
+    public function subcomments()
+    {
+        return $this->hasMany(SubComments::class);
+    }
 }

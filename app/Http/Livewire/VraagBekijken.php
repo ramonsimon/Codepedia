@@ -2,9 +2,12 @@
 
 namespace App\Http\Livewire;
 
+use App\Http\Controllers\VotesController;
+use App\Models\articles_rating;
 use App\Models\Comments;
 use App\Models\Question;
 use App\Models\question_comments;
+use App\Models\QuestionsRating;
 use App\Models\SubComments;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -27,7 +30,12 @@ class VraagBekijken extends Component
     public $votes_controller;
 
     public function mount(Question $question){
+        $votes_controller = new VotesController();
+        $this->info = $votes_controller->getColumn('QuestionsRating');
+        $this->question->rating = $votes_controller->getRating('Question', $question->id);
         $this->question = $question;
+        $this->has_voted = $votes_controller->isVotedByUser(auth()->user(), true, $question->id, QuestionsRating::query(), $this->info);
+        $this->has_downvoted = $votes_controller->isVotedByUser(auth()->user(), false, $question->id, QuestionsRating::query(), $this->info);
         $this->user_id = Auth::id();
         $this->question_id = $question->id;
     }
@@ -38,27 +46,73 @@ class VraagBekijken extends Component
         'question_id' => 'required'
     ];
 
-
-    public function submit()
+    public function vote($type)
     {
         if (! auth()->check()) {
             return redirect(route('login'));
         }
 
-        $this->validate();
+        if (!$this->question->is_closed) {
 
-        question_comments::create([
-            'body' => $this->body,
-            'user_id' => auth()->id(),
-            'question_id' => $this->question->id
-        ]);
+            $votes_controller = new VotesController();
 
-        return redirect('/vraag/' . $this->question->slug)->with([
-            'title' => 'Gelukt!',
-            'message' => 'Uw reactie is geplaatst.',
-            'bg' => 'bg-green-200',
-            'border' => 'border-green-600'
-        ]);
+            // Check if user has already voted and if they clicked vote
+            if ($this->has_voted && $type) {
+                // Remove the users vote
+                $this->question->rating = $votes_controller->removeVote(auth()->user(), true, 'QuestionsRating', $this->question_id, QuestionsRating::query(), $this->info);
+                // Set has_voted to false, this removes the blue text
+                $this->has_voted = false;
+                // Check if user has already downvoted and if they clicked downvote
+            } elseif ($this->has_downvoted && !$type) {
+                // Remove the users vote
+                $this->question->rating = $votes_controller->removeVote(auth()->user(), false, 'QuestionsRating', $this->question_id, QuestionsRating::query(), $this->info);
+                // Set has_downvoted to false, this removes the red text
+                $this->has_downvoted = false;
+                // Goes here if the user selected vote while having a downvote currently on the article (or the other way around)
+            } else {
+                $this->question->rating = $votes_controller->vote(auth()->user(), $this->has_voted, $this->has_downvoted, $type, $this->question_id, QuestionsRating::query(), $this->info);
+
+                // Sets has_voted/has_downvoted to true according to which button the user clicked
+                if ($type) {
+                    $this->has_voted = true;
+                } else {
+                    $this->has_downvoted = true;
+                }
+            }
+        }
+
+    }
+
+    public function commentRating($id)
+    {
+        $votes_controller = new VotesController();
+        return $votes_controller->getRating('Comments', $id);
+    }
+
+    public function submit()
+    {
+
+        if (!$this->question->is_closed) {
+
+            if (!auth()->check()) {
+                return redirect(route('login'));
+            }
+
+            $this->validate();
+
+            question_comments::create([
+                'body' => $this->body,
+                'user_id' => auth()->id(),
+                'question_id' => $this->question->id
+            ]);
+
+            return redirect('/vraag/' . $this->question->slug)->with([
+                'title' => 'Gelukt!',
+                'message' => 'Uw reactie is geplaatst.',
+                'bg' => 'bg-green-200',
+                'border' => 'border-green-600'
+            ]);
+        }
     }
 
 

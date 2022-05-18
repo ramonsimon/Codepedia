@@ -87,12 +87,6 @@
                 </select>
             </div>
             <div class="flex relative mr-3">
-                <select name="name" id="name"
-                        class="rounded-lg flex-1 appearance-none border border-amber-300 w-36 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent">
-                    <option>Filter</option>
-                </select>
-            </div>
-            <div class="flex relative mr-3">
                 <input type="text" name="name" id="name" wire:model="search"
                        class="rounded-l-lg flex-1 appearance-none border border-amber-300 w-36 py-2 px-4
                            bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base
@@ -129,12 +123,12 @@
                 </div>
 
                 <a href="#" class="flex-none ml-5 mt-4">
-                    <img src="https://source.unsplash.com/200x200/?face&crop=face&v=1" alt="avatar"
+                    <img src="{{ $question->user->getAvatar() }}" alt="avatar"
                          class="w-14 h-14 rounded-xl">
                 </a>
-                <div class="mx-4">
+                <div class="ml-4">
                     <h4 class="text-xl font-semibold">
-                        <a href="{{ route('vraag-bekijken', $question )}}" x-ref="link" class="hover:underline">{{$question->title}}</a>
+                        <a href="{{ route('vraag-bekijken', $question )}}" x-ref="link" class="hover:underline">{{$question->title}}@if($question->is_closed) (Gesloten) @endif</a>
                     </h4>
                     <div class="text-gray-600 mt-3 line-clamp-3">
                         {{$question->sub_description}}

@@ -22,13 +22,12 @@ class VragenOverzicht extends Component
         'title' => 'required',
         'onderwerp_keuze' => 'required|exists:topics,id',
         'description' => 'required'
-
     ];
 
-
-    public function mount(){
+    public function mount()
+    {
         $this->onderwerp_keuze = 1;
-}
+    }
 
     public function submit(){
         $this->validate();
@@ -41,7 +40,9 @@ class VragenOverzicht extends Component
         $search = '%' . $this->search . '%';
 
         if ($this->topic == "all") {
-            $question = Question::where('title', 'like', $search)->get();
+            $question = Question::where('title', 'like', $search)
+                ->orderBy('created_at', 'DESC')
+                ->get();
         } else {
             $question = Question::where('title', 'like', $search )
                 ->where('topic_id', '=', $this->topic)->get();

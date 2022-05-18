@@ -3,12 +3,14 @@
 namespace App\Http\Livewire;
 
 use App\Models\Comments;
+use App\Models\question_comments;
 use LivewireUI\Modal\ModalComponent;
 
 class ReactieVerwijderen extends ModalComponent
 {
 
     public $slug;
+    public $type;
     public $comment;
 
     public function cancel()
@@ -18,28 +20,41 @@ class ReactieVerwijderen extends ModalComponent
 
     public function delete()
     {
-        if (auth()->id() != $this->comment['user_id']) {
-            return redirect('/artikel/' . $this->slug);
+        if (!question_comments::where(['question_comments.id' => $this->comment['id']])->join('questions', 'questions.id', 'question_comments.question_id')->get()[0]->is_closed) {
+
+            if (auth()->id() != $this->comment['user_id']) {
+                return redirect('/artikel/' . $this->slug);
+            }
+
+            Comments::where('id', $this->comment['id'])->
+            delete();
+
+            $this->forceClose()->closeModal();
+
+            if ($this->type == '')
+            return redirect('/vraag/' . $this->slug)->with([
+                'title' => 'Gelukt!',
+                'message' => 'De reactie is verwijderd.',
+                'bg' => 'bg-green-600',
+                'border' => 'border-green-800'
+            ]);
+
         }
 
-        Comments::where('id', $this->comment['id'])->
-        delete();
-
-        $this->forceClose()->closeModal();
-
-        return redirect('/artikel/' . $this->slug)->with([
-            'title' => 'Gelukt!',
-            'message' => 'De reactie is verwijderd.',
-            'bg' => 'bg-green-600',
-            'border' => 'border-green-800'
+        return redirect('/vraag/' . $this->slug)->with([
+            'title' => 'Oeps!',
+            'message' => 'De vraag is gesloten, er kunnen daarom geen reacties worden verwijderd.',
+            'bg' => 'bg-red-600',
+            'border' => 'border-red-800'
         ]);
 
     }
 
-    public function mount($comment, $slug)
+    public function mount($comment, $slug, $type)
     {
         $this->comment = $comment;
         $this->slug = $slug;
+        $this->type = $type;
     }
 
     public function render()

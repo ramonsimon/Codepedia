@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('description');
             $table->string('slug')->nullable();
+            $table->tinyInteger('is_closed')->nullable();
             $table->timestamps();
         });
     }

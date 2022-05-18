@@ -18,19 +18,19 @@
             <div class="border-r border-gray-100 px-5 py-8 mr-8">
                 <div class="text-center">
                     <div class="text-sm font-bold leading-none  @if($has_voted) text-blue-600 @elseif($has_downvoted) text-red-600 @endif">
-
+                        {{ $question->rating }}
                     </div>
                     <div class="text-gray-500">Votes</div>
                 </div>
                 <div class="flex justify-center mt-4">
-                    <button wire:click="vote(true)" type="button">
+                    <button @if($question->is_closed) disabled @endif wire:click="vote(true)" type="button">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd"
                                   d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
                                   clip-rule="evenodd"/>
                         </svg>
                     </button>
-                    <button wire:click="vote(false)" type="button">
+                    <button @if($question->is_closed) disabled @endif wire:click="vote(false)" type="button">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd"
                                   d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z"
@@ -41,7 +41,7 @@
             </div>
             <div class="">
                 <h4 class="text-xl font-semibold">
-                    <a href="#" class="hover:underline">{{$question->title}}</a>
+                    <a href="#" class="hover:underline">{{$question->title}} @if($question->is_closed) (Gesloten)@endif</a>
                 </h4>
                 <div class="text-gray-600 mt-3 line-clamp-3">
                     {!! $question->description !!}
@@ -60,12 +60,12 @@
                 </div>
 
                 <div class="flex mb-2 w-72">
-                    <input type="text" wire:model="body"
+                    <input @if($question->is_closed) disabled @endif type="text" wire:model="body"
                            class="rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                           placeholder="Reactie..."/>
+                           placeholder="@if($question->is_closed) Deze vraag is gesloten @else Reactie... @endif"/>
                 </div>
-                <button wire:click="submit"
-                        class="w-72 py-2 px-4 bg-amber-500 hover:bg-amber-600 focus:ring-amber-400 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring rounded-lg">
+                <button @if($question->is_closed) disabled @endif wire:click="submit"
+                        class="w-72 py-2 px-4 @if($question->is_closed) bg-amber-600 @else bg-amber-500 @endif hover:bg-amber-600 focus:ring-amber-400 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring rounded-lg">
                     Reageer
                 </button>
 
@@ -88,7 +88,7 @@
 
                         <div class="flex flex-row items-center justify-center">
                             @if($comment->user->id == auth()->id())
-                                <button wire:click='$emit("openModal", "reactie-wijzigen", {{ json_encode(["comment" => $comment, 'slug' => $question->slug]) }})'>
+                                <button wire:click='$emit("openModal", "reactie-wijzigen", {{ json_encode(["comment" => $comment, 'slug' => $question->slug, "type" => "question"]) }})'>
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                          fill="gray">
                                         <path
@@ -99,7 +99,7 @@
                                     </svg>
                                 </button>
 
-                                <button wire:click='$emit("openModal", "reactie-verwijderen", {{ json_encode(["comment" => $comment, 'slug' => $question->slug]) }})'>
+                                <button wire:click='$emit("openModal", "reactie-verwijderen", {{ json_encode(["comment" => $comment, 'slug' => $question->slug, "type" => "question"]) }})'>
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20"
                                          fill="gray">
                                         <path fill-rule="evenodd"

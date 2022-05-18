@@ -154,23 +154,33 @@
                                         @endcan
                                     </div>
                                 </div>
+
                                 @if($showDiv)
                                     <div class="mb-1 w-1/4">
-                                        <input type="text" wire:model="sub_comment"
-                                               class="rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                                               placeholder="Reactie..."/>
+                                        <input id='title' type="text"
+                                               wire:model="sub_comment"
+                                               wire:keydown.enter="addReply({{$comment->id}})" >
+
                                     </div>
-                                    <button wire:click="subComment({{$comment->id}})"
+                                    <button wire:click="addReply({{$comment->id}})"
                                             class="w-1/4 py-1 px-2 bg-amber-500 hover:bg-amber-600 focus:ring-amber-400 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring rounded-lg">
                                         Reageer
                                     </button>
                                 @endif
+                    @foreach ($comment->subcomments as $subcomment )
+
+                        <p>{{$subcomment->description}}</p>
+
+                    @endforeach
+
+
                                 @empty
                                     <div class="mx-auto w70 mt-12">
                                         <div class="text-gray-400 text-center font-bold mt-6">Geen reacties</div>
                                     </div>
                                 @endforelse
 
+            </div>
                         </div>
             </div>
         </div>

@@ -11,4 +11,9 @@ class SubComments extends Model
 
     protected $guarded = [];
 
+    public function Comments()
+    {
+        return $this->hasMany(Comments::class);
+    }
+
 }

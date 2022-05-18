@@ -30,7 +30,8 @@ class ArtikelBekijken extends Component
     protected $rules = [
         'body' => 'required|min:4|string',
         'user_id' => 'required',
-        'article_id' => 'required'
+        'article_id' => 'required',
+        'sub_comment' => '',
     ];
 
     public function mount(Article $article)
@@ -43,6 +44,7 @@ class ArtikelBekijken extends Component
         $this->has_downvoted = $votes_controller->isVotedByUser(auth()->user(), false, $article->id, articles_rating::query(), $this->info);
         $this->user_id = Auth::id();
         $this->article_id = $article->id;
+        $this->sub_comment = SubComments::all();
     }
 
     public function vote($type)
@@ -109,25 +111,19 @@ class ArtikelBekijken extends Component
 
 
 
-    public function subComment($comment)
+    public function addReply($id)
     {
-        if (! auth()->check()) {
-            return redirect(route('login'));
-        }
-
+        $this->validate([
+            'sub_comment' => 'required'
+        ]);
 
         SubComments::create([
+            'article_id' => $this->article->id,
+            'user_id' => Auth::id(),
             'description' => $this->sub_comment,
-            'user_id' => auth()->id(),
-            'comment_id' => $comment
+            'comments_id' => $id
         ]);
 
-        return redirect('/artikel/' . $this->article->slug)->with([
-            'title' => 'Gelukt!',
-            'message' => 'Uw reactie is geplaatst.',
-            'bg' => 'bg-green-200',
-            'border' => 'border-green-600'
-        ]);
 
     }
 

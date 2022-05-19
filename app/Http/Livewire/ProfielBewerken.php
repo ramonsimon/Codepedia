@@ -28,7 +28,7 @@ class ProfielBewerken extends Component
         $this->name = $this->user->name;
         $this->email = $this->user->email;
         $this->lastname = $this->user->last_name;
-    }
+     }
 
     public function render()
     {

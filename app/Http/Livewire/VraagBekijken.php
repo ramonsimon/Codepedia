@@ -32,8 +32,8 @@ class VraagBekijken extends Component
     public function mount(Question $question){
         $votes_controller = new VotesController();
         $this->info = $votes_controller->getColumn('QuestionsRating');
-        $this->question->rating = $votes_controller->getRating('Question', $question->id);
         $this->question = $question;
+        $this->question->rating = $votes_controller->getRating('Question', $question->id);
         $this->has_voted = $votes_controller->isVotedByUser(auth()->user(), true, $question->id, QuestionsRating::query(), $this->info);
         $this->has_downvoted = $votes_controller->isVotedByUser(auth()->user(), false, $question->id, QuestionsRating::query(), $this->info);
         $this->user_id = Auth::id();

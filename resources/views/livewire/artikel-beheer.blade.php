@@ -61,6 +61,7 @@
                 </tr>
                 </thead>
                 <tbody>
+
                 <div class="mb-1">
                     {{ $articles->links() }}
                 </div>

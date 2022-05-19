@@ -18,7 +18,7 @@ class SubComments extends Model
 
     public function User()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class);
     }
 
 

@@ -89,7 +89,7 @@
             <div class="text-black uppercase font-bold text-center text-l mt-5 mb-3">
                 Reacties
             </div>
-            @forelse($article->comments as $comment)
+            @forelse($comments as $comment)
                 <div class="flex flex-col items-center justify-center w-full">
 
                     <div
@@ -188,7 +188,7 @@
                             <div
                                 class="flex flex-col border-b border-gray-400 shadow-md pb-2 px-4 justify-center items-center mb-4 w-1/2">
                                 <h4 class="text-l font-semibold font-bold w-full">
-{{--                                    <a>{{ ucfirst(strtolower($subcomment->user->name)) . ' ' . ucfirst(strtolower($subcomment->user->last_name)) }}</a>--}}
+                                    <a>{{ ucfirst(strtolower($subcomment->user->name)) . ' ' . ucfirst(strtolower($subcomment->user->last_name)) }}</a>
                                 </h4>
                                 <div class="flex justify-between text-gray-600 mt-3 line-clamp-3 w-full">
                                     <div>{{ $subcomment->description }}</div>
@@ -223,6 +223,7 @@
                         </div>
 
                     @endforeach
+
                 @endif
 
             @empty
@@ -230,6 +231,8 @@
                     <div class="text-gray-400 text-center font-bold mt-6">Geen reacties</div>
                 </div>
             @endforelse
+            {{ $comments->links() }}
+
 
         </div>
     </div>

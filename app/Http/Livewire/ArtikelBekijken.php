@@ -44,7 +44,6 @@ class ArtikelBekijken extends Component
         $this->has_downvoted = $votes_controller->isVotedByUser(auth()->user(), false, $article->id, articles_rating::query(), $this->info);
         $this->user_id = Auth::id();
         $this->article_id = $article->id;
-        $this->sub_comment = SubComments::all();
     }
 
     public function vote($type)
@@ -162,6 +161,12 @@ class ArtikelBekijken extends Component
 
     public function render()
     {
-        return view('livewire.artikel-bekijken');
+        $comments = Comments::where([
+            'article_id' => $this->article_id
+        ])->simplePaginate(3);
+
+        return view('livewire.artikel-bekijken', [
+            'comments' => $comments
+        ]);
     }
 }

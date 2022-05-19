@@ -17,7 +17,7 @@ return new class extends Migration
             if(Schema::hasTable('sub_comments')) return;
             $table->bigIncrements('id');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('comment_id')->constrained()->onDelete('cascade');
+            $table->foreignId('comments_id')->constrained()->onDelete('cascade');
             $table->foreignId('article_id')->constrained()->onDelete('cascade');
             $table->string('description');
             $table->timestamps();

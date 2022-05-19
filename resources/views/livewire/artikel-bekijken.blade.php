@@ -180,7 +180,7 @@
                     </button>
                 @endif
 
-                @if(!empty($subcomments))
+                @if(!is_null($comment->subcomments))
                     @foreach ($comment->subcomments as $subcomment)
 
                         <div class="flex flex-col items-center justify-center w-3/4">

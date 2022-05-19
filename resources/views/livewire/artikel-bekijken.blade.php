@@ -155,7 +155,7 @@
                                     </svg>
                                 </button>
                             @endif
-                            <button wire:click="showDiv">
+                            <button wire:click="showDiv({{$comment->id}})">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20"
                                      fill="gray">
                                     <path fill-rule="evenodd"
@@ -167,7 +167,7 @@
                     </div>
                 </div>
 
-                @if($showDiv)
+                @if($showDiv == $comment->id)
                     <div class="mb-1 w-1/4">
                         <input id='title' type="text"
                                wire:model="sub_comment"
@@ -180,7 +180,7 @@
                     </button>
                 @endif
 
-                @if(!is_null($comment->subcomments))
+                @if(!empty($subcomments))
                     @foreach ($comment->subcomments as $subcomment)
 
                         <div class="flex flex-col items-center justify-center w-3/4">

@@ -154,9 +154,15 @@ class ArtikelBekijken extends Component
         ]);
     }
 
-    public function showDiv()
+    public function showDiv($showdiv)
     {
-        $this->showDiv =! $this->showDiv;
+
+        if ($showdiv == $this->showDiv){
+            $this->showDiv = null;
+        }else{
+            $this->showDiv = $showdiv;
+        }
+
     }
 
     public function render()

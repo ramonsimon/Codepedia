@@ -35,6 +35,13 @@ class DocentAanmaken extends Component
         $user->assignRole('admin');
         $user->save();
 
+        return redirect('/docent/aanmaken/')->with([
+            'title' => 'Gelukt!',
+            'message' => 'De docent is aangemaakt.',
+            'bg' => 'bg-green-200',
+            'border' => 'border-green-600'
+        ]);
+
     }
 
 

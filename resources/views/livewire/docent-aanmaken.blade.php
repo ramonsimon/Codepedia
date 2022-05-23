@@ -1,3 +1,17 @@
+<div>
+@if(Session::has('message'))
+    <script>setTimeout(function(){document.getElementById("message").classList.add("opacity-0")},3000);setTimeout(function(){document.getElementById("message").classList.add("hidden")},3700);</script>
+    <div id="message" class="flex justify-center items-center duration-1000 transition-opacity">
+        <div class="{{ Session::get('border') . ' ' . Session::get('bg') }} text-black border-l-4 p-4 w-3/5mt-5">
+            <p class="font-bold">
+                {{ Session::get('title') }}
+            </p>
+            <p>
+                {{ Session::get('message') }}
+            </p>
+        </div>
+    </div>
+@endif
     <div class="flex flex-col items-center overflow-x-auto">
 
         <div class="flex bg-white ml-9 mt-5 rounded-xl items-center flex-col overflow-auto pb-10"
@@ -46,3 +60,4 @@
             </div>
         </div>
     </div>
+</div>

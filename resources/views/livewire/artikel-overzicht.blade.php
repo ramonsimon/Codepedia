@@ -12,6 +12,15 @@
                         <option value="{{$topic->id}}">{{$topic->name}}</option>
                     @endforeach
                 </select>
+                <div class="flex relative ml-3">
+                    <select name="filter" id="filter" wire:model="filter"
+                            class=" rounded-lg flex-1 appearance-none border border-amber-300 w-48 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent">
+                        <option value="ascending">A-Z</option>
+                        <option value="descending">Z-A</option>
+                        <option value="newest">Nieuwste</option>
+                        <option value="oldest">Oudste</option>
+                    </select>
+                </div>
             </div>
 
 {{--            <div class="flex relative mr-3">--}}

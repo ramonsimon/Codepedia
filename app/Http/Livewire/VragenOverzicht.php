@@ -14,6 +14,7 @@ class VragenOverzicht extends Component
     public $topic = 'all';
     public $search;
     public $title;
+    public $filter;
     public $description;
     public $question = 4;
     public $onderwerp_keuze;
@@ -42,11 +43,30 @@ class VragenOverzicht extends Component
 
         if ($this->topic == "all") {
             $question = Question::where('title', 'like', $search)
-                ->orderBy('created_at', 'DESC')
+                ->orderBy('title', 'ASC')
                 ->get();
         } else {
             $question = Question::where('title', 'like', $search )
-                ->where('topic_id', '=', $this->topic)->get();
+                ->where('topic_id', '=', $this->topic)->orderBy('title', 'ASC')->get();
+        }
+
+        if ($this->filter) {
+            switch ($this->filter) {
+
+                case 'ascending':
+                    $question = $question->sortBy('title');
+                    break;
+                case 'descending':
+                    $question = $question->sortByDesc('title');
+                    break;
+                case 'newest':
+                    $question = $question->sortByDesc('created_at');
+                    break;
+                case 'oldest':
+                    $question = $question->sortBy('created_at');
+                    break;
+
+            }
         }
 
         return view('livewire.vragen-overzicht', [

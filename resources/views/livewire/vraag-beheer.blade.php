@@ -35,7 +35,7 @@
             </div>
         </div>
 
-        <div class="w-11/12">
+        <div class="w-11/12 flex items-center justify-center">
 
             <table class="table p-4 bg-gray-100 rounded-lg">
                 <thead>

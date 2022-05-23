@@ -41,6 +41,8 @@ class ArtikelWijzigen extends ModalComponent
     public function submit()
     {
         $this->articleId = $this->article['id'];
+        $this->description = clean(($this->description));
+
         $this->validate();
 
         Article::where('id', $this->articleId)->

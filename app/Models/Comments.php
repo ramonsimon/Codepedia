@@ -26,4 +26,6 @@ class Comments extends Model
     {
         return $this->hasMany(SubComments::class);
     }
+
+
 }

@@ -6,6 +6,8 @@ use App\Models\Article;
 use App\Models\User;
 use Livewire\Component;
 use App\Models\Topics;
+use Nette\Utils\Html;
+
 
 class ArtikelToevoegen extends Component
 {
@@ -27,8 +29,8 @@ public $sub_description;
 
     public function submit()
     {
+        $this->description = clean(($this->description));
         $validatedData = $this->validate();
-
         Article::create($validatedData);
 
         return redirect()->to('/artikel/beheer');

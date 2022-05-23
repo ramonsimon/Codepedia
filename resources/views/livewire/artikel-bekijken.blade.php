@@ -155,6 +155,7 @@
                                     </svg>
                                 </button>
                             @endif
+                                @can('ask questions')
                             <button wire:click="showDiv({{$comment->id}})">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20"
                                      fill="gray">
@@ -163,6 +164,7 @@
                                           clip-rule="evenodd"/>
                                 </svg>
                             </button>
+                                    @endcan
                         </div>
                     </div>
                 </div>

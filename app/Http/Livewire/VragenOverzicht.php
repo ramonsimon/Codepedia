@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Http\Controllers\VotesController;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use App\Models\Topics;
@@ -52,8 +53,11 @@ class VragenOverzicht extends Component
             'topics' => Topics::get(),
             'questions' => $question,
         ]);
+    }
 
-
-
+    public function getVotes($id)
+    {
+        $votes_controller = new VotesController();
+        return $votes_controller->getRating('Question', $id);
     }
 }

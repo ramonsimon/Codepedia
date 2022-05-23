@@ -76,7 +76,7 @@
 
     <div class="space-y-6 my-6" style="width: 600px">
 
-        <div class="flex mb-5 mt-5 ml-10 style="width: 400px;">
+        <div class="flex mb-5 mt-5 ml-10">
             <div class="flex relative mr-3">
                 <select wire:model="topic" name="name" id="name"
                         class="rounded-lg flex-1 appearance-none border border-amber-300 w-40 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent">
@@ -116,7 +116,7 @@
             <div class="flex px-2 py-6">
                 <div class="border-r border-gray-100 px-5 py-8 flex items-center">
                     <div class="text-center">
-                        <div class="font-semibold text-2xl">12</div>
+                        <div class="font-semibold text-2xl">{{ $this->getVotes($question->id) }}</div>
                         <div class="text-gray-500">Votes</div>
                     </div>
 

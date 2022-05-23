@@ -20,7 +20,8 @@ class ReactieVerwijderen extends ModalComponent
 
     public function delete()
     {
-        if (!$this->comment->question->is_closed) {
+        //TODO make sure this will also work with articles
+        if (!question_comments::where(['question_comments.id' => $this->comment['id']])->join('questions', 'questions.id', 'question_comments.question_id')->get()[0]->is_closed) {
 
             if (auth()->id() != $this->comment['user_id']) {
                 return redirect('/artikel/' . $this->slug);

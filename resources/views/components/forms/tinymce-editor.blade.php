@@ -1,3 +1,3 @@
 <form method="post">
-    <textarea id="myeditorinstance"></textarea>
+    <textarea id="myeditorinstance" required></textarea>
 </form>

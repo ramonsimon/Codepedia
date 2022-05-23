@@ -8,6 +8,7 @@ use App\Models\Comments;
 use App\Models\Question;
 use App\Models\question_comments;
 use App\Models\QuestionsRating;
+use App\Models\QuestionSubComments;
 use App\Models\SubComments;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -115,10 +116,43 @@ class VraagBekijken extends Component
         }
     }
 
+    public function addReply($id)
+    {
+        $this->validate([
+            'sub_comment' => 'required'
+        ]);
+
+        QuestionSubComments::create([
+            'question_id' => $this->question->id,
+            'user_id' => Auth::id(),
+            'description' => $this->sub_comment,
+            'question_comments_id' => $id
+        ]);
+
+
+    }
+
+    public function showDiv($showdiv)
+    {
+
+        if ($showdiv == $this->showDiv){
+            $this->showDiv = null;
+        }else{
+            $this->showDiv = $showdiv;
+        }
+
+    }
 
 
     public function render()
     {
-        return view('livewire.vraag-bekijken');
+        $comments = question_comments::where([
+            'question_id' => $this->question->id
+        ])->simplePaginate(3);
+
+
+        return view('livewire.vraag-bekijken', [
+            'comments' => $comments
+        ]);
     }
 }

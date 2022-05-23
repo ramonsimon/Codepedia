@@ -16,4 +16,9 @@ class question_comments extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function subcomments()
+    {
+        return $this->hasMany(QuestionSubComments::class);
+    }
+
 }

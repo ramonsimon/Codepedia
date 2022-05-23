@@ -18,6 +18,8 @@ class ProfielBewerken extends Component
     protected $rules = [
 
         'name' => 'required',
+        'lastname' => 'required',
+        'email' => 'required',
         'password' => 'required|min:8'
 
     ];

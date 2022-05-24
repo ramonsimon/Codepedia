@@ -21,10 +21,12 @@ class VragenOverzicht extends Component
 
 
     protected $rules = [
-        'title' => 'required',
+        'title' => 'required|max:30',
         'onderwerp_keuze' => 'required|exists:topics,id',
         'description' => 'required'
     ];
+
+
 
     public function mount()
     {

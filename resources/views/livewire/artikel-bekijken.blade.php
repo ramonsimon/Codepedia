@@ -180,6 +180,7 @@
                             class="w-1/4 py-1 px-2 bg-amber-500 hover:bg-amber-600 focus:ring-amber-400 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring rounded-lg">
                         Reageer
                     </button>
+                    @error('sub_comment') <span class="error">{{ $message }}</span> @enderror
                 @endif
 
                 @if(!is_null($comment->subcomments))

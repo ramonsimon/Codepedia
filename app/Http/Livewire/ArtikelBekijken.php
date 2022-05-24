@@ -34,6 +34,10 @@ class ArtikelBekijken extends Component
         'sub_comment' => '',
     ];
 
+    protected $messages = [
+        'body.required' => 'Reactie is verplicht',
+    ];
+
     public function mount(Article $article)
     {
         $votes_controller = new VotesController();

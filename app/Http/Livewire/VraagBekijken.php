@@ -47,6 +47,11 @@ class VraagBekijken extends Component
         'question_id' => 'required'
     ];
 
+
+    protected $messages = [
+        'body.required' => 'Reactie is verplicht',
+    ];
+
     public function vote($type)
     {
         if (! auth()->check()) {
@@ -129,7 +134,6 @@ class VraagBekijken extends Component
             'question_comments_id' => $id
         ]);
 
-
     }
 
     public function showDiv($showdiv)
@@ -140,7 +144,6 @@ class VraagBekijken extends Component
         }else{
             $this->showDiv = $showdiv;
         }
-
     }
 
 

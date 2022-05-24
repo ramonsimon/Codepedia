@@ -12,12 +12,8 @@
                        class="rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                        placeholder="Naam..."/>
             </div>
+            @error('title') <span class="error">{{ $message }}</span> @enderror
             <div class="mb-2">
-                {{--                    <select name="topic" id="topic89]01O23$%y 8--}}
-                {{--                            class=" rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent">--}}
-                {{--                    </select>--}}
-
-
                 <select wire:model="topic_id" name="topic_id" class="rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent">
                     @foreach($onderwerpen as $onderwerp)
                         <option value="{{$onderwerp->id}}">{{$onderwerp->name}}</option>
@@ -25,7 +21,7 @@
                 </select>
             </div>
 
-            @error('title') <span class="error">{{ $message }}</span> @enderror
+
             @error('description') <span class="error">{{ $message }}</span> @enderror
             <div class="mb-2">
                 <input wire:model="sub_description" type="text"  id="description"

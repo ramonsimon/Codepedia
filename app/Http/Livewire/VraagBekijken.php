@@ -15,10 +15,11 @@ use App\Models\SubComments;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class VraagBekijken extends Component
 {
-
+    use WithPagination;
     public $question;
     public $info;
     public $body;
@@ -36,8 +37,8 @@ class VraagBekijken extends Component
     public function mount(Question $question){
         $votes_controller = new VotesController();
         $this->info = $votes_controller->getColumn('QuestionsRating');
-        $this->question = $question;
         $this->question->rating = $votes_controller->getRating('Question', $question->id);
+        $this->question = $question;
         $this->has_voted = $votes_controller->isVotedByUser(auth()->user(), true, $question->id, QuestionsRating::query(), $this->info);
         $this->has_downvoted = $votes_controller->isVotedByUser(auth()->user(), false, $question->id, QuestionsRating::query(), $this->info);
         $this->user_id = Auth::id();

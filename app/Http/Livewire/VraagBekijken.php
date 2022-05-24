@@ -7,6 +7,7 @@ use App\Models\articles_rating;
 use App\Models\Comments;
 use App\Models\Question;
 use App\Models\question_comments;
+use App\Models\QuestionComments;
 use App\Models\QuestionCommentsRating;
 use App\Models\QuestionsRating;
 use App\Models\QuestionSubComments;
@@ -24,6 +25,7 @@ class VraagBekijken extends Component
     public $rating;
     public $article;
     public $showDiv;
+    public $showSub;
     public $user_id;
     public $has_voted;
     public $question_id;
@@ -78,7 +80,6 @@ class VraagBekijken extends Component
                 // Goes here if the user selected vote while having a downvote currently on the article (or the other way around)
             } else {
                 $this->question->rating = $votes_controller->vote(auth()->user(), $this->has_voted, $this->has_downvoted, $type, $this->question_id, QuestionsRating::query(), $this->info);
-
                 // Sets has_voted/has_downvoted to true according to which button the user clicked
                 if ($type) {
                     $this->has_voted = true;
@@ -152,16 +153,20 @@ class VraagBekijken extends Component
 
     public function addReply($id)
     {
-        $this->validate([
-            'sub_comment' => 'required'
-        ]);
+        if (QuestionSubComments::where(['question_comments_id' => $id, 'user_id' =>Auth::id()])->get()->count() < 10) {
 
-        QuestionSubComments::create([
-            'question_id' => $this->question->id,
-            'user_id' => Auth::id(),
-            'description' => $this->sub_comment,
-            'question_comments_id' => $id
-        ]);
+            $this->validate([
+                'sub_comment' => 'required'
+            ]);
+
+            return QuestionSubComments::create([
+                'question_id' => $this->question->id,
+                'user_id' => Auth::id(),
+                'description' => $this->sub_comment,
+                'question_comments_id' => $id
+            ]);
+
+        }
 
     }
 
@@ -175,6 +180,15 @@ class VraagBekijken extends Component
         }
     }
 
+    public function showSubComments($showsub)
+    {
+
+        if ($showsub == $this->showSub){
+            $this->showSub = null;
+        }else{
+            $this->showSub = $showsub;
+        }
+    }
 
     public function render()
     {

@@ -6,12 +6,13 @@
             target: $refs.tinymce,
             themes: 'modern',
             height: 200,
+            width : 540,
             menubar: false,
             language: 'nl',
             plugins: [
                 'codesample'
             ],
-            menubar: 'format',
+            menubar: '',
             toolbar: 'codesample ',
             setup: function(editor) {
                 editor.on('blur', function(e) {

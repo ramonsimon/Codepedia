@@ -73,7 +73,7 @@
                 @can('ask questions')
                     <div class="flex mb-2 w-full">
 
-                        <x-head.ask wire:model="body"/>
+                        <x-head.ask class="w-full" wire:model="body"/>
                     </div>
                     <button wire:click="submit"
                             class="w-72 py-2 px-4 bg-amber-500 hover:bg-amber-600 focus:ring-amber-400 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring rounded-lg">

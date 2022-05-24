@@ -24,7 +24,7 @@ class ReactieVerwijderen extends ModalComponent
     public function delete()
     {
 
-        if (!$this->comment_type) {
+        if ($this->comment_type == "comment") {
             if ($this->type == 'question') {
                 if (!question_comments::where(['question_comments.id' => $this->comment['id']])->join('questions', 'questions.id', 'question_comments.question_id')->get()[0]->is_closed) {
 

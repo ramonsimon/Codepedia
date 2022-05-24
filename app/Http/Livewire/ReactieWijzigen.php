@@ -51,20 +51,32 @@ class ReactieWijzigen extends ModalComponent
 
         } elseif($this->type == 'question') {
 
-            if (auth()->id() != $this->comment['user_id']) {
-                return redirect('/vraag/' . $this->slug);
+            if (!question_comments::where(['question_comments.id' => $this->comment['id']])->join('questions', 'questions.id', 'question_comments.question_id')->get()[0]->is_closed) {
+
+                if (auth()->id() != $this->comment['user_id']) {
+                    return redirect('/vraag/' . $this->slug);
+                }
+
+                question_comments::where('id', $this->comment['id'])->
+                delete();
+
+                $this->forceClose()->closeModal();
+
+                if ($this->type == 'question')
+                    return redirect('/vraag/' . $this->slug)->with([
+                        'title' => 'Gelukt!',
+                        'message' => 'Uw reactie ' . $this->comment['body'] . ' is veranderd naar ' . $this->body,
+                        'bg' => 'bg-green-600',
+                        'border' => 'border-green-800'
+                    ]);
+
             }
 
-            $this->validate();
-
-            question_comments::where('id', $this->comment['id'])->
-            update(['body' => $this->body]);
-
             return redirect('/vraag/' . $this->slug)->with([
-                'title' => 'Gelukt!',
-                'message' => 'Uw reactie ' . $this->comment['body'] . ' is veranderd naar ' . $this->body,
-                'bg' => 'bg-green-200',
-                'border' => 'border-green-600'
+                'title' => 'Oeps!',
+                'message' => 'De vraag is gesloten, er kunnen daarom geen reacties worden gewijzigd.',
+                'bg' => 'bg-red-600',
+                'border' => 'border-red-800'
             ]);
         }
 

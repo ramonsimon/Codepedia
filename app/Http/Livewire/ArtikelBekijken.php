@@ -11,10 +11,11 @@ use Livewire\Component;
 use App\Models\User;
 use App\Models\CommentsRating;
 use App\Http\Controllers\VotesController;
+use Livewire\WithPagination;
 
 class ArtikelBekijken extends Component
 {
-
+    use WithPagination;
     public $info;
     public $body;
     public $rating;

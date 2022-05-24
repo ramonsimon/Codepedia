@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreVotesRequest;
 use App\Http\Requests\UpdateVotesRequest;
 use App\Models\articles_rating;
+use App\Models\QuestionComments;
+use App\Models\QuestionCommentsRating;
 use App\Models\User;
 use App\Models\Votes;
 use App\Models\Article;
@@ -175,6 +177,21 @@ class VotesController extends Controller
                     ->get()
                     ->count();
                 break;
+            case 'QuestionCommentsRating':
+                // Get amount of likes
+                $likes = QuestionComments::where('question_comments.id', '=', $id)
+                    ->join('question_comments_rating', 'question_comments_id', '=', 'question_comments.id')
+                    ->where('question_comments_rating.rating', 1)
+                    ->get()
+                    ->count();
+
+                // Get amount of dislikes
+                $dislikes = QuestionComments::where('question_comments.id', '=', $id)
+                    ->join('question_comments_rating', 'question_comments_id', '=', 'question_comments.id')
+                    ->where('question_comments_rating.rating', 0)
+                    ->get()
+                    ->count();
+                break;
         }
 
         // Return the final result
@@ -199,6 +216,10 @@ class VotesController extends Controller
             case 'SubCommentsRating':
                 $column = 'sub_comment_id';
                 $mainTable = 'SubComments';
+                break;
+            case 'QuestionCommentsRating':
+                $column = 'question_comments_id';
+                $mainTable = 'QuestionCommentsRating';
                 break;
         }
 

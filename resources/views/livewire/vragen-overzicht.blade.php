@@ -74,9 +74,17 @@
             @endauth
     @endcan
 
-    <div class="space-y-6 my-6" style="width: 600px">
+    <div class="space-y-6 my-6">
 
         <div class="flex mb-5 mt-5 ml-10">
+
+            <div class="form-check flex flex-col justify-center items-center mr-3">
+                <input wire:click="ownQuestions" class="form-check-input appearance-none h-4 w-4 border border-amber-300 rounded-sm bg-white checked:bg-amber-600 checked:border-amber-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label inline-block text-gray-800" for="flexCheckDefault">
+                    Eigen vragen
+                </label>
+            </div>
+
             <div class="flex relative mr-3">
                 <select wire:model="topic" name="name" id="name"
                         class="rounded-lg flex-1 appearance-none border border-amber-300 w-40 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent">
@@ -111,6 +119,7 @@
                             </svg>
                     </span>
             </div>
+
         </div>
 
         @if(!$questions->isEmpty())

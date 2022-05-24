@@ -7,6 +7,7 @@ use App\Models\articles_rating;
 use App\Models\Comments;
 use App\Models\Question;
 use App\Models\question_comments;
+use App\Models\QuestionCommentsRating;
 use App\Models\QuestionsRating;
 use App\Models\QuestionSubComments;
 use App\Models\SubComments;
@@ -92,7 +93,7 @@ class VraagBekijken extends Component
     public function commentRating($id)
     {
         $votes_controller = new VotesController();
-        return $votes_controller->getRating('Comments', $id);
+        return $votes_controller->getRating('QuestionCommentsRating', $id);
     }
 
     public function submit()
@@ -119,6 +120,34 @@ class VraagBekijken extends Component
                 'border' => 'border-green-600'
             ]);
         }
+    }
+
+    public function commentVote($type, $id)
+    {
+        if (! auth()->check()) {
+            return redirect(route('login'));
+        }
+
+
+        $votes_controller = new VotesController();
+
+        $info = $votes_controller->getColumn('QuestionCommentsRating');
+        $c_has_voted = $votes_controller->isVotedByUser(auth()->user(), true, $id, QuestionCommentsRating::query(), $info);
+        $c_has_downvoted = $votes_controller->isVotedByUser(auth()->user(), false, $id, QuestionCommentsRating::query(), $info);
+
+        // Check if user has already voted and if they clicked vote
+        if ($c_has_voted && $type) {
+            // Remove the users vote
+            $votes_controller->removeVote(auth()->user(), true, 'question_comments_rating', $id, QuestionCommentsRating::query(), $info);
+            // Check if user has already downvoted and if they clicked downvote
+        } elseif($c_has_downvoted && !$type) {
+            // Remove the users vote
+            $votes_controller->removeVote(auth()->user(), false, 'question_comments_rating', $id, QuestionCommentsRating::query(), $info);
+            // Goes here if the user selected vote while having a downvote currently on the article (or the other way around)
+        } else {
+            $votes_controller->vote(auth()->user(), $c_has_voted, $c_has_downvoted, $type, $id, QuestionCommentsRating::query(), $info);
+        }
+
     }
 
     public function addReply($id)

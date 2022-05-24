@@ -18,6 +18,7 @@ class VragenOverzicht extends Component
     public $description;
     public $question = 4;
     public $onderwerp_keuze;
+    public $ownQuestions = false;
 
 
     protected $rules = [
@@ -71,10 +72,23 @@ class VragenOverzicht extends Component
             }
         }
 
+        if ($this->ownQuestions) {
+            $question = $question->where('user_id', auth()->id());
+        }
+
         return view('livewire.vragen-overzicht', [
             'topics' => Topics::get(),
             'questions' => $question,
         ]);
+    }
+
+    public function ownQuestions()
+    {
+        if (!$this->ownQuestions) {
+            $this->ownQuestions = true;
+        } else {
+            $this->ownQuestions = false;
+        }
     }
 
     public function getVotes($id)

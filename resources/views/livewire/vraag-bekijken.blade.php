@@ -1,3 +1,4 @@
+<div>
 @if(Session::has('message'))
     <script>setTimeout(function () {
             document.getElementById("message").classList.add("opacity-0")
@@ -208,7 +209,7 @@
                                             </svg>
                                         </button>
 
-                                        <button
+                                        <button wire:click='$emit("openModal", "reactie-verwijderen", {{ json_encode(["comment" => $comment, 'slug' => $question->slug, "type" => "question", "comment_type" => "sub_comment"]) }})'
                                         >
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20"
                                                  fill="gray">
@@ -236,6 +237,7 @@
 
         </div>
     </div>
+</div>
 </div>
 
 

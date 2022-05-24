@@ -631,6 +631,9 @@ select {
 .z-50 {
   z-index: 50;
 }
+.float-left {
+  float: left;
+}
 .m-auto {
   margin: auto;
 }
@@ -692,6 +695,12 @@ select {
 .mr-3 {
   margin-right: 0.75rem;
 }
+.mt-1 {
+  margin-top: 0.25rem;
+}
+.mr-2 {
+  margin-right: 0.5rem;
+}
 .ml-5 {
   margin-left: 1.25rem;
 }
@@ -701,9 +710,6 @@ select {
 .mt-3 {
   margin-top: 0.75rem;
 }
-.mr-2 {
-  margin-right: 0.5rem;
-}
 .ml-2 {
   margin-left: 0.5rem;
 }
@@ -712,9 +718,6 @@ select {
 }
 .mb-4 {
   margin-bottom: 1rem;
-}
-.mt-1 {
-  margin-top: 0.25rem;
 }
 .ml-9 {
   margin-left: 2.25rem;
@@ -794,6 +797,9 @@ select {
 .h-1\/4 {
   height: 25%;
 }
+.h-4 {
+  height: 1rem;
+}
 .h-14 {
   height: 3.5rem;
 }
@@ -818,9 +824,6 @@ select {
 .h-32 {
   height: 8rem;
 }
-.h-4 {
-  height: 1rem;
-}
 .min-h-screen {
   min-height: 100vh;
 }
@@ -833,8 +836,14 @@ select {
 .w-12 {
   width: 3rem;
 }
+.w-4 {
+  width: 1rem;
+}
 .w-40 {
   width: 10rem;
+}
+.w-48 {
+  width: 12rem;
 }
 .w-36 {
   width: 9rem;
@@ -893,14 +902,8 @@ select {
 .w-auto {
   width: auto;
 }
-.w-48 {
-  width: 12rem;
-}
 .w-32 {
   width: 8rem;
-}
-.w-4 {
-  width: 1rem;
 }
 .w-96 {
   width: 24rem;
@@ -1078,6 +1081,9 @@ select {
 .rounded-xl {
   border-radius: 0.75rem;
 }
+.rounded-sm {
+  border-radius: 0.125rem;
+}
 .rounded-full {
   border-radius: 9999px;
 }
@@ -1215,6 +1221,15 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(238 242 255 / var(--tw-bg-opacity));
 }
+.bg-contain {
+  background-size: contain;
+}
+.bg-center {
+  background-position: center;
+}
+.bg-no-repeat {
+  background-repeat: no-repeat;
+}
 .fill-current {
   fill: currentColor;
 }
@@ -1332,6 +1347,9 @@ select {
 }
 .text-center {
   text-align: center;
+}
+.align-top {
+  vertical-align: top;
 }
 .align-bottom {
   vertical-align: bottom;
@@ -1593,6 +1611,14 @@ select {
 }
 .ease-out {
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+.checked\:border-amber-600:checked {
+  --tw-border-opacity: 1;
+  border-color: rgb(217 119 6 / var(--tw-border-opacity));
+}
+.checked\:bg-amber-600:checked {
+  --tw-bg-opacity: 1;
+  background-color: rgb(217 119 6 / var(--tw-bg-opacity));
 }
 .hover\:border-gray-300:hover {
   --tw-border-opacity: 1;

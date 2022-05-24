@@ -71,10 +71,9 @@
                 </div>
 
                 @can('ask questions')
-                    <div class="flex mb-2 w-72">
-                        <input type="text" wire:model="body"
-                               class="rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                               placeholder="Reactie..."/>
+                    <div class="flex mb-2 w-full">
+
+                        <x-head.ask wire:model="body"/>
                     </div>
                     <button wire:click="submit"
                             class="w-72 py-2 px-4 bg-amber-500 hover:bg-amber-600 focus:ring-amber-400 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring rounded-lg">
@@ -99,7 +98,7 @@
                             <a>{{ ucfirst(strtolower($comment->user->name)) . ' ' . ucfirst(strtolower($comment->user->last_name)) }}</a>
                         </h4>
                         <div class="flex justify-between text-gray-600 mt-3 line-clamp-3 w-full">
-                            <div>{{ $comment->body }}</div>
+                            <div>{!! $comment->body  !!}</div>
                             <div class="">
                                 <div class="text-center">
                                     <div class="text-sm font-bold leading-none">
@@ -195,7 +194,7 @@
                                     <a>{{ ucfirst(strtolower($subcomment->user->name)) . ' ' . ucfirst(strtolower($subcomment->user->last_name)) }}</a>
                                 </h4>
                                 <div class="flex justify-between text-gray-600 mt-3 line-clamp-3 w-full">
-                                    <div>{{ $subcomment->description }}</div>
+                                    <div>{!! $subcomment->description !!}</div>
                                 </div>
 
                                 <div class="flex flex-row items-center justify-center">

@@ -117,17 +117,20 @@ class ArtikelBekijken extends Component
 
     public function addReply($id)
     {
-        $this->validate([
-            'sub_comment' => 'required'
-        ]);
+        if (SubComments::where(['comments_id' => $id, 'user_id' =>Auth::id()])->get()->count() < 10) {
 
-        SubComments::create([
-            'article_id' => $this->article->id,
-            'user_id' => Auth::id(),
-            'description' => $this->sub_comment,
-            'comments_id' => $id
-        ]);
+            $this->validate([
+                'sub_comment' => 'required'
+            ]);
 
+            SubComments::create([
+                'article_id' => $this->article->id,
+                'user_id' => Auth::id(),
+                'description' => $this->sub_comment,
+                'comments_id' => $id
+            ]);
+
+        }
 
     }
 

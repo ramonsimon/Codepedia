@@ -60,6 +60,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsToMany(Article::class, 'articles_rating');
     }
 
+    public function model_has_roles()
+    {
+        return $this->belongsToMany(ModelHasRoles::class, 'model_has_roles');
+    }
+
 
 
     public function getAvatar()

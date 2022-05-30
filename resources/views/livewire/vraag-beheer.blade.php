@@ -37,7 +37,7 @@
 
         <div class="w-11/12 flex items-center justify-center">
 
-            <table class="table p-4 bg-gray-100 rounded-lg">
+            <table class="table p-4 bg-gray-100 rounded-lg w-full">
                 <thead>
                 <tr>
                     <th class="border-b-2 p-4 whitespace-nowrap font-normal text-gray-900">
@@ -63,27 +63,27 @@
                 <tbody>
                     @foreach($questions as $question)
                     <tr class="text-gray-700">
-                        <td class="border-b-2 p-4 dark:border-dark-5 w-1/12 truncate">
+                        <td class="border-b-2 p-4 dark:border-dark-5 w-1/12 truncate text-center">
                            {{Str::limit($question->title, 10, $end='...')}}
                         </td>
-                        <td class="border-b-2 p-4 dark:border-dark-5 w-12 truncate">
+                        <td class="border-b-2 p-4 dark:border-dark-5 w-12 truncate text-center">
                            {{Str::limit($question->description, 10, $end='...')}}
                         </td>
-                        <td class="border-b-2 p-4 dark:border-dark-5">
+                        <td class="border-b-2 p-4 dark:border-dark-5 text-center">
                             {{Str::limit($question->topic->name, 10, $end='...')}}
                         </td>
-                        <td class="border-b-2 p-4 dark:border-dark-5">
+                        <td class="border-b-2 p-4 dark:border-dark-5 text-center">
                             <button @if(!$question->is_closed) @endif wire:click="open({{$question->id}})" class="@if(!$question->is_closed) bg-amber-600 cursor-not-allowed @else bg-amber-500 @endif text-white w-24 h-8 rounded-lg">
                                 Openen
                             </button>
                         </td>
-                        <td class="border-b-2 p-4 dark:border-dark-5">
+                        <td class="border-b-2 p-4 dark:border-dark-5 text-center">
                             <button @if($question->is_closed) disabled @endif wire:click="close({{$question->id}})" class="@if($question->is_closed) bg-amber-600 cursor-not-allowed @else bg-amber-500 @endif text-white w-24 h-8 rounded-lg">
                                 Sluiten
                             </button>
                         </td>
 
-                        <td class="border-b-2 p-4 dark:border-dark-5">
+                        <td class="border-b-2 p-4 dark:border-dark-5 text-center">
                             <button type="button" wire:click='$emit("openModal", "vraag-verwijder-modal", {{ json_encode(["question" => $question]) }})'>
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-6" viewBox="0 0 20 20" fill="gray">
                                 <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />

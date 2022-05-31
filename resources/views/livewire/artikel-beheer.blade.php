@@ -67,19 +67,19 @@
                 </div>
                 @foreach($articles as $article)
                     <tr class="text-gray-700">
-                        <td class="border-b-2 p-4 dark:border-dark-5">
+                        <td class="border-b-2 p-4 dark:border-dark-5 text-center">
                             {{$article->title}}
                         </td>
-                        <td class="border-b-2 p-4 dark:border-dark-5">
+                        <td class="border-b-2 p-4 dark:border-dark-5 text-center">
                             {{ $article->topic->name }}
                         </td>
-                        <td class="border-b-2 p-4 dark:border-dark-5">
+                        <td class="border-b-2 p-4 dark:border-dark-5 text-center">
                             {{$article->sub_description}}
                         </td>
-                        <td class="border-b-2 p-4 dark:border-dark-5">
+                        <td class="border-b-2 p-4 dark:border-dark-5 text-center">
                             {{$this->getvotes($article->id)}}
                         </td>
-                        <td class="border-b-2 p-4 dark:border-dark-5">
+                        <td class="border-b-2 p-4 dark:border-dark-5 text-center">
                             <button wire:click='$emit("openModal", "artikel-wijzigen", {{ json_encode(["article" => $article]) }})'>
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="gray">
                                 <path
@@ -90,7 +90,7 @@
                             </svg>
                             </button>
                         </td>
-                        <td class="border-b-2 p-4 dark:border-dark-5">
+                        <td class="border-b-2 p-4 dark:border-dark-5 text-center">
                             <button
                                 wire:click='$emit("openModal", "artikel-verwijder-modal", {{ json_encode(["article" => $article]) }})'>
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="gray">

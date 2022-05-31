@@ -7,9 +7,12 @@ use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use App\Models\Topics;
 use App\Models\Question;
+use Livewire\WithPagination;
 
 class VragenOverzicht extends Component
 {
+    use WithPagination;
+
     public $onderwerp;
     public $topic = 'all';
     public $search;
@@ -27,8 +30,6 @@ class VragenOverzicht extends Component
         'description' => 'required'
     ];
 
-
-
     public function mount()
     {
         $this->onderwerp_keuze = 1;
@@ -37,7 +38,8 @@ class VragenOverzicht extends Component
     public function submit(){
         $this->validate();
         Question::create(['title'=> $this->title,'user_id'=> Auth::id(),'topic_id' => $this->onderwerp_keuze,'description' => $this->description]);
-        $this->reset();
+        $this->title = '';
+        $this->description = '';
     }
 
     public function render()
@@ -47,34 +49,37 @@ class VragenOverzicht extends Component
         if ($this->topic == "all") {
             $question = Question::where('title', 'like', $search)
                 ->orderBy('title', 'ASC')
-                ->get();
+                ;
         } else {
             $question = Question::where('title', 'like', $search )
-                ->where('topic_id', '=', $this->topic)->orderBy('title', 'ASC')->get();
+                ->where('topic_id', '=', $this->topic)->orderBy('title', 'ASC');
+        }
+
+        if ($this->ownQuestions) {
+            $question = $question->where('user_id', auth()->id());
         }
 
         if ($this->filter) {
             switch ($this->filter) {
 
                 case 'ascending':
-                    $question = $question->sortBy('title');
+                    $question = Question::orderBy('title', 'ASC');
                     break;
                 case 'descending':
-                    $question = $question->sortByDesc('title');
+                    $question = Question::orderBy('title', 'DESC');
                     break;
                 case 'newest':
-                    $question = $question->sortByDesc('created_at');
+                    $question = Question::orderBy('created_at', 'DESC');
                     break;
                 case 'oldest':
-                    $question = $question->sortBy('created_at');
+                    $question = Question::orderBy('created_at', 'ASC');
                     break;
 
             }
         }
 
-        if ($this->ownQuestions) {
-            $question = $question->where('user_id', auth()->id());
-        }
+        $question = $question->simplePaginate(5);
+
 
         return view('livewire.vragen-overzicht', [
             'topics' => Topics::get(),

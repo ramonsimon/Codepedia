@@ -78,12 +78,14 @@
 
         <div class="flex mb-5 mt-5 ml-10">
 
-            <div class="form-check flex flex-col justify-center items-center mr-3">
-                <input wire:click="ownQuestions" class="form-check-input appearance-none h-4 w-4 border border-amber-300 rounded-sm bg-white checked:bg-amber-600 checked:border-amber-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label inline-block text-gray-800" for="flexCheckDefault">
-                    Eigen vragen
-                </label>
-            </div>
+            @auth
+                <div class="form-check flex flex-col justify-center items-center mr-3">
+                    <input wire:click="ownQuestions" class="form-check-input appearance-none h-4 w-4 border border-amber-300 rounded-sm bg-white checked:bg-amber-600 checked:border-amber-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label inline-block text-gray-800" for="flexCheckDefault">
+                        Eigen vragen
+                    </label>
+                </div>
+            @endif
 
             <div class="flex relative mr-3">
                 <select wire:model="topic" name="name" id="name"
@@ -122,7 +124,9 @@
 
         </div>
 
-        @if(!$questions->isEmpty())
+        {{ $questions->links() }}
+
+    @if(!$questions->isEmpty())
             @foreach($questions as $question)
         <div
 

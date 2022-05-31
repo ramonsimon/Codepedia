@@ -26,11 +26,7 @@
                 <div class="mb-2">
                 </div>
                 <div class="mb-2">
-                    <textarea wire:model="description" name="question" id="question"
-                              class=" rounded-lg flex-1 appearance-none border
-                               border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm
-                                text-base focus:outline-none focus:ring-2 focus:ring-purple-600
-                                focus:border-transparent" placeholder="Vraag..." required></textarea>
+                    <x-head.question class="w-full" wire:model="description"/>
                 </div>
                 <div style="width: 300px;">
                     <button type="submit"
@@ -162,14 +158,16 @@
                             class="bg-amber-500 text-white text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">
                             Open
                         </div>
-                        <button wire:click='$emit("openModal", "reactie-wijzigen", {{ json_encode(["question" => $question, 'slug' => $question->slug, "type" => "question", "comment_type" => "question"]) }})' type="button"
+                        <button wire:click='$emit("openModal", "question-wijzigen", {{ json_encode(["question" => $question]) }})' type="button"
                             class="bg-amber-500 text-white text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">
                             aanpassen
                         </button>
-                        <button type="button"
+                        @if($question->user->id == Auth::id())
+                        <button type="button" wire:click='$emit("openModal", "vraag-verwijder-modal", {{ json_encode(["question" => $question]) }})'
                             class="bg-amber-500 text-white text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">
                             verwijderen
                         </button>
+                        @endif
                     </div>
                 </div>
             </div>

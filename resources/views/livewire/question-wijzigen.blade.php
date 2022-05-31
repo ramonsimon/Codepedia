@@ -29,11 +29,9 @@
             @error('title') <span class="error">{{ $message }}</span> @enderror
             @error('description') <span class="error">{{ $message }}</span> @enderror
             <div class="mb-2">
-                <input wire:model="sub_description" type="text"  id="description"
-                       class="rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                       placeholder="Korte omschrijving..."/>
+
             </div>
-            <x-head.tinymce-config wire:model="description" value="{{$body}}"/>
+            <x-head.question wire:model="description" value="{{$body}}"/>
             <div class="mb-2">
                 <div class="mb-2" wire:ignore>
 

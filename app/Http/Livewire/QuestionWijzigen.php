@@ -14,9 +14,14 @@ class QuestionWijzigen extends ModalComponent
     public $description;
     public $pnderwerpen;
     public $body;
+    public $title;
+    public $topic_id;
 
     protected $rules = [
 
+        'description' => 'required',
+        'title' => 'required',
+        'topic_id' => 'required'
     ];
 
     public function cancel()
@@ -38,7 +43,7 @@ class QuestionWijzigen extends ModalComponent
         Question::where('id', $this->question->id)->
         update(['title' => $this->title,'description' => $this->description,'topic_id' => $this->topic_id]);
 
-        return redirect('/artikel/beheer')->with([
+        return redirect('/vragen')->with([
             'title' => 'Gelukt!',
             'message' => 'Het artikel '  . ' is veranderd naar ' . $this->title,
             'bg' => 'bg-green-200',
@@ -47,11 +52,13 @@ class QuestionWijzigen extends ModalComponent
 
     }
 
-    public function mount(
-    )
+    public function mount(Question $question)
     {
-
+    $this->question = $question;
     $this->onderwerpen = Topics::all();
+    $this->title = $this->question->title;
+    $this->description = $this->question->description;
+    $this->topic_id = $this->question->topic_id;
     }
 
     public function render()

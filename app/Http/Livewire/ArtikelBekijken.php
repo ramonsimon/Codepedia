@@ -21,6 +21,7 @@ class ArtikelBekijken extends Component
     public $rating;
     public $article;
     public $showDiv;
+    public $showSub;
     public $user_id;
     public $has_voted;
     public $article_id;
@@ -172,6 +173,16 @@ class ArtikelBekijken extends Component
             $this->showDiv = $showdiv;
         }
 
+    }
+
+    public function showSubComments($showsub)
+    {
+
+        if ($showsub == $this->showSub){
+            $this->showSub = null;
+        }else{
+            $this->showSub = $showsub;
+        }
     }
 
     public function render()

@@ -16,7 +16,7 @@ class ReactieWijzigen extends ModalComponent
 
     public static function modalMaxWidth(): string
     {
-        return '7xl';
+        return 'xl';
     }
 
     protected $rules = [

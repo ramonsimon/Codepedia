@@ -38,7 +38,7 @@
                         {{$astudent->name}}
                     </td>
                     <td class="border-b-2 p-4 dark:border-dark-5">
-                        hier komt achternaam student
+                       {{$astudent->last_name}}
                     </td>
                     <td class="border-b-2 p-4 dark:border-dark-5">
                         {{$astudent->email}}
@@ -99,7 +99,7 @@
                             {{$user->name}}
                         </td>
                         <td class="border-b-2 p-4 dark:border-dark-5">
-                            hier komt achternaam student
+                            {{$user->last_name}}
                         </td>
                         <td class="border-b-2 p-4 dark:border-dark-5">
                             {{$user->email}}

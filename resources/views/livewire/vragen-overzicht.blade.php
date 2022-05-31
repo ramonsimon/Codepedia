@@ -124,11 +124,7 @@
 
         @if(!$questions->isEmpty())
             @foreach($questions as $question)
-        <div x-data
-             @click="const ignores = ['button','a','svg','path'];
-                    if(!ignores.includes($el.tagName.toLowerCase())){
-                        window.location=$refs.link.href;
-                    }"
+        <div
 
             class="idea-container hover:shadow-card transition duration-150 ease-in bg-white rounded-xl flex cursor-pointer">
             <div class="flex px-2 py-6">
@@ -166,6 +162,14 @@
                             class="bg-amber-500 text-white text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">
                             Open
                         </div>
+                        <button wire:click='$emit("openModal", "reactie-wijzigen", {{ json_encode(["question" => $question, 'slug' => $question->slug, "type" => "question", "comment_type" => "question"]) }})' type="button"
+                            class="bg-amber-500 text-white text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">
+                            aanpassen
+                        </button>
+                        <button type="button"
+                            class="bg-amber-500 text-white text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">
+                            verwijderen
+                        </button>
                     </div>
                 </div>
             </div>

@@ -6,7 +6,6 @@
             target: $refs.tinymce,
             themes: 'modern',
             paste_block_drop: true,
-            paste_as_text: true,
             height: 200,
             width: 540,
             menubar: false,

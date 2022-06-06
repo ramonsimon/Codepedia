@@ -11,12 +11,17 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
     <!-- Styles -->
+    <link rel="stylesheet" href="{{ asset('css/prism.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/tinymce.css') }}">
+
+
     @livewireStyles
 
     <!-- Scripts -->
+    <script src="{{ asset('js/prism.js') }}"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
+
 </head>
 <body class="font-sans antialiased bg-gray-300 overflow-x-hidden">
 <header class="fixed w-screen flex items-center justify-between px-8 py-4 z-10 border-b-4 border-b-amber-500 bg-white">

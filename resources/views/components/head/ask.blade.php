@@ -13,11 +13,21 @@
             language: 'nl',
             plugins: [
                 'codesample',
-                'paste image'
+                'paste image',
+                'wordcount'
             ],
             menubar: '',
             toolbar: 'codesample ',
             setup: function(editor) {
+             	var max = 20;
+	    editor.on('submit', function(event) {
+		  var numChars = tinymce.activeEditor.plugins.wordcount.body.getCharacterCount();
+		  if (numChars > max) {
+			alert('Maximum ' + max + ' characters allowed.');
+event.preventDefault();
+return false;
+}
+});
                 editor.on('blur', function(e) {
                     value = editor.getContent()
                 })

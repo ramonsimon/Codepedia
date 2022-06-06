@@ -13,8 +13,7 @@
             language: 'nl',
             plugins: [
                 'codesample',
-                'paste image',
-                'wordcount'
+                'wordcount',
             ],
             menubar: '',
             toolbar: 'codesample ',

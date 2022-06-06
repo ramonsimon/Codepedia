@@ -149,7 +149,6 @@ class ArtikelBekijken extends Component
 
         $this->body = clean(($this->body));
         $this->validate();
-
         Comments::create([
             'body' => $this->body,
             'user_id' => auth()->id(),

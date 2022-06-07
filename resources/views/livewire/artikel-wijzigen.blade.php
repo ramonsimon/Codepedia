@@ -40,7 +40,7 @@
                 </div>
 
             </div>
-            <div style="width: 300px;">
+            <div class="flex items-center" style="width: 300px;">
                 <button type="submit" wire:click="submit"
                         class="py-2 px-4 bg-amber-500 hover:bg-amber-600 focus:ring-amber-400 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring rounded-lg">
                     Opslaan

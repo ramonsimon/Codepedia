@@ -14,9 +14,12 @@
             plugins: [
                 'codesample',
                 'wordcount',
+                'autoresize',
             ],
             menubar: '',
+            max_height: 500,
             toolbar: 'codesample ',
+            codesample_global_prismjs: true,
             setup: function(editor) {
              	var max = 20;
 	    editor.on('submit', function(event) {

@@ -76,10 +76,17 @@
 
             @auth
                 <div class="form-check flex flex-col justify-center items-center mr-3">
-                    <input wire:click="ownQuestions" class="form-check-input appearance-none h-4 w-4 border border-amber-300 rounded-sm bg-white checked:bg-amber-600 checked:border-amber-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" value="" id="flexCheckDefault">
+                    <!-- This example requires Tailwind CSS v2.0+ -->
+                    <!-- Enabled: "bg-indigo-600", Not Enabled: "bg-gray-200" -->
+                    <button type="button" wire:click="ownQuestions" class="{{$ownQuestions  ? "bg-amber-300" : "bg-gray-200"}} relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-300" role="switch" aria-checked="false">
+                        <span class="sr-only"></span>
+                        <!-- Enabled: "translate-x-5", Not Enabled: "translate-x-0" -->
+                        <span aria-hidden="true" class="{{$ownQuestions  ? "translate-x-5" : "translate-x-0"}} pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"></span>
+                    </button>
                     <label class="form-check-label inline-block text-gray-800" for="flexCheckDefault">
                         Eigen vragen
                     </label>
+
                 </div>
             @endif
 

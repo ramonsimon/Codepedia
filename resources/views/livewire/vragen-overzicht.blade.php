@@ -27,8 +27,7 @@
 
                 @endforeach
                 </select>
-                <div class="mb-2">
-                </div>
+
                 <div class="mb-2">
                     <x-head.question class="w-full" wire:model="description"/>
                 </div>
@@ -170,16 +169,16 @@
                     </div>
                     <div class="flex items-center space-x-2 mt-3">
                         <div
-                            class="bg-amber-500 text-white text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">
+                            class="bg-amber-500 text-white text-xxs font-bold uppercase leading-none rounded-full text-center py-2 px-2 flex justify-center items-center">
                             Open
                         </div>
                         <button wire:click='$emit("openModal", "question-wijzigen", {{ json_encode(["question" => $question]) }})' type="button"
-                            class="bg-amber-500 text-white text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">
+                            class="bg-amber-500 text-white text-xxs font-bold uppercase leading-none rounded-full text-center py-2 px-2 flex justify-center items-center">
                             aanpassen
                         </button>
                         @if($question->user->id == Auth::id())
                         <button type="button" wire:click='$emit("openModal", "vraag-verwijder-modal", {{ json_encode(["question" => $question]) }})'
-                            class="bg-amber-500 text-white text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">
+                            class="bg-amber-500 text-white text-xxs font-bold uppercase leading-none rounded-full text-center py-2 px-2 flex justify-center items-center">
                             verwijderen
                         </button>
                         @endif

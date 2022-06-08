@@ -13,30 +13,33 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/tinymce.css') }}">
+
+
     @livewireStyles
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+
+
 </head>
 <body class="font-sans antialiased bg-gray-300 overflow-x-hidden">
-<header class="fixed w-screen flex items-center justify-between px-8 py-4 z-10 border-b-4 border-b-amber-500 bg-white">
+<header class="fixed w-screen flex items-center justify-between px-8 py-4 z-10 border-b-4 border-b-amber-400 bg-white">
     <a href="{{route('index')}}"><img src="{{asset('codepedia_logo.png')}}" class="h-14 w-14"/></a>
-    <div class="flex items-center">
+    <div class="flex-shrink-0 flex  items-center">
+        <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+            <!-- Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" -->
+            <a href="{{ route('vragen-overzicht') }}" class="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"> Vragen </a>
+            <a href="{{ route('artikel-overzicht') }}" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"> Artikelen </a>
+        </div>
         @if (Route::has('login'))
             <div class="px-6 py-4 sm:block">
-
-                <a href="{{ route('vragen-overzicht') }}"
-                   class="mr-2 text-sm text-gray-700 dark:text-gray-500 underline">Vragen</a>
-                <a href="{{ route('artikel-overzicht') }}"
-                   class="mr-2 text-sm text-gray-700 dark:text-gray-500 underline">Artikelen</a>
-
                 @guest
                     <a href="{{ route('login') }}"
-                       class="text-sm text-gray-700 dark:text-gray-500 underline">Inloggen</a>
+                       class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Inloggen</a>
 
                     @if (Route::has('register'))
                         <a href="{{ route('register') }}"
-                           class="ml-2 text-sm text-gray-700 dark:text-gray-500 underline">Registreren</a>
+                           class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Registreren</a>
                     @endif
                 @endguest
             </div>

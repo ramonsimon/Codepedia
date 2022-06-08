@@ -146,10 +146,8 @@ class ArtikelBekijken extends Component
         if (! auth()->check()) {
             return redirect(route('login'));
         }
-
         $this->body = clean(($this->body));
         $this->validate();
-
         Comments::create([
             'body' => $this->body,
             'user_id' => auth()->id(),

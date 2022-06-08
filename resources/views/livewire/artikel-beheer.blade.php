@@ -1,4 +1,7 @@
 <div class="flex flex-col items-center overflow-x-auto">
+    @section('title')
+        Codepedia - Artikelenbeheer
+    @endsection
     <script src="{{ asset('js/tinymce/tinymce.min.js') }}"></script>
     <div class="flex bg-white ml-9 mt-5 rounded-xl items-center flex-col overflow-auto pb-10"
          style="width: 1000px;">

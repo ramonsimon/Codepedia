@@ -1,5 +1,9 @@
 <div class="flex flex-col items-center overflow-x-auto">
 
+    @section('title')
+        Codepedia - Studentenbeheer
+    @endsection
+
     <div class="flex bg-white ml-9 mt-5 rounded-xl items-center flex-col overflow-auto pb-10"
          style="width: 1000px;">
         <div class="flex space-x-96 mb-5 mt-5 items-center">

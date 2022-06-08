@@ -23,7 +23,6 @@ class DocentAanmaken extends Component
 
     ];
 
-
     public function submit(){
 
         $this->validate();
@@ -43,8 +42,6 @@ class DocentAanmaken extends Component
         ]);
 
     }
-
-
 
     public function render()
     {

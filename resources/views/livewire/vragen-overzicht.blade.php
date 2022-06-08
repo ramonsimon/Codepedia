@@ -1,5 +1,9 @@
 <div class="flex flex-row justify-center overflow-x-auto">
 
+    @section('title')
+        Codepedia - Vragenoverzicht
+    @endsection
+
     @can('ask questions')
         <div class="flex bg-white mr-9 mt-6 rounded-xl items-center flex-col pb-10 h-1/4"
              style="width: 400px;">

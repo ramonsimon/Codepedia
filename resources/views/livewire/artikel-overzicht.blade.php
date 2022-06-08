@@ -1,4 +1,7 @@
 <div class="flex flex-row justify-center overflow-x-auto">
+    @section('title')
+        Codepedia - Artikeloverzicht
+    @endsection
     <div class="space-y-6 my-6" style="width: 800px">
         <h2 class="font-bold text-2xl flex justify-center">Artikelen</h2>
         <div class="flex mb-5 mt-5" style="width: 400px;">

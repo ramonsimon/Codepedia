@@ -12,7 +12,9 @@
             </div>
         </div>
     @endif
-
+        @section('title')
+            Codepedia - Onderwerpen
+        @endsection
     <div class="flex flex-col items-center overflow-x-auto">
 
         <div class="flex bg-white mt-5 rounded-xl items-center flex-col overflow-auto pb-10 px-7 w-3/5">

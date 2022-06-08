@@ -1,5 +1,8 @@
 
     <div class="flex flex-row justify-center">
+        @section('title')
+            Codepedia - Home
+        @endsection
         <div class="mt-6 pr-2" style="width: 600px; ">
             <div class="flex justify-center items-center">
                 <h1 class="font-bold text-xl">Nieuwste artikelen</h1>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Codepedia</title>
+    <title>@yield('title', 'Codepedia')</title>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -28,7 +28,7 @@
     <div class="flex-shrink-0 flex  items-center">
         <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
             <!-- Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" -->
-            <a href="{{ route('vragen-overzicht') }}" class="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"> Vragen </a>
+            <a href="{{ route('vragen-overzicht') }}" class="text-gray-900 inline-flex items-center px-1 pt-1  text-sm font-medium"> Vragen </a>
             <a href="{{ route('artikel-overzicht') }}" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"> Artikelen </a>
         </div>
         @if (Route::has('login'))

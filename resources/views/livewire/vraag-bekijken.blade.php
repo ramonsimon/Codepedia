@@ -17,6 +17,9 @@
             </div>
         </div>
     @endif
+        @section('title')
+            Codepedia - {{ $question->title }}
+        @endsection
     <div class="flex flex-row justify-center overflow-x-auto">
         <div class="flex bg-white ml-9 mt-5 rounded-xl flex-col pb-10 mb-10 w-1/2">
             <div class="flex ml-1 px-2 py-6 mb-8">

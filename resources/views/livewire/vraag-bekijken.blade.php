@@ -102,7 +102,7 @@
                                 <a>{{ ucfirst(strtolower($comment->user->name)) . ' ' . ucfirst(strtolower($comment->user->last_name)) }}</a>
                             </h4>
                             <div class="flex justify-between text-gray-600 mt-3 line-clamp-3 w-full">
-                                <div>{!! $comment->body !!}</div>
+                                <div class="w-full break-all">{!! $comment->body !!}</div>
                                 <div class="">
                                     <div class="text-center">
                                         <div class="text-sm font-bold leading-none">

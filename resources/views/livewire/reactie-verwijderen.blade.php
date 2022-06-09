@@ -6,7 +6,7 @@
                 </path>
             </svg>
             <p class="text-gray-800 text-xl font-bold mt-4">
-                {{ $comment['body'] }} Verwijderen
+                Reactie Verwijderen
             </p>
             <p class="text-red-700 text-lg">
                 Het verwijderen zal alle reacties op deze reactie ook verwijderen.

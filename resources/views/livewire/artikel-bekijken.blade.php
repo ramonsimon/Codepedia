@@ -148,8 +148,8 @@
 
                         <div class="flex flex-row items-center justify-center">
                             @if($comment->user->id == auth()->id())
-                                <button
-                                    @if($article->is_closed) wire:click='$emit("openModal", "reactie-wijzigen", {{ json_encode(["comment" => $comment, 'slug' => $article->slug, "type" => "article", "comment_type" => "comment"]) }})' @endif>
+                                <button wire:click='$emit("openModal", "reactie-wijzigen", {{ json_encode(["comment" => $comment, 'slug' => $article->slug, "type" => "article", "comment_type" => "comment"]) }})'
+                                    @if($article->is_closed)  @endif>
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                          fill="gray">
                                         <path

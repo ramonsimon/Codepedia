@@ -10,7 +10,7 @@
             menubar: false,
             language: 'nl',
             plugins: [
-                'codesample wordcount'
+                'codesample'
             ],
             menubar: '',
             toolbar: 'codesample ',

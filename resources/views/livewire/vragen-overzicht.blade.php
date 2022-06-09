@@ -172,16 +172,26 @@
                             class="bg-amber-500 text-white text-xxs font-bold uppercase leading-none rounded-full text-center py-2 px-2 flex justify-center items-center">
                             Open
                         </div>
-                        <button wire:click='$emit("openModal", "question-wijzigen", {{ json_encode(["question" => $question]) }})' type="button"
-                            class="bg-amber-500 text-white text-xxs font-bold uppercase leading-none rounded-full text-center py-2 px-2 flex justify-center items-center">
-                            aanpassen
-                        </button>
                         @if($question->user->id == Auth::id())
-                        <button type="button" wire:click='$emit("openModal", "vraag-verwijder-modal", {{ json_encode(["question" => $question]) }})'
-                            class="bg-amber-500 text-white text-xxs font-bold uppercase leading-none rounded-full text-center py-2 px-2 flex justify-center items-center">
-                            verwijderen
-                        </button>
+                            <button wire:click='$emit("openModal", "question-wijzigen", {{ json_encode(["question" => $question]) }})' type="button"
+                                    class="bg-amber-500 text-white text-xxs font-bold uppercase leading-none rounded-full text-center py-2 px-2 flex justify-center items-center">
+                                aanpassen
+                            </button>
+                            <button type="button" wire:click='$emit("openModal", "vraag-verwijder-modal", {{ json_encode(["question" => $question]) }})'
+                                class="bg-amber-500 text-white text-xxs font-bold uppercase leading-none rounded-full text-center py-2 px-2 flex justify-center items-center">
+                                verwijderen
+                            </button>
+                        @else
+                            @auth
+                                <button type="button" wire:click='$emit("openModal", "vraag-verwijder-modal", {{ json_encode(["question" => $question]) }})'
+                                        class="bg-amber-500 text-white text-xxs font-bold uppercase leading-none rounded-full text-center py-2 px-2 flex justify-center items-center">
+                                    verwijderen
+                                </button>
+                            @endauth
+
+
                         @endif
+
                     </div>
                 </div>
             </div>

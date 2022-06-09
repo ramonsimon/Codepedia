@@ -74,10 +74,9 @@
                     </div>
 
                     @can('ask questions')
-                        <div class="flex mb-2 w-72">
-                            <input type="text" wire:model="body" @if($question->is_closed) disabled @endif
-                            class="rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                                   placeholder="Reactie..."/>
+                        <div class="flex mb-2 w-full">
+                            <x-head.ask class="w-full" wire:model="body" />
+
                         </div>
                         <button wire:click="submit" @if($question->is_closed) disabled @endif
                         class="w-72 py-2 px-4 bg-amber-500 hover:bg-amber-600 focus:ring-amber-400 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring rounded-lg  @if($question->is_closed) cursor-not-allowed @endif">
@@ -103,7 +102,7 @@
                                 <a>{{ ucfirst(strtolower($comment->user->name)) . ' ' . ucfirst(strtolower($comment->user->last_name)) }}</a>
                             </h4>
                             <div class="flex justify-between text-gray-600 mt-3 line-clamp-3 w-full">
-                                <div>{{ $comment->body }}</div>
+                                <div>{!! $comment->body !!}</div>
                                 <div class="">
                                     <div class="text-center">
                                         <div class="text-sm font-bold leading-none">

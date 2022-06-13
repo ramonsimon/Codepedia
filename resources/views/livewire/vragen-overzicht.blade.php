@@ -20,6 +20,7 @@
                            class="rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                            placeholder="Naam..." required/>
                 </div>
+                <div class="mb-2">
                 <select required wire:model="onderwerp_keuze" name="onderwerp_keuze" id="" class=" rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent">
                 @foreach($topics as $topic)
 
@@ -27,11 +28,11 @@
 
                 @endforeach
                 </select>
-
+                </div>
                 <div class="mb-2">
                     <x-head.question class="w-full" wire:model="description"/>
                 </div>
-                <div style="width: 300px;">
+                <div>
                     <button type="submit"
                             class="py-2 px-4 bg-amber-500 hover:bg-amber-600 focus:ring-amber-400 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring rounded-lg">
                         Stel vraag
@@ -134,9 +135,7 @@
 
     @if(!$questions->isEmpty())
             @foreach($questions as $question)
-        <div
-
-            class="idea-container hover:shadow-card transition duration-150 ease-in bg-white rounded-xl flex cursor-pointer">
+        <div class="idea-container hover:shadow-card transition duration-150 ease-in bg-white rounded-xl flex cursor-pointer">
             <div class="flex px-2 py-6">
                 <div class="border-r border-gray-100 px-5 py-8 flex items-center">
                     <div class="text-center">

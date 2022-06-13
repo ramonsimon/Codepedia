@@ -42,6 +42,9 @@ class VragenOverzicht extends Component
         $this->description = '';
     }
 
+
+
+
     public function render()
     {
         $search = '%' . $this->search . '%';
@@ -63,6 +66,7 @@ class VragenOverzicht extends Component
             switch ($this->filter) {
 
                 case 'ascending':
+                    $question = $question->orderBy('title', 'ASC');
                     $question = Question::orderBy('title', 'ASC');
                     break;
                 case 'descending':

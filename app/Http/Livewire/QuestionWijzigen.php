@@ -29,23 +29,27 @@ class QuestionWijzigen extends ModalComponent
         $this->forceClose()->closeModal();
     }
 
-
-
-
-
     public function submit()
     {
-        ;
-        $this->description = clean(($this->description));
+        if(!$this->question->is_closed ) {
+            $this->description = clean(($this->description));
 
-        $this->validate();
+            $this->validate();
 
-        Question::where('id', $this->question->id)->
-        update(['title' => $this->title,'description' => $this->description,'topic_id' => $this->topic_id]);
+            Question::where('id', $this->question->id)->
+            update(['title' => $this->title, 'description' => $this->description, 'topic_id' => $this->topic_id]);
 
-        return redirect('/vragen')->with([
-            'title' => 'Gelukt!',
-            'message' => 'Het artikel '  . ' is veranderd naar ' . $this->title,
+            return redirect('/vragen/overzicht')->with([
+                'title' => 'Gelukt!',
+                'message' => 'De vraag is gewijzigd',
+                'bg' => 'bg-green-200',
+                'border' => 'border-green-600'
+            ]);
+        }
+
+        return redirect('/vragen/overzicht')->with([
+            'title' => 'Oeps!',
+            'message' => 'Deze vraag is gesloten',
             'bg' => 'bg-green-200',
             'border' => 'border-green-600'
         ]);
@@ -54,11 +58,11 @@ class QuestionWijzigen extends ModalComponent
 
     public function mount(Question $question)
     {
-    $this->question = $question;
-    $this->onderwerpen = Topics::all();
-    $this->title = $this->question->title;
-    $this->description = $this->question->description;
-    $this->topic_id = $this->question->topic_id;
+        $this->question = $question;
+        $this->onderwerpen = Topics::all();
+        $this->title = $this->question->title;
+        $this->description = $this->question->description;
+        $this->topic_id = $this->question->topic_id;
     }
 
     public function render()

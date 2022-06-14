@@ -22,6 +22,8 @@ class VragenOverzicht extends Component
     public $question = 4;
     public $onderwerp_keuze;
     public $ownQuestions = false;
+    public $order;
+    public $ordertype;
 
 
     protected $rules = [
@@ -49,48 +51,50 @@ class VragenOverzicht extends Component
     {
         $search = '%' . $this->search . '%';
 
+            switch ($this->filter) {
+                case 'ascending':
+                    $this->order = 'ASC';
+                    $this->ordertype = 'title';
+                    break;
+                case 'descending':
+                    $this->order = 'DESC';
+                    $this->ordertype = 'title';
+                    break;
+                case 'newest':
+                    $this->order = 'DESC';
+                    $this->ordertype = 'created_at';
+                    break;
+                case 'oldest':
+                    $this->order = 'ASC';
+                    $this->ordertype = 'created_at';
+                    break;
+                default:
+                    $this->order = 'ASC';
+                    $this->ordertype = 'title';
+                    break;
+
+            }
+
         if ($this->topic == "all") {
             $question = Question::where('title', 'like', $search)
-                ->orderBy('title', 'ASC')
+                ->orderBy($this->ordertype, $this->order)
                 ;
         } else {
             $question = Question::where('title', 'like', $search )
-                ->where('topic_id', '=', $this->topic)->orderBy('title', 'ASC');
+                ->where('topic_id', '=', $this->topic)->orderBy($this->ordertype, $this->order);
         }
 
         if ($this->ownQuestions) {
             $question = $question->where('user_id', auth()->id());
         }
 
-        if ($this->filter) {
-            switch ($this->filter) {
-
-                case 'ascending':
-                    $question = $question->orderBy('title', 'ASC');
-                    $question = Question::orderBy('title', 'ASC');
-                    break;
-                case 'descending':
-                    $question = Question::orderBy('title', 'DESC');
-                    break;
-                case 'newest':
-                    $question = Question::orderBy('created_at', 'DESC');
-                    break;
-                case 'oldest':
-                    $question = Question::orderBy('created_at', 'ASC');
-                    break;
-
-            }
-        }
-
         $question = $question->simplePaginate(5);
-
 
         return view('livewire.vragen-overzicht', [
             'topics' => Topics::get(),
             'questions' => $question,
         ]);
     }
-
 
     public function ownQuestions()
     {

@@ -4,11 +4,14 @@ namespace App\Http\Livewire;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use phpDocumentor\Reflection\Types\This;
 
 class ProfielBewerken extends Component
 {
+    use LivewireAlert;
+
     public $user;
     public $name;
     public $email;
@@ -47,11 +50,8 @@ class ProfielBewerken extends Component
 
         $this->user->save();
 
-        return redirect('/gegevens/bewerken')->with([
-            'title' => 'Gelukt!',
-            'message' => 'Uw gegevens zijn bijgewerkt',
-            'bg' => 'bg-green-200',
-            'border' => 'border-green-600'
+        $this->alert('success', 'Gegevens bijgewerkt', [
+            'position' => 'bottom-end'
         ]);
     }
 }

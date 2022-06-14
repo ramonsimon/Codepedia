@@ -198,9 +198,7 @@ class VraagBekijken extends Component
     {
 
         // sort comments by date with pagination
-        $comments = question_comments::where('question_id', $this->question->id)->orderBy('created_at', 'desc')->paginate(3);
-
-
+        $comments = question_comments::where('question_id', $this->question->id)->orderBy('created_at', 'desc')->simplePaginate(3);
 
         return view('livewire.vraag-bekijken', [
             'comments' => $comments

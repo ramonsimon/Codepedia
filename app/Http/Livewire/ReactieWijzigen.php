@@ -13,6 +13,7 @@ class ReactieWijzigen extends ModalComponent
     public $body;
     public $type;
     public $comment;
+    public $comment_type;
 
     public static function modalMaxWidth(): string
     {
@@ -51,16 +52,18 @@ class ReactieWijzigen extends ModalComponent
 
         } elseif($this->type == 'question') {
 
-            if (!question_comments::where(['question_comments.id' => $this->comment['id']])->join('questions', 'questions.id', 'question_comments.question_id')->get()[0]->is_closed) {
-
-                if (auth()->id() != $this->comment['user_id']) {
+           if (auth()->id() != $this->comment['user_id']) {
                     return redirect('/vraag/' . $this->slug);
                 }
 
-                question_comments::where('id', $this->comment['id'])->
-                delete();
+                if($this->comment_type == 'subcomment'){
+                    dd('ff');
+                }else {
 
-                $this->forceClose()->closeModal();
+                    question_comments::where('id', $this->comment['id'])->
+                    update(['body' => $this->body]);
+                }
+
 
                 if ($this->type == 'question')
                     return redirect('/vraag/' . $this->slug)->with([
@@ -70,7 +73,7 @@ class ReactieWijzigen extends ModalComponent
                         'border' => 'border-green-800'
                     ]);
 
-            }
+
 
             return redirect('/vraag/' . $this->slug)->with([
                 'title' => 'Oeps!',
@@ -91,6 +94,7 @@ class ReactieWijzigen extends ModalComponent
 
     public function render()
     {
+
         return view('livewire.reactie-wijzigen');
     }
 }

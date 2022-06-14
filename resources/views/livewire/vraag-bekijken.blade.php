@@ -113,7 +113,7 @@
                                     @can('ask questions')
                                         <div class="flex justify-center">
                                             @if(auth()->id() != $comment->user->id)
-                                                <button wire:click="commentVote(true, {{ $comment->id }})"
+                                                <button wire:click="commentVotev(true, {{ $comment->id }})"
                                                         type="button">
                                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
                                                          viewBox="0 0 20 20" fill="currentColor">
@@ -149,7 +149,7 @@
                             <div class="flex flex-row items-center justify-center">
                                 @if($comment->user->id == auth()->id())
                                     <button
-                                        @if($question->is_closed) wire:click='$emit("openModal", "reactie-wijzigen", {{ json_encode(["comment" => $comment, 'slug' => $question->slug, "type" => "question", "comment_type" => "comment"]) }})' @endif>
+                                        @if(!$question->is_closed) wire:click='$emit("openModal", "reactie-wijzigen", {{ json_encode(["comment" => $comment, 'slug' => $question->slug, "type" => "question", "comment_type" => "comment"]) }})' @endif>
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                              fill="gray">
                                             <path
@@ -159,7 +159,6 @@
                                                   clip-rule="evenodd"/>
                                         </svg>
                                     </button>
-
                                     <button
                                         @if(!$question->is_closed) wire:click='$emit("openModal", "reactie-verwijderen", {{ json_encode(["comment" => $comment, 'slug' => $question->slug, "type" => "question", "comment_type" => "comment"]) }})' @endif>
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20"
@@ -203,7 +202,6 @@
                             @foreach ($comment->subcomments as $subcomment)
 
                                 <div class="flex flex-col items-center justify-center w-3/4">
-
                                     <div
                                         class="flex flex-col border-b border-gray-400 shadow-md pb-2 px-4 justify-center items-center mb-4 w-1/2">
                                         <h4 class="text-l font-semibold font-bold w-full">
@@ -227,7 +225,6 @@
                                                               clip-rule="evenodd"/>
                                                     </svg>
                                                 </button>
-
                                                 <button
                                                     wire:click='$emit("openModal", "reactie-verwijderen", {{ json_encode(["comment" => $comment, 'slug' => $question->slug, "type" => "question", "comment_type" => "sub_comment"]) }})'
                                                 >
@@ -243,20 +240,15 @@
                                         </div>
                                     </div>
                                 </div>
-
                             @endforeach
-
                         @endif
                     @endif
-
                 @empty
                     <div class="mx-auto w70 mt-12">
                         <div class="text-gray-400 text-center font-bold mt-6">Geen reacties</div>
                     </div>
                 @endforelse
                 {{ $comments->links() }}
-
-
             </div>
         </div>
     </div>

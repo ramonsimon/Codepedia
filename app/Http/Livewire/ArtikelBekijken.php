@@ -7,6 +7,7 @@ use App\Models\SubComments;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Comments;
 use App\Models\Article;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use App\Models\User;
 use App\Models\CommentsRating;
@@ -16,6 +17,7 @@ use Livewire\WithPagination;
 class ArtikelBekijken extends Component
 {
     use WithPagination;
+    use LivewireAlert;
     public $info;
     public $body;
     public $rating;
@@ -54,6 +56,7 @@ class ArtikelBekijken extends Component
 
     public function vote($type)
     {
+        $this->alert('success', 'Basic Alert');
         if (! auth()->check()) {
             return redirect(route('login'));
         }

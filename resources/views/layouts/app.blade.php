@@ -138,7 +138,11 @@
 </header>
 <div class="w-screen px-8 py-12 border-b-4 invisible"></div>
 <div>{{$slot}}</div>
-@livewireScripts
 @livewire('livewire-ui-modal')
+@livewireScripts
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<x-livewire-alert::scripts />
 </body>
 </html>

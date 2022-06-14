@@ -4,10 +4,13 @@ namespace App\Http\Livewire;
 
 use App\Models\Article;
 use App\Models\Comments;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
 class ReactiesToevoegen extends Component
 {
+    use LivewireAlert;
+
     public $article;
     public $comment = 'gggggrrfref';
     protected $rules = [

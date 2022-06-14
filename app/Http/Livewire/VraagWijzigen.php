@@ -8,7 +8,7 @@ use App\Models\Topics;
 use Livewire\Component;
 use LivewireUI\Modal\ModalComponent;
 
-class QuestionWijzigen extends ModalComponent
+class VraagWijzigen extends ModalComponent
 {
     public $question;
     public $description;

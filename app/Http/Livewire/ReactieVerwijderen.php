@@ -6,10 +6,12 @@ use App\Models\Comments;
 use App\Models\question_comments;
 use App\Models\QuestionSubComments;
 use App\Models\SubComments;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use LivewireUI\Modal\ModalComponent;
 
 class ReactieVerwijderen extends ModalComponent
 {
+    use LivewireAlert;
 
     public $slug;
     public $type;
@@ -62,14 +64,14 @@ class ReactieVerwijderen extends ModalComponent
                 Comments::where('id', $this->comment['id'])->
                 delete();
 
+                $this->emit('refresh');
+
                 $this->forceClose()->closeModal();
 
-                return redirect('/artikel/' . $this->slug)->with([
-                    'title' => 'Gelukt!',
-                    'message' => 'De reactie is verwijderd.',
-                    'bg' => 'bg-green-600',
-                    'border' => 'border-green-800'
+                $this->alert('success', 'Reactie verwijderd', [
+                    'position' => 'bottom-end'
                 ]);
+
             }
 
         } else {

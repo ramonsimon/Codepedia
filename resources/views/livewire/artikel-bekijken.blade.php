@@ -1,26 +1,8 @@
 <div>
-@if(Session::has('message'))
-    <script>setTimeout(function () {
-            document.getElementById("message").classList.add("opacity-0")
-        }, 3000);
-        setTimeout(function () {
-            document.getElementById("message").classList.add("hidden")
-        }, 3700);</script>
-    <div id="message" class="flex justify-center items-center duration-1000 transition-opacity">
-        <div class="{{ Session::get('border') . ' ' . Session::get('bg') }} text-black border-l-4 p-4 w-3/5 mt-5">
-            <p class="font-bold">
-                {{ Session::get('title') }}
-            </p>
-            <p>
-                {{ Session::get('message') }}
-            </p>
-        </div>
-    </div>
-@endif
     @section('title')
         Codepedia - {{ $article->title }}
     @endsection
-<div class="flex flex-row justify-center overflow-x-auto">
+        <div class="flex flex-row justify-center overflow-x-auto">
     <div class="flex bg-white ml-9 mt-5 rounded-xl flex-col pb-10 mb-10 w-1/2">
 
         <div class="flex ml-1 px-2 py-6 mb-8">
@@ -79,7 +61,10 @@
                         <x-head.ask class="w-full" wire:model="body"/>
                     </div>
                     <button wire:click="submit"
-                            class="w-72 py-2 px-4 bg-amber-500 hover:bg-amber-600 focus:ring-amber-400 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring rounded-lg">
+                            class="w-72 flex justify-center items-center text-center py-2 bg-amber-500 hover:bg-amber-600 focus:ring-amber-400 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring rounded-lg">
+                        <div wire:loading wire:target="submit">
+                            <div class="mr-1"><x-head.loading/></div>
+                        </div>
                         Reageer
                     </button>
                 @else

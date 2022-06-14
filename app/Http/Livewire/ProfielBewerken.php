@@ -19,7 +19,6 @@ class ProfielBewerken extends Component
 
         'name' => 'required|string',
         'lastname' => 'required|string',
-        'email' => 'required|email|max:255|unique:users|string',
         'password' => 'required|min:8|max:255|string'
 
     ];
@@ -48,6 +47,11 @@ class ProfielBewerken extends Component
 
         $this->user->save();
 
-        return redirect('/');
+        return redirect('/gegevens/bewerken')->with([
+            'title' => 'Gelukt!',
+            'message' => 'Uw gegevens zijn bijgewerkt',
+            'bg' => 'bg-green-200',
+            'border' => 'border-green-600'
+        ]);
     }
 }

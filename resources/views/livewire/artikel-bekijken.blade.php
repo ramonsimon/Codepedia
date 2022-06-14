@@ -242,7 +242,7 @@
                                             </button>
 
                                             <button
-                                                wire:click='$emit("openModal", "reactie-verwijderen", {{ json_encode(["comment" => $comment, 'slug' => $article->slug, "type" => "article", "comment_type" => "sub_comment"]) }})'
+                                                wire:click='$emit("openModal", "reactie-verwijderen", {{ json_encode(["comment" => $subcomment, 'slug' => $article->slug, "type" => "article", "comment_type" => "sub_comment"]) }})'
                                             >
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1"
                                                      viewBox="0 0 20 20"
@@ -255,7 +255,7 @@
                                             @else
                                                 @role('admin')
                                             <button
-                                                wire:click='$emit("openModal", "reactie-verwijderen", {{ json_encode(["comment" => $comment, 'slug' => $article->slug, "type" => "article", "comment_type" => "sub_comment"]) }})'
+                                                wire:click='$emit("openModal", "reactie-verwijderen", {{ json_encode(["comment" => $subcomment, 'slug' => $article->slug, "type" => "article", "comment_type" => "sub_comment"]) }})'
                                             >
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1"
                                                      viewBox="0 0 20 20"

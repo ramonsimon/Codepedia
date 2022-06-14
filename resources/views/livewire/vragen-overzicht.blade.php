@@ -161,7 +161,6 @@
                         <div class="font-semibold text-2xl">{{ $this->getVotes($question->id) }}</div>
                         <div class="text-gray-500">Votes</div>
                     </div>
-
                 </div>
 
                 <a href="#" class="flex-none ml-5 mt-4">

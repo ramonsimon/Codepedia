@@ -31,6 +31,8 @@ class ArtikelBekijken extends Component
     public $has_downvoted;
     public $votes_controller;
 
+    protected $listeners = ['refresh' => 'render'];
+
     protected $rules = [
         'body' => 'required|min:4|string',
         'user_id' => 'required',
@@ -56,7 +58,7 @@ class ArtikelBekijken extends Component
 
     public function vote($type)
     {
-        $this->alert('success', 'Basic Alert');
+
         if (! auth()->check()) {
             return redirect(route('login'));
         }
@@ -82,8 +84,14 @@ class ArtikelBekijken extends Component
             // Sets has_voted/has_downvoted to true according to which button the user clicked
             if ($type) {
                 $this->has_voted = true;
+                $this->alert('success', 'Upvote gegeven', [
+                    'position' => 'bottom-end'
+                ]);
             } else {
                 $this->has_downvoted = true;
+                $this->alert('success', 'Downvote gegeven', [
+                    'position' => 'bottom-end'
+                ]);
             }
         }
 
@@ -157,12 +165,11 @@ class ArtikelBekijken extends Component
             'article_id' => $this->article->id
         ]);
 
-        return redirect('/artikel/' . $this->article->slug)->with([
-            'title' => 'Gelukt!',
-            'message' => 'Uw reactie is geplaatst.',
-            'bg' => 'bg-green-200',
-            'border' => 'border-green-600'
+        $this->alert('success', 'Reactie geplaatst', [
+            'position' => 'bottom-end'
         ]);
+
+        $this->body = '';
     }
 
     public function showDiv($showdiv)

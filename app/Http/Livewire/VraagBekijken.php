@@ -14,12 +14,14 @@ use App\Models\QuestionSubComments;
 use App\Models\SubComments;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use Livewire\WithPagination;
 
 class VraagBekijken extends Component
 {
     use WithPagination;
+    use LivewireAlert;
     public $question;
     public $info;
     public $body;
@@ -115,12 +117,11 @@ class VraagBekijken extends Component
                 'question_id' => $this->question->id
             ]);
 
-            return redirect('/vraag/' . $this->question->slug)->with([
-                'title' => 'Gelukt!',
-                'message' => 'Uw reactie is geplaatst.',
-                'bg' => 'bg-green-200',
-                'border' => 'border-green-600'
+            $this->alert('success', 'Reactie geplaatst', [
+                'position' => 'bottom-end'
             ]);
+
+            $this->body = '';
         }
     }
 
@@ -193,6 +194,7 @@ class VraagBekijken extends Component
 
     public function render()
     {
+
         $comments = question_comments::where([
             'question_id' => $this->question->id
         ])->simplePaginate(3);

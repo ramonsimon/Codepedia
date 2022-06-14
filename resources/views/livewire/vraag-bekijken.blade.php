@@ -1,22 +1,4 @@
 <div>
-    @if(Session::has('message'))
-        <script>setTimeout(function () {
-                document.getElementById("message").classList.add("opacity-0")
-            }, 3000);
-            setTimeout(function () {
-                document.getElementById("message").classList.add("hidden")
-            }, 3700);</script>
-        <div id="message" class="flex justify-center items-center duration-1000 transition-opacity">
-            <div class="{{ Session::get('border') . ' ' . Session::get('bg') }} text-black border-l-4 p-4 w-3/5 mt-5">
-                <p class="font-bold">
-                    {{ Session::get('title') }}
-                </p>
-                <p>
-                    {{ Session::get('message') }}
-                </p>
-            </div>
-        </div>
-    @endif
         @section('title')
             Codepedia - {{ $question->title }}
         @endsection
@@ -78,8 +60,11 @@
                             <x-head.ask class="w-full" wire:model="body" />
 
                         </div>
-                        <button wire:click="submit" @if($question->is_closed) disabled @endif
-                        class="w-72 py-2 px-4 bg-amber-500 hover:bg-amber-600 focus:ring-amber-400 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring rounded-lg  @if($question->is_closed) cursor-not-allowed @endif">
+                        <button wire:click="submit"
+                                class="w-72 flex justify-center items-center text-center py-2 bg-amber-500 hover:bg-amber-600 focus:ring-amber-400 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring rounded-lg">
+                            <div wire:loading wire:target="submit">
+                                <div class="mr-1"><x-head.loading/></div>
+                            </div>
                             Reageer
                         </button>
                     @else

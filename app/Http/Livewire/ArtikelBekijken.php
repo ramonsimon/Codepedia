@@ -44,6 +44,7 @@ class ArtikelBekijken extends Component
         'body.required' => 'Reactie is verplicht',
     ];
 
+    // this function is used to get the article info
     public function mount(Article $article)
     {
         $votes_controller = new VotesController();
@@ -103,7 +104,7 @@ class ArtikelBekijken extends Component
             return redirect(route('login'));
         }
 
-
+        //this
         $votes_controller = new VotesController();
 
         $info = $votes_controller->getColumn('CommentsRating');
@@ -124,7 +125,6 @@ class ArtikelBekijken extends Component
         }
 
     }
-
 
 
     public function addReply($id)
@@ -195,9 +195,9 @@ class ArtikelBekijken extends Component
 
     public function render()
     {
-        $comments = Comments::where([
-            'article_id' => $this->article_id
-        ])->simplePaginate(3);
+        // sort comments by date
+        $comments = Comments::where('article_id', $this->article->id)->orderBy('created_at', 'desc')->simplePaginate(3);
+
 
         return view('livewire.artikel-bekijken', [
             'comments' => $comments

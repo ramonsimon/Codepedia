@@ -15,6 +15,7 @@ class ArtikelOverzicht extends Component
     public $search;
     public $filter = false;
 
+
     public function getVotes($id)
     {
         $votes_controller = new VotesController();

@@ -85,6 +85,7 @@ class ReactieWijzigen extends ModalComponent
 
     }
 
+
     public function mount($comment, $slug)
     {
         $this->comment = $comment;

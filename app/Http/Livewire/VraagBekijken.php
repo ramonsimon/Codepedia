@@ -94,6 +94,8 @@ class VraagBekijken extends Component
 
     }
 
+
+
     public function commentRating($id)
     {
         $votes_controller = new VotesController();

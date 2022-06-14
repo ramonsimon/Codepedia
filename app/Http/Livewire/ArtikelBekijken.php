@@ -152,6 +152,7 @@ class ArtikelBekijken extends Component
         return $votes_controller->getRating('Comments', $id);
     }
 
+
     public function submit()
     {
         if (! auth()->check()) {

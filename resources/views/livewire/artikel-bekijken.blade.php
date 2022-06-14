@@ -213,7 +213,7 @@
 
                                     <div class="flex flex-row items-center justify-center">
                                         @if($subcomment->user_id == auth()->id())
-                                            <button  wire:click='$emit("openModal", "reactie-wijzigen", {{ json_encode(["comment" => $comment, 'slug' => $article->slug, "type" => "article", "comment_type" => "sub_comment"]) }})'
+                                            <button  wire:click='$emit("openModal", "reactie-wijzigen", {{ json_encode(["comment" => $subcomment, 'slug' => $article->slug, "type" => "article", "comment_type" => "sub_comment"]) }})'
                                             >
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
                                                      viewBox="0 0 20 20"

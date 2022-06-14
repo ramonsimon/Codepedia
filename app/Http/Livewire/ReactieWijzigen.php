@@ -3,6 +3,9 @@
 namespace App\Http\Livewire;
 
 use App\Models\question_comments;
+use App\Models\QuestionComments;
+use App\Models\QuestionSubComments;
+use App\Models\SubComments;
 use LivewireUI\Modal\ModalComponent;
 use App\Models\Comments;
 
@@ -14,6 +17,7 @@ class ReactieWijzigen extends ModalComponent
     public $type;
     public $comment;
     public $comment_type;
+
 
     public static function modalMaxWidth(): string
     {
@@ -29,68 +33,47 @@ class ReactieWijzigen extends ModalComponent
         $this->forceClose()->closeModal();
     }
 
+
     public function submit()
     {
-
-        if ($this->type == 'article') {
-
-            if (auth()->id() != $this->comment['user_id']) {
-                return redirect('/artikel/' . $this->slug);
-            }
-
-            $this->validate();
-
-            Comments::where('id', $this->comment['id'])->
-            update(['body' => $this->body]);
-
-            return redirect('/artikel/' . $this->slug)->with([
-                'title' => 'Gelukt!',
-                'message' => 'Uw reactie ' . $this->comment['body'] . ' is veranderd naar ' . $this->body,
-                'bg' => 'bg-green-200',
-                'border' => 'border-green-600'
-            ]);
-
-        } elseif($this->type == 'question') {
-
-           if (auth()->id() != $this->comment['user_id']) {
-                    return redirect('/vraag/' . $this->slug);
-                }
-
-                if($this->comment_type == 'subcomment'){
-                    dd('ff');
-                }else {
-
-                    question_comments::where('id', $this->comment['id'])->
-                    update(['body' => $this->body]);
-                }
-
-
-                if ($this->type == 'question')
-                    return redirect('/vraag/' . $this->slug)->with([
-                        'title' => 'Gelukt!',
-                        'message' => 'Uw reactie ' . $this->comment['body'] . ' is veranderd naar ' . $this->body,
-                        'bg' => 'bg-green-600',
-                        'border' => 'border-green-800'
-                    ]);
-
-
-
-            return redirect('/vraag/' . $this->slug)->with([
-                'title' => 'Oeps!',
-                'message' => 'De vraag is gesloten, er kunnen daarom geen reacties worden gewijzigd.',
-                'bg' => 'bg-red-600',
-                'border' => 'border-red-800'
-            ]);
+        if (!auth()->check()) {
+            return;
         }
+
+        if ($this->type == 'article' && $this->comment_type == 'sub_comment') {
+
+            $comment = SubComments::where('id', $this->comment['id'])->first();
+            $comment->description = $this->body;
+            $comment->save();
+        }  elseif ($this->type == 'article') {
+            $comment = Comments::where('id', $this->comment)->first();
+            $comment->body = $this->body;
+            $comment->save();
+        } elseif ($this->type == 'question' && $this->comment_type == 'sub_comment') {
+            $comment = QuestionSubComments::where('id', $this->comment['id'])->first();
+            $comment->description = $this->body;
+            $comment->save();
+        } elseif ($this->type == 'question') {
+            $comment = QuestionComments::where('id', $this->comment['id'])->first();
+            $comment->body = $this->body;
+            $comment->save();
+        }
+
 
     }
 
 
-    public function mount($comment, $slug)
+    public function mount($comment, $slug, $comment_type)
     {
         $this->comment = $comment;
         $this->slug = $slug;
-        $this->body = $comment['body'];
+
+        if ($comment_type == 'sub_comment') {
+            $this->body = $comment['description'];
+        }else{
+            $this->body = $comment['body'];
+        }
+        $this->comment_type = $comment_type;
     }
 
     public function render()

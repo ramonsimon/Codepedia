@@ -95,7 +95,6 @@ class VraagBekijken extends Component
     }
 
 
-
     public function commentRating($id)
     {
         $votes_controller = new VotesController();
@@ -126,6 +125,9 @@ class VraagBekijken extends Component
             $this->body = '';
         }
     }
+
+
+
 
     public function commentVote($type, $id)
     {

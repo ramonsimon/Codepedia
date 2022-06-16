@@ -18,6 +18,7 @@ class ArtikelBekijken extends Component
 {
     use WithPagination;
     use LivewireAlert;
+
     public $info;
     public $body;
     public $rating;
@@ -60,7 +61,7 @@ class ArtikelBekijken extends Component
     public function vote($type)
     {
 
-        if (! auth()->check()) {
+        if (!auth()->check()) {
             return redirect(route('login'));
         }
 
@@ -72,13 +73,13 @@ class ArtikelBekijken extends Component
             $this->article->rating = $votes_controller->removeVote(auth()->user(), true, 'articles_rating', $this->article->id, articles_rating::query(), $this->info);
             // Set has_voted to false, this removes the blue text
             $this->has_voted = false;
-        // Check if user has already downvoted and if they clicked downvote
-        } elseif($this->has_downvoted && !$type) {
+            // Check if user has already downvoted and if they clicked downvote
+        } elseif ($this->has_downvoted && !$type) {
             // Remove the users vote
             $this->article->rating = $votes_controller->removeVote(auth()->user(), false, 'articles_rating', $this->article->id, articles_rating::query(), $this->info);
             // Set has_downvoted to false, this removes the red text
             $this->has_downvoted = false;
-        // Goes here if the user selected vote while having a downvote currently on the article (or the other way around)
+            // Goes here if the user selected vote while having a downvote currently on the article (or the other way around)
         } else {
             $this->article->rating = $votes_controller->vote(auth()->user(), $this->has_voted, $this->has_downvoted, $type, $this->article->id, articles_rating::query(), $this->info);
 
@@ -100,7 +101,7 @@ class ArtikelBekijken extends Component
 
     public function commentVote($type, $id)
     {
-        if (! auth()->check()) {
+        if (!auth()->check()) {
             return redirect(route('login'));
         }
 
@@ -116,7 +117,7 @@ class ArtikelBekijken extends Component
             // Remove the users vote
             $votes_controller->removeVote(auth()->user(), true, 'comments_rating', $id, CommentsRating::query(), $info);
             // Check if user has already downvoted and if they clicked downvote
-        } elseif($c_has_downvoted && !$type) {
+        } elseif ($c_has_downvoted && !$type) {
             // Remove the users vote
             $votes_controller->removeVote(auth()->user(), false, 'comments_rating', $id, CommentsRating::query(), $info);
             // Goes here if the user selected vote while having a downvote currently on the article (or the other way around)
@@ -129,7 +130,7 @@ class ArtikelBekijken extends Component
 
     public function addReply($id)
     {
-        if (SubComments::where(['comments_id' => $id, 'user_id' =>Auth::id()])->get()->count() < 10) {
+        if (SubComments::where(['comments_id' => $id, 'user_id' => Auth::id()])->get()->count() < 10) {
 
             $this->validate([
                 'sub_comment' => 'required'
@@ -154,7 +155,7 @@ class ArtikelBekijken extends Component
 
     public function submit()
     {
-        if (! auth()->check()) {
+        if (!auth()->check()) {
             return redirect(route('login'));
         }
         $this->body = clean(($this->body));
@@ -175,9 +176,9 @@ class ArtikelBekijken extends Component
     public function showDiv($showdiv)
     {
 
-        if ($showdiv == $this->showDiv){
+        if ($showdiv == $this->showDiv) {
             $this->showDiv = null;
-        }else{
+        } else {
             $this->showDiv = $showdiv;
         }
 
@@ -186,9 +187,9 @@ class ArtikelBekijken extends Component
     public function showSubComments($showsub)
     {
 
-        if ($showsub == $this->showSub){
+        if ($showsub == $this->showSub) {
             $this->showSub = null;
-        }else{
+        } else {
             $this->showSub = $showsub;
         }
     }

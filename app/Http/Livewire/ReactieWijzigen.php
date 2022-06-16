@@ -6,11 +6,13 @@ use App\Models\question_comments;
 use App\Models\QuestionComments;
 use App\Models\QuestionSubComments;
 use App\Models\SubComments;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use LivewireUI\Modal\ModalComponent;
 use App\Models\Comments;
 
 class ReactieWijzigen extends ModalComponent
 {
+    use LivewireAlert;
 
     public $slug;
     public $body;
@@ -39,7 +41,7 @@ class ReactieWijzigen extends ModalComponent
         if (!auth()->check()) {
             return;
         }
-
+        //
         if ($this->type == 'article' && $this->comment_type == 'sub_comment') {
 
             $comment = SubComments::where('id', $this->comment['id'])->first();
@@ -57,11 +59,17 @@ class ReactieWijzigen extends ModalComponent
             $comment = QuestionComments::where('id', $this->comment['id'])->first();
             $comment->body = $this->body;
             $comment->save();
-        }
 
+
+        }
+        $this->alert('success', 'Reactie geplaatst', [
+            'position' => 'bottom-end'
+        ]);
+
+        $this->emit('refresh');
+        $this->closeModal();
 
     }
-
 
     public function mount($comment, $slug, $comment_type)
     {
@@ -74,6 +82,8 @@ class ReactieWijzigen extends ModalComponent
             $this->body = $comment['body'];
         }
         $this->comment_type = $comment_type;
+
+
     }
 
     public function render()

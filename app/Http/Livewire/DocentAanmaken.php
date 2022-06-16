@@ -3,11 +3,14 @@
 namespace App\Http\Livewire;
 
 use App\Models\User;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use Spatie\Permission\Models\Role;
 
 class DocentAanmaken extends Component
 {
+    use LivewireAlert;
+
     public $name;
     public $last_name;
     public $email;
@@ -34,12 +37,18 @@ class DocentAanmaken extends Component
         $user->assignRole('admin');
         $user->save();
 
-        return redirect('/docent/aanmaken/')->with([
-            'title' => 'Gelukt!',
-            'message' => 'De docent is aangemaakt.',
-            'bg' => 'bg-green-200',
-            'border' => 'border-green-600'
+
+
+        $this->alert('success', 'Reactie geplaatst', [
+            'position' => 'bottom-end'
         ]);
+
+        $this->name = null;
+        $this->last_name = null;
+        $this->email = null;
+        $this->password = null;
+        $this->passwordrep = null;
+
 
     }
 

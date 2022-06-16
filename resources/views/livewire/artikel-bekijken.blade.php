@@ -267,7 +267,6 @@
             @endforelse
             {{ $comments->links() }}
 
-
         </div>
     </div>
 </div>

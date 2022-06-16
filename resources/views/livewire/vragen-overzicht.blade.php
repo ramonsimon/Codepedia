@@ -1,22 +1,5 @@
 <div>
-@if(Session::has('message'))
-    <script>setTimeout(function () {
-            document.getElementById("message").classList.add("opacity-0")
-        }, 3000);
-        setTimeout(function () {
-            document.getElementById("message").classList.add("hidden")
-        }, 3700);</script>
-    <div id="message" class="flex justify-center items-center duration-1000 transition-opacity">
-        <div class="{{ Session::get('border') . ' ' . Session::get('bg') }} text-black border-l-4 p-4 w-3/5 mt-5">
-            <p class="font-bold">
-                {{ Session::get('title') }}
-            </p>
-            <p>
-                {{ Session::get('message') }}
-            </p>
-        </div>
-    </div>
-@endif
+
 <div class="flex flex-row justify-center overflow-x-auto">
 
     @section('title')
@@ -163,13 +146,13 @@
                     </div>
                 </div>
 
-                <a href="#" class="flex-none ml-5 mt-4">
+                <a class="flex-none ml-5 mt-4">
                     <img src="{{ $question->user->getAvatar() }}" alt="avatar"
                          class="w-14 h-14 rounded-xl">
                 </a>
                 <div class="ml-4">
                     <h4 class="text-xl font-semibold">
-                        <a href="{{ route('vraag-bekijken', $question )}}" x-ref="link" class="hover:underline">{{$question->title}}@if($question->is_closed) (Gesloten) @endif</a>
+                        <a href="{{ route('vraag-bekijken', $question )}}" x-ref="link" class="hover:underline">{{$question->title}} {{ $question->is_closed ? '(Gesloten)' : '' }}</a>
                     </h4>
                     <div class="text-gray-600 mt-3 line-clamp-3">
                         {{$question->sub_description}}
@@ -185,10 +168,12 @@
                         </div>
                     </div>
                     <div class="flex items-center space-x-2 mt-3">
-                        <div
-                            class="bg-amber-500 text-white text-xxs font-bold uppercase leading-none rounded-full text-center py-2 px-2 flex justify-center items-center">
-                            Open
-                        </div>
+                        <a href="{{ route('vraag-bekijken', $question )}}" x-ref="link">
+                            <div
+                                class="bg-amber-500 text-white text-xxs font-bold uppercase leading-none rounded-full text-center py-2 px-2 flex justify-center items-center">
+                                Open
+                            </div>
+                        </a>
                         @if($question->user->id == Auth::id())
                             <button wire:click='$emit("openModal", "question-wijzigen", {{ json_encode(["question" => $question]) }})' type="button"
                                     class="bg-amber-500 text-white text-xxs font-bold uppercase leading-none rounded-full text-center py-2 px-2 flex justify-center items-center">
@@ -199,12 +184,12 @@
                                 verwijderen
                             </button>
                         @else
-                            @auth
+                            @role('admin')
                                 <button type="button" wire:click='$emit("openModal", "vraag-verwijder-modal", {{ json_encode(["question" => $question]) }})'
                                         class="bg-amber-500 text-white text-xxs font-bold uppercase leading-none rounded-full text-center py-2 px-2 flex justify-center items-center">
                                     verwijderen
                                 </button>
-                            @endauth
+                            @endrole
 
 
                         @endif

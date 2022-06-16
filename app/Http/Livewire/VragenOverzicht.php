@@ -44,8 +44,7 @@ class VragenOverzicht extends Component
         $this->description = '';
     }
 
-
-
+    //get
 
     public function render()
     {

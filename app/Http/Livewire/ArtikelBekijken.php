@@ -152,7 +152,6 @@ class ArtikelBekijken extends Component
         return $votes_controller->getRating('Comments', $id);
     }
 
-
     public function submit()
     {
         if (! auth()->check()) {
@@ -198,7 +197,6 @@ class ArtikelBekijken extends Component
     {
         // sort comments by date
         $comments = Comments::where('article_id', $this->article->id)->orderBy('created_at', 'desc')->simplePaginate(3);
-
 
         return view('livewire.artikel-bekijken', [
             'comments' => $comments

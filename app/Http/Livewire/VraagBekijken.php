@@ -174,6 +174,8 @@ class VraagBekijken extends Component
 
     }
 
+
+
     public function showDiv($showdiv)
     {
 

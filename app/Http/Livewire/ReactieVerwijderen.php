@@ -30,34 +30,33 @@ class ReactieVerwijderen extends ModalComponent
             if ($this->type == 'question') {
                 if (!question_comments::where(['question_comments.id' => $this->comment['id']])->join('questions', 'questions.id', 'question_comments.question_id')->get()[0]->is_closed) {
 
-                    if (auth()->id() != $this->comment['user_id']) {
+                    if (auth()->id() != $this->comment['user_id'] && !auth()->user()->role('admin')) {
                         return redirect('/vraag/' . $this->slug);
                     }
 
                     question_comments::where('id', $this->comment['id'])->
                     delete();
 
+                    $this->emit('refresh');
+
                     $this->forceClose()->closeModal();
 
-                    if ($this->type == 'question')
-                        return redirect('/vraag/' . $this->slug)->with([
-                            'title' => 'Gelukt!',
-                            'message' => 'De reactie is verwijderd.',
-                            'bg' => 'bg-green-600',
-                            'border' => 'border-green-800'
-                        ]);
+                    $this->alert('success', 'Reactie verwijderd', [
+                        'position' => 'bottom-end'
+                    ]);
 
                 }
 
-                return redirect('/vraag/' . $this->slug)->with([
-                    'title' => 'Oeps!',
-                    'message' => 'De vraag is gesloten, er kunnen daarom geen reacties worden verwijderd.',
-                    'bg' => 'bg-red-600',
-                    'border' => 'border-red-800'
+                $this->emit('refresh');
+
+                $this->forceClose()->closeModal();
+
+                $this->alert('warning', 'De vraag is gesloten en dus kunnen er geen reacties worden verwijderd', [
+                    'position' => 'bottom-end'
                 ]);
             } elseif ($this->type == 'article') {
 
-                if (auth()->id() != $this->comment['user_id']) {
+                if (auth()->id() != $this->comment['user_id'] && !auth()->user()->role('admin')) {
                     return redirect('/artikel/' . $this->slug);
                 }
 
@@ -77,7 +76,7 @@ class ReactieVerwijderen extends ModalComponent
         } else {
 
             if ($this->type == 'question') {
-                if (auth()->id() != $this->comment['user_id']) {
+                if (auth()->id() != $this->comment['user_id'] && !auth()->user()->role('admin')) {
                     return redirect('/vraag/' . $this->slug);
                 }
 
@@ -87,29 +86,29 @@ class ReactieVerwijderen extends ModalComponent
                 $this->forceClose()->closeModal();
 
                 if ($this->type == 'question')
-                    return redirect('/vraag/' . $this->slug)->with([
-                        'title' => 'Gelukt!',
-                        'message' => 'De reactie is verwijderd.',
-                        'bg' => 'bg-green-600',
-                        'border' => 'border-green-800'
-                    ]);
+                    $this->emit('refresh');
+
+                $this->forceClose()->closeModal();
+
+                $this->alert('success', 'Reactie verwijderd', [
+                    'position' => 'bottom-end'
+                ]);
             } elseif ($this->type == 'article') {
 
-                if (auth()->id() != $this->comment['user_id']) {
+                if (auth()->id() != $this->comment['user_id'] && !auth()->user()->role('admin')) {
                     return redirect('/artikel/' . $this->slug);
                 }
 
                 SubComments::where('id', $this->comment['id'])->
                 delete();
 
+                $this->emit('refresh');
+
                 $this->forceClose()->closeModal();
 
-                    return redirect('/artikel/' . $this->slug)->with([
-                        'title' => 'Gelukt!',
-                        'message' => 'De reactie is verwijderd.',
-                        'bg' => 'bg-green-600',
-                        'border' => 'border-green-800'
-                    ]);
+                $this->alert('success', 'Reactie verwijderd', [
+                    'position' => 'bottom-end'
+                ]);
 
             }
 

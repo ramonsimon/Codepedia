@@ -192,6 +192,7 @@ class ArtikelBekijken extends Component
         } else {
             $this->showSub = $showsub;
         }
+
     }
 
     public function render()

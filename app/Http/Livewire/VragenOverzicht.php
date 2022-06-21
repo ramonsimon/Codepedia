@@ -44,17 +44,11 @@ class VragenOverzicht extends Component
         $this->description = '';
     }
 
-    //get
-
     public function render()
     {
         $search = '%' . $this->search . '%';
 
             switch ($this->filter) {
-                case 'ascending':
-                    $this->order = 'ASC';
-                    $this->ordertype = 'title';
-                    break;
                 case 'descending':
                     $this->order = 'DESC';
                     $this->ordertype = 'title';
@@ -71,7 +65,6 @@ class VragenOverzicht extends Component
                     $this->order = 'ASC';
                     $this->ordertype = 'title';
                     break;
-
             }
 
         if ($this->topic == "all") {

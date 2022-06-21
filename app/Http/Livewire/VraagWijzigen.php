@@ -5,11 +5,13 @@ namespace App\Http\Livewire;
 use App\Models\Article;
 use App\Models\Question;
 use App\Models\Topics;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use LivewireUI\Modal\ModalComponent;
 
 class VraagWijzigen extends ModalComponent
 {
+    use LivewireAlert;
     public $question;
     public $description;
     public $pnderwerpen;
@@ -39,20 +41,21 @@ class VraagWijzigen extends ModalComponent
             Question::where('id', $this->question->id)->
             update(['title' => $this->title, 'description' => $this->description, 'topic_id' => $this->topic_id]);
 
-            return redirect('/vragen/overzicht')->with([
-                'title' => 'Gelukt!',
-                'message' => 'De vraag is gewijzigd',
-                'bg' => 'bg-green-200',
-                'border' => 'border-green-600'
+            $this->alert('success', 'Vraag aangepast', [
+                'position' => 'bottom-end'
             ]);
-        }
 
-        return redirect('/vragen/overzicht')->with([
-            'title' => 'Oeps!',
-            'message' => 'Deze vraag is gesloten',
-            'bg' => 'bg-green-200',
-            'border' => 'border-green-600'
-        ]);
+            $this->emit('refresh');
+            $this->closeModal();
+
+        }else {
+            $this->alert('warning', 'Deze vraag is gesloten', [
+                'position' => 'bottom-end'
+            ]);
+
+            $this->emit('refresh');
+            $this->closeModal();
+        }
 
     }
 

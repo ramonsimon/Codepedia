@@ -70,7 +70,7 @@
                            {{Str::limit($question->title, 10, $end='...')}}
                         </td>
                         <td class="border-b-2 p-4 dark:border-dark-5 w-12 truncate text-center">
-                           {{Str::limit($question->description, 10, $end='...')}}
+                           {!!Str::limit($question->description, 10, $end='...')!!}
                         </td>
                         <td class="border-b-2 p-4 dark:border-dark-5 text-center">
                             {{Str::limit($question->topic->name, 10, $end='...')}}

@@ -25,7 +25,6 @@ public $sub_description;
 
     ];
 
-
     public function submit()
     {
         $this->description = clean(($this->description));
@@ -33,7 +32,6 @@ public $sub_description;
         Article::create($validatedData);
 
         return redirect()->to('/artikel/beheer');
-
     }
 
 

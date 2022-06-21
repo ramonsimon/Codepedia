@@ -164,6 +164,8 @@
                             <div>&bull;</div>
                             <div>{{$question->topic->name }}</div>
                             <div>&bull;</div>
+                            <div>{{$question->user->name }}</div>
+                            <div>&bull;</div>
                             <div class="text-gray-900">{{$question->comments->count()}} reacties</div>
                         </div>
                     </div>

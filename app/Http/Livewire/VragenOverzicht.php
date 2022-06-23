@@ -25,6 +25,7 @@ class VragenOverzicht extends Component
     public $order;
     public $ordertype;
 
+    protected $listeners = ['refresh' => 'render'];
 
     protected $rules = [
         'title' => 'required|max:30',

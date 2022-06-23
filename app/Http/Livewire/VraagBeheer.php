@@ -13,6 +13,8 @@ class VraagBeheer extends Component
     public $search;
     public $topic = 'all';
 
+    protected $listeners = ['refresh' => 'render'];
+
     public function open($id)
     {
         Question::where(['id' => $id])

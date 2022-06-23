@@ -3,10 +3,13 @@
 namespace App\Http\Livewire;
 
 use App\Models\Topics;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use LivewireUI\Modal\ModalComponent;
 
 class OnderwerpToevoegen extends ModalComponent
 {
+    use LivewireAlert;
+
     public $name;
 
     protected $rules = [
@@ -20,19 +23,21 @@ class OnderwerpToevoegen extends ModalComponent
         if (!Topics::where('name', '=', $this->name)->exists()) {
             Topics::create($validatedData);
 
-            return redirect('/onderwerpen')->with([
-                'title' => 'Gelukt!',
-                'message' => 'Het onderwerp is toegevoegd.',
-                'bg' => 'bg-green-200',
-                'border' => 'border-green-600'
+            $this->emit('refresh');
+
+            $this->forceClose()->closeModal();
+
+            return $this->alert('success', 'Onderwerp toegevoegd', [
+                'position' => 'bottom-end'
             ]);
         }
 
-        return redirect('/onderwerpen')->with([
-            'title' => 'Oeps er ging iets mis!',
-            'message' => 'Het onderwerp bestaat al.',
-            'bg' => 'bg-red-200',
-            'border' => 'border-red-600'
+        $this->emit('refresh');
+
+        $this->forceClose()->closeModal();
+
+        return $this->alert('warning', 'Het onderwerp bestaat al', [
+            'position' => 'bottom-end'
         ]);
     }
 

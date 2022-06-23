@@ -37,9 +37,7 @@ class DocentAanmaken extends Component
         $user->assignRole('admin');
         $user->save();
 
-
-
-        $this->alert('success', 'Reactie geplaatst', [
+        $this->alert('success', 'Docent ' . $user->name . ' ' . $user->last_name . ' aangemaakt', [
             'position' => 'bottom-end'
         ]);
 
@@ -48,7 +46,6 @@ class DocentAanmaken extends Component
         $this->email = null;
         $this->password = null;
         $this->passwordrep = null;
-
 
     }
 

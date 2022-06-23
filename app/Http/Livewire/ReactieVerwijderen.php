@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Comments;
 use App\Models\question_comments;
+use App\Models\QuestionComments;
 use App\Models\QuestionSubComments;
 use App\Models\SubComments;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
@@ -25,94 +26,34 @@ class ReactieVerwijderen extends ModalComponent
 
     public function delete()
     {
-
-        if ($this->comment_type == "comment") {
-            if ($this->type == 'question') {
-                if (!question_comments::where(['question_comments.id' => $this->comment['id']])->join('questions', 'questions.id', 'question_comments.question_id')->get()[0]->is_closed) {
-
-                    if (auth()->id() != $this->comment['user_id'] && !auth()->user()->role('admin')) {
-                        return redirect('/vraag/' . $this->slug);
-                    }
-
-                    question_comments::where('id', $this->comment['id'])->
-                    delete();
-
-                    $this->emit('refresh');
-
-                    $this->forceClose()->closeModal();
-
-                    $this->alert('success', 'Reactie verwijderd', [
-                        'position' => 'bottom-end'
-                    ]);
-
-                }
-
-                $this->emit('refresh');
-
-                $this->forceClose()->closeModal();
-
-                $this->alert('warning', 'De vraag is gesloten en dus kunnen er geen reacties worden verwijderd', [
-                    'position' => 'bottom-end'
-                ]);
-            } elseif ($this->type == 'article') {
-
-                if (auth()->id() != $this->comment['user_id'] && !auth()->user()->role('admin')) {
-                    return redirect('/artikel/' . $this->slug);
-                }
-
-                Comments::where('id', $this->comment['id'])->
-                delete();
-
-                $this->emit('refresh');
-
-                $this->forceClose()->closeModal();
-
-                $this->alert('success', 'Reactie verwijderd', [
-                    'position' => 'bottom-end'
-                ]);
-
-            }
-
-        } else {
-
-            if ($this->type == 'question') {
-                if (auth()->id() != $this->comment['user_id'] && !auth()->user()->role('admin')) {
-                    return redirect('/vraag/' . $this->slug);
-                }
-
-                QuestionSubComments::where('id', $this->comment['id'])->
-                delete();
-
-                $this->forceClose()->closeModal();
-
-                if ($this->type == 'question')
-                    $this->emit('refresh');
-
-                $this->forceClose()->closeModal();
-
-                $this->alert('success', 'Reactie verwijderd', [
-                    'position' => 'bottom-end'
-                ]);
-            } elseif ($this->type == 'article') {
-
-                if (auth()->id() != $this->comment['user_id'] && !auth()->user()->role('admin')) {
-                    return redirect('/artikel/' . $this->slug);
-                }
-
-                SubComments::where('id', $this->comment['id'])->
-                delete();
-
-                $this->emit('refresh');
-
-                $this->forceClose()->closeModal();
-
-                $this->alert('success', 'Reactie verwijderd', [
-                    'position' => 'bottom-end'
-                ]);
-
-            }
-
+        if ($this->type == 'article' && $this->comment_type == 'sub_comment') {
+            $comment = SubComments::where('id', $this->comment['id'])->first();
+            $comment->delete();
+        } elseif ($this->type == 'article') {
+            $comment = Comments::where('id', $this->comment)->first();
+            $comment->delete();
+        } elseif ($this->type == 'question' && $this->comment_type == 'sub_comment' && $this->comment['question']->is_closed == false) {
+            $comment = QuestionSubComments::where('id', $this->comment['id'])->first();
+            $comment->delete();
+        } elseif ($this->type == 'question' && $this->comment['question']->is_closed == false) {
+            $comment = QuestionComments::where('id', $this->comment['id'])->first();
+            $comment->delete();
         }
+
+        // check if question is closed
+        if ($this->type == 'question' && $this->comment['question']->is_closed == true) {
+            $this->alert('warning', 'Deze vraag is gesloten', [
+                'position' => 'bottom-end'
+            ]);
+        } else {
+            $this->alert('success', 'Reactie verwijderd', [
+                'position' => 'bottom-end'
+            ]);
+        }
+
+        $this->forceClose()->closeModal();
+        $this->emit('refresh');
+
 
         }
 

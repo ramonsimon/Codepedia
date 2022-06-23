@@ -2,11 +2,10 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Article;
+
 use App\Models\Question;
 use App\Models\Topics;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
-use Livewire\Component;
 use LivewireUI\Modal\ModalComponent;
 
 class VraagWijzigen extends ModalComponent
@@ -44,18 +43,14 @@ class VraagWijzigen extends ModalComponent
             $this->alert('success', 'Vraag aangepast', [
                 'position' => 'bottom-end'
             ]);
-
-            $this->emit('refresh');
-            $this->closeModal();
-
         }else {
             $this->alert('warning', 'Deze vraag is gesloten', [
                 'position' => 'bottom-end'
             ]);
-
-            $this->emit('refresh');
-            $this->closeModal();
         }
+
+        $this->emit('refresh');
+        $this->closeModal();
 
     }
 

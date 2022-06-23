@@ -146,7 +146,7 @@
                                     </button>
                                         @if(!$question->is_closed)
                                         <button
-                                        wire:click='$emit("openModal", "reactie-wijzigen", {{ json_encode(["comment" => $comment, 'slug' => $question->slug, "type" => "article", "comment_type" => "comment"]) }})'>
+                                        wire:click='$emit("openModal", "reactie-verwijderen", {{ json_encode(["comment" => $comment, 'slug' => $question->slug, "type" => "question", "comment_type" => "comment"]) }})'>
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20"
                                              fill="gray">
                                             <path fill-rule="evenodd"

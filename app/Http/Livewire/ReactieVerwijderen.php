@@ -86,7 +86,8 @@ class ReactieVerwijderen extends ModalComponent
                 $this->forceClose()->closeModal();
 
                 if ($this->type == 'question')
-                    $this->emit('refresh');
+
+                $this->emit('refresh');
 
                 $this->forceClose()->closeModal();
 

@@ -4,31 +4,32 @@ namespace App\Http\Livewire;
 
 
 use App\Models\Question;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use LivewireUI\Modal\ModalComponent;
 
 class VraagVerwijderModal extends ModalComponent
 {
+    use LivewireAlert;
+
     public $question;
 
     public function cancel()
     {
         $this->forceClose()->closeModal();
     }
-
-
+    
     public function delete()
     {
         Question::where('id', $this->question['id'])->
         delete();
 
+        $this->emit('refresh');
+
         $this->forceClose()->closeModal();
 
-        return redirect('/vraag/beheer')->with([
-            'title' => 'Gelukt!',
-            'message' => 'Het artikel is verwijderd.',
-            'bg' => 'bg-green-600',
-            'border' => 'border-green-800'
+        $this->alert('success', 'Vraag verwijderd', [
+            'position' => 'bottom-end'
         ]);
 
     }

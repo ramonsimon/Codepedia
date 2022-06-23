@@ -2,13 +2,18 @@
 
 namespace App\Http\Livewire;
 use App\Models\Topics;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
 class Onderwerpen extends Component
 {
+    use LivewireAlert;
+
     public $filter;
     public $topics;
     public $message;
+
+    protected $listeners = ['refresh' => 'render'];
 
     public function render()
     {

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('articles_rating', function (Blueprint $table) {
             $table->id();
             $table->unique(['article_id', 'user_id']);
-            $table->foreignId('article_id')->constrained();
+            $table->foreignId('article_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained();
             $table->tinyInteger('rating');
             $table->timestamps();

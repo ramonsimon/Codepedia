@@ -2,11 +2,15 @@
 
 namespace App\Http\Livewire;
 
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use LivewireUI\Modal\ModalComponent;
 use App\Models\Topics;
 
 class OnderwerpVerwijderModal extends ModalComponent
 {
+
+    use LivewireAlert;
+
     public $topic;
 
     public function cancel()
@@ -21,11 +25,12 @@ class OnderwerpVerwijderModal extends ModalComponent
 
         $this->forceClose()->closeModal();
 
-        return redirect('/onderwerpen')->with([
-            'title' => 'Gelukt!',
-            'message' => 'Het onderwerp is verwijderd.',
-            'bg' => 'bg-green-600',
-            'border' => 'border-green-800'
+        $this->emit('refresh');
+
+        $this->forceClose()->closeModal();
+
+        return $this->alert('success', 'Onderwerp verwijderd', [
+            'position' => 'bottom-end'
         ]);
 
     }

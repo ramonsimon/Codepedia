@@ -20,6 +20,8 @@ use Livewire\WithPagination;
 
 class VraagBekijken extends Component
 {
+    protected $listeners = ['refresh' => 'render'];
+
     use WithPagination;
     use LivewireAlert;
     public $question;
@@ -156,7 +158,6 @@ class VraagBekijken extends Component
         }
 
     }
-
     public function addReply($id)
     {
         if (QuestionSubComments::where(['question_comments_id' => $id, 'user_id' =>Auth::id()])->get()->count() < 10) {
@@ -165,12 +166,14 @@ class VraagBekijken extends Component
                 'sub_comment' => 'required'
             ]);
 
-            return QuestionSubComments::create([
+             QuestionSubComments::create([
                 'question_id' => $this->question->id,
                 'user_id' => Auth::id(),
                 'description' => $this->sub_comment,
                 'question_comments_id' => $id
             ]);
+            $this->emit('refresh');
+            $this->sub_comment = '';
 
         }
 
@@ -180,12 +183,12 @@ class VraagBekijken extends Component
 
     public function showDiv($showdiv)
     {
-
         if ($showdiv == $this->showDiv){
             $this->showDiv = null;
         }else{
             $this->showDiv = $showdiv;
         }
+        $this->showSubComments($showdiv);
     }
 
     public function showSubComments($showsub)
@@ -195,7 +198,7 @@ class VraagBekijken extends Component
             $this->showSub = null;
         }else{
             $this->showSub = $showsub;
-        }
+        };
     }
 
     public function render()

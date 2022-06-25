@@ -1,5 +1,4 @@
 <div>
-
 <div class="flex flex-row justify-center overflow-x-auto">
 
     @section('title')
@@ -152,7 +151,7 @@
                 </a>
                 <div class="ml-4">
                     <h4 class="text-xl font-semibold">
-                        <a href="{{ route('vraag-bekijken', $question )}}" x-ref="link" class="hover:underline">{{$question->title}} {{ $question->is_closed ? '(Gesloten)' : '' }}</a>
+                        <a href="{{ route('vraag-bekijken', $question )}}" x-data="{}" x-ref="link" class="hover:underline">{{$question->title}} {{ $question->is_closed ? '(Gesloten)' : '' }}</a>
                     </h4>
                     <div class="text-gray-600 mt-3 line-clamp-3">
                         {{$question->sub_description}}
@@ -170,7 +169,7 @@
                         </div>
                     </div>
                     <div class="flex items-center space-x-2 mt-3">
-                        <a href="{{ route('vraag-bekijken', $question )}}" x-ref="link">
+                        <a href="{{ route('vraag-bekijken', $question )}}" x-data="{}" x-ref="link">
                             <div
                                 class="bg-amber-500 text-white text-xxs font-bold uppercase leading-none rounded-full text-center py-2 px-2 flex justify-center items-center">
                                 Open

@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
     <link rel="stylesheet" href="{{ asset('css/tinymce.css') }}">
 
 
@@ -24,6 +24,16 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/tinymce/tinymce.min.js') }}" referrerpolicy="origin"></script>
+
+    @livewire('livewire-ui-modal')
+    @livewireScripts
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+
+
 
 
 </head>
@@ -143,11 +153,8 @@
 </header>
 <div class="w-screen px-8 py-12 border-b-4 invisible"></div>
 <div>{{$slot}}</div>
-@livewire('livewire-ui-modal')
-@livewireScripts
 
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<x-livewire-alert::scripts />
+
 </body>
 </html>

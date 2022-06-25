@@ -1,0 +1,13 @@
+{
+    "baseUrl": "http://codepedia3.herokuapp.com",
+    "chromeWebSecurity": false,
+    "retries": 2,
+    "defaultCommandTimeout": 5000,
+    "watchForFileChanges": false,
+    "integrationFolder": "tests/cypress/integration",
+    "pluginsFile": "tests/cypress/plugins/index.js",
+    "videosFolder": "tests/cypress/videos",
+    "supportFile": "tests/cypress/support/index.js",
+    "screenshotsFolder": "tests/cypress/screenshots",
+    "fixturesFolder": "tests/cypress/fixture"
+}

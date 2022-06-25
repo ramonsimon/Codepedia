@@ -41,6 +41,7 @@ class ReactieWijzigen extends ModalComponent
         if (!auth()->check()) {
             return;
         }
+        //
         if ($this->type == 'article' && $this->comment_type == 'sub_comment') {
 
             $comment = SubComments::where('id', $this->comment['id'])->first();

@@ -26,36 +26,36 @@ class ReactieVerwijderen extends ModalComponent
 
     public function delete()
     {
-        if (!auth()->check()) {
-            return;
-        }
         if ($this->type == 'article' && $this->comment_type == 'sub_comment') {
             $comment = SubComments::where('id', $this->comment['id'])->first();
+            $comment->delete();
         } elseif ($this->type == 'article') {
             $comment = Comments::where('id', $this->comment)->first();
-        } elseif ($this->type == 'question' && $this->comment_type == 'sub_comment') {
+            $comment->delete();
+        } elseif ($this->type == 'question' && $this->comment_type == 'sub_comment' && $this->comment['question']->is_closed == false) {
             $comment = QuestionSubComments::where('id', $this->comment['id'])->first();
-        } elseif ($this->type == 'question') {
+            $comment->delete();
+        } elseif ($this->type == 'question' && $this->comment['question']->is_closed == false) {
             $comment = QuestionComments::where('id', $this->comment['id'])->first();
+            $comment->delete();
         }
 
-        if ($comment->is_closed == false){
-            $comment->delete();
-            $this->emit('refresh');
-            $this->forceClose()->closeModal();
-
+        // check if question is closed
+        if ($this->type == 'question' && $this->comment['question']->is_closed == true) {
+            $this->alert('warning', 'Deze vraag is gesloten', [
+                'position' => 'bottom-end'
+            ]);
+        } else {
             $this->alert('success', 'Reactie verwijderd', [
                 'position' => 'bottom-end'
             ]);
-        } else{
-            $this->alert('danger', 'Reactie is gesloten', [
-                'position' => 'bottom-end'
-            ]);
         }
-    }
+
+        $this->forceClose()->closeModal();
+        $this->emit('refresh');
 
 
-
+        }
 
     public function mount($comment, $slug, $type, $comment_type)
     {
@@ -67,7 +67,6 @@ class ReactieVerwijderen extends ModalComponent
 
     public function render()
     {
-
         return view('livewire.reactie-verwijderen');
     }
 }

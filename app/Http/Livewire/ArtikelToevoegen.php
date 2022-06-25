@@ -18,19 +18,11 @@ public $sub_description;
 
 
     protected $rules = [
-        'title' => 'required',
+        'title' => 'required|min:4|max:30',
         'topic_id' => 'required',
         'description' => 'required|min:4',
         'sub_description' =>'required|min:4',
 
-    ];
-
-    //custom message for validation
-    protected $messages = [
-        'title.required' => 'De titel is verplicht',
-        'topic_id.required' => 'Het onderwerp is verplicht',
-        'description.required' => 'De inhoud is verplicht',
-        'sub_description.required' => 'De omschrijving is verplicht',
     ];
 
     public function submit()

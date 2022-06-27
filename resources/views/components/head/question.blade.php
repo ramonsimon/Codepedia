@@ -5,10 +5,10 @@
         tinymce.init({
             target: $refs.tinymce,
             themes: 'modern',
+            body_id : '1',
             height: 200,
             width : 340,
             menubar: false,
-            language: 'nl',
             plugins: [
                 'codesample'
             ],
@@ -17,6 +17,9 @@
             setup: function(editor) {
                 editor.on('blur', function(e) {
                     value = editor.getContent()
+                })
+                editor.on('change', function(e) {
+                    @this.set('description', editor.getContent())
                 })
                 editor.on('init', function (e) {
                     if (value != null) {

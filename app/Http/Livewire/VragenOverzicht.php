@@ -38,6 +38,17 @@ class VragenOverzicht extends Component
         $this->onderwerp_keuze = 1;
     }
 
+    public function updatedTopic($value)
+    {
+        $this->gotoPage(1);
+    }
+
+    public function updatedSearch($value)
+    {
+        $this->gotoPage(1);
+    }
+
+
     public function submit(){
         $this->validate();
         Question::create(['title'=> $this->title,'user_id'=> Auth::id(),'topic_id' => $this->onderwerp_keuze,'description' => $this->description]);

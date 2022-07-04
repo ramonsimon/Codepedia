@@ -6,14 +6,21 @@ use App\Models\Question;
 use App\Models\Topics;
 use Illuminate\Support\Facades\Session;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class VraagBeheer extends Component
 {
-
+    use withPagination;
     public $search;
     public $topic = 'all';
 
     protected $listeners = ['refresh' => 'render'];
+
+
+    public function updatedTopic($value)
+    {
+        $this->gotoPage(1);
+    }
 
     public function open($id)
     {
@@ -39,6 +46,7 @@ class VraagBeheer extends Component
 
         if ($this->topic == "all") {
             $questions = Question::where('title', 'like', $search)->simplePaginate(8, ['*'], 'questionPage');
+
         } else {
             $questions = Question::where('title', 'like', $search )
                 ->where('topic_id', '=', $this->topic)->simplePaginate(8, ['*'], 'questionPage');

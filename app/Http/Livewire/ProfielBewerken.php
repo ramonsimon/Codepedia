@@ -22,7 +22,7 @@ class ProfielBewerken extends Component
 
         'name' => 'required|string',
         'lastname' => 'required|string',
-        'password' => 'required|min:8|max:255|string'
+        'password' => 'nullable|min:8|max:255|string'
 
     ];
 
@@ -46,7 +46,10 @@ class ProfielBewerken extends Component
 
         $this->user->name = $this->name;
         $this->user->last_name = $this->lastname;
-        $this->user->password = bcrypt($this->password);
+
+        if (!strlen($this->password) < 1) {
+            $this->user->password = bcrypt($this->password);
+        }
 
         $this->user->save();
 

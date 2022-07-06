@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Storearticles_ratingRequest;
 use App\Http\Requests\Updatearticles_ratingRequest;
 use App\Models\articles_rating;
+use Illuminate\Http\Response;
 
 class ArticlesRatingController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -21,7 +22,7 @@ class ArticlesRatingController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -31,8 +32,8 @@ class ArticlesRatingController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\Storearticles_ratingRequest  $request
-     * @return \Illuminate\Http\Response
+     * @param Storearticles_ratingRequest $request
+     * @return Response
      */
     public function store(Storearticles_ratingRequest $request)
     {
@@ -42,8 +43,8 @@ class ArticlesRatingController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\articles_rating  $articles_rating
-     * @return \Illuminate\Http\Response
+     * @param articles_rating $articles_rating
+     * @return Response
      */
     public function show(articles_rating $articles_rating)
     {
@@ -53,8 +54,8 @@ class ArticlesRatingController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\articles_rating  $articles_rating
-     * @return \Illuminate\Http\Response
+     * @param articles_rating $articles_rating
+     * @return Response
      */
     public function edit(articles_rating $articles_rating)
     {
@@ -64,9 +65,9 @@ class ArticlesRatingController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\Updatearticles_ratingRequest  $request
-     * @param  \App\Models\articles_rating  $articles_rating
-     * @return \Illuminate\Http\Response
+     * @param Updatearticles_ratingRequest $request
+     * @param articles_rating $articles_rating
+     * @return Response
      */
     public function update(Updatearticles_ratingRequest $request, articles_rating $articles_rating)
     {
@@ -76,8 +77,8 @@ class ArticlesRatingController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\articles_rating  $articles_rating
-     * @return \Illuminate\Http\Response
+     * @param articles_rating $articles_rating
+     * @return Response
      */
     public function destroy(articles_rating $articles_rating)
     {

@@ -10001,7 +10001,7 @@
         return firstPositionIn(elm.dom);
       }).fold(() => {
         editor.selection.normalize();
-        return;
+
       }, caretPos => editor.selection.setRng(caretPos.toRange()));
     };
     const focusBody = body => {

@@ -198,7 +198,7 @@ class VraagBekijken extends Component
             $this->showSub = null;
         }else{
             $this->showSub = $showsub;
-        };
+        }
     }
 
     public function render()

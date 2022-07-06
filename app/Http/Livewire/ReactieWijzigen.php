@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\question_comments;
 use App\Models\QuestionComments;
 use App\Models\QuestionSubComments;
 use App\Models\SubComments;

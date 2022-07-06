@@ -40,7 +40,7 @@ class PermissionSeeder extends Seeder
         // gets all permissions via Gate::before rule; see AuthServiceProvider
 
         // create demo users
-        $user = \App\Models\User::factory()->create([
+        $user = User::factory()->create([
             'name' => 'Stefan',
             'last_name' => 'Hoekstra',
             'email' => 'stefan.hoekstra02@gmail.com',
@@ -48,7 +48,7 @@ class PermissionSeeder extends Seeder
         ]);
         $user->assignRole($role4);
 
-        $user = \App\Models\User::factory()->create([
+        $user = User::factory()->create([
             'name' => 'Ramon',
             'last_name' => 'Visser',
             'email' => 'ramonsimon8@gmail.com',
@@ -56,7 +56,7 @@ class PermissionSeeder extends Seeder
         ]);
         $user->assignRole($role4);
 
-        $user = \App\Models\User::factory()->create([
+        $user = User::factory()->create([
             'name' => 'Quelly',
             'last_name' => 'Steuper',
             'email' => 'q.steuper@gmail.com',
@@ -64,7 +64,7 @@ class PermissionSeeder extends Seeder
         ]);
         $user->assignRole($role4);
 
-        $user = \App\Models\User::factory()->create([
+        $user = User::factory()->create([
             'name' => 'pending',
             'last_name' => 'codepedia',
             'email' => 'pending@codepedia.nl',
@@ -72,7 +72,7 @@ class PermissionSeeder extends Seeder
         ]);
         $user->assignRole($role1);
 
-        $user = \App\Models\User::factory()->create([
+        $user = User::factory()->create([
             'name' => 'verified',
             'last_name' => 'codepedia',
             'email' => 'verified@codepedia.nl',
@@ -80,7 +80,7 @@ class PermissionSeeder extends Seeder
         ]);
         $user->assignRole($role2);
 
-        $user = \App\Models\User::factory()->create([
+        $user = User::factory()->create([
             'name' => 'user',
             'last_name' => 'codepedia',
             'email' => 'user@codepedia.nl',
@@ -88,7 +88,7 @@ class PermissionSeeder extends Seeder
         ]);
         $user->assignRole($role3);
 
-        $user = \App\Models\User::factory()->create([
+        $user = User::factory()->create([
             'name' => 'Admin',
             'last_name' => 'codepedia',
             'email' => 'docent@codepedia.nl',

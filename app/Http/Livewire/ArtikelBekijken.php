@@ -9,7 +9,6 @@ use App\Models\Comments;
 use App\Models\Article;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
-use App\Models\User;
 use App\Models\CommentsRating;
 use App\Http\Controllers\VotesController;
 use Livewire\WithPagination;

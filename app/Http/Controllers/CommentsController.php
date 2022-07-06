@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCommentsRequest;
 use App\Http\Requests\UpdateCommentsRequest;
 use App\Models\Comments;
+use Illuminate\Http\Response;
 
 class CommentsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -21,7 +22,7 @@ class CommentsController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -31,8 +32,8 @@ class CommentsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreCommentsRequest  $request
-     * @return \Illuminate\Http\Response
+     * @param StoreCommentsRequest $request
+     * @return Response
      */
     public function store(StoreCommentsRequest $request)
     {
@@ -42,8 +43,8 @@ class CommentsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Comments  $comments
-     * @return \Illuminate\Http\Response
+     * @param Comments $comments
+     * @return Response
      */
     public function show(Comments $comments)
     {
@@ -53,8 +54,8 @@ class CommentsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Comments  $comments
-     * @return \Illuminate\Http\Response
+     * @param Comments $comments
+     * @return Response
      */
     public function edit(Comments $comments)
     {
@@ -64,9 +65,9 @@ class CommentsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateCommentsRequest  $request
-     * @param  \App\Models\Comments  $comments
-     * @return \Illuminate\Http\Response
+     * @param UpdateCommentsRequest $request
+     * @param Comments $comments
+     * @return Response
      */
     public function update(UpdateCommentsRequest $request, Comments $comments)
     {
@@ -76,8 +77,8 @@ class CommentsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Comments  $comments
-     * @return \Illuminate\Http\Response
+     * @param Comments $comments
+     * @return Response
      */
     public function destroy(Comments $comments)
     {

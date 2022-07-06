@@ -34,12 +34,9 @@
                             </svg>
                     </span>
                 </div>
-
             </div>
         </div>
-
         <div class="w-11/12">
-
             <table class="table p-4 bg-gray-100 rounded-lg mb-2 w-full">
                 <thead>
                 <tr>
@@ -64,7 +61,6 @@
                 </tr>
                 </thead>
                 <tbody>
-
                 <div class="mb-1">
                     {{ $articles->links() }}
                 </div>
@@ -83,14 +79,15 @@
                             {{$this->getvotes($article->id)}}
                         </td>
                         <td class="border-b-2 p-4 dark:border-dark-5 text-center">
-                            <button wire:click='$emit("openModal", "artikel-wijzigen", {{ json_encode(["article" => $article]) }})'>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="gray">
-                                <path
-                                    d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"/>
-                                <path fill-rule="evenodd"
-                                      d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
-                                      clip-rule="evenodd"/>
-                            </svg>
+                            <button
+                                wire:click='$emit("openModal", "artikel-wijzigen", {{ json_encode(["article" => $article]) }})'>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="gray">
+                                    <path
+                                        d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"/>
+                                    <path fill-rule="evenodd"
+                                          d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
+                                          clip-rule="evenodd"/>
+                                </svg>
                             </button>
                         </td>
                         <td class="border-b-2 p-4 dark:border-dark-5 text-center">
@@ -105,7 +102,6 @@
                         </td>
                     </tr>
                 @endforeach
-                {{--                End article--}}
                 </tbody>
             </table>
             <a class="" href="{{ route('artikel-toevoegen') }}">

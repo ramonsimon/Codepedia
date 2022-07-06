@@ -2,10 +2,11 @@
 
 namespace Database\Factories;
 
+use App\Models\Votes;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Votes>
+ * @extends Factory
  */
 class VotesFactory extends Factory
 {

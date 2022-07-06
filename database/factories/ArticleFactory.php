@@ -7,7 +7,7 @@ use App\Models\Article;
 use App\Models\User;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Article>
+ * @extends Factory
  */
 class ArticleFactory extends Factory
 {

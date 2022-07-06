@@ -1,6 +1,18 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Livewire\ArtikelBeheer;
+use App\Http\Livewire\ArtikelBekijken;
+use App\Http\Livewire\ArtikelOverzicht;
+use App\Http\Livewire\ArtikelToevoegen;
+use App\Http\Livewire\ArtikelWijzigen;
+use App\Http\Livewire\DocentAanmaken;
+use App\Http\Livewire\Index;
+use App\Http\Livewire\Onderwerpen;
+use App\Http\Livewire\ProfielBewerken;
+use App\Http\Livewire\StudentenBeheer;
+use App\Http\Livewire\VraagBeheer;
+use App\Http\Livewire\VraagBekijken;
 use App\Http\Livewire\VragenOverzicht;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -18,27 +30,27 @@ use Illuminate\Support\Facades\Route;
 */
 // Admin
 Route::group(['middleware' => ['verified', 'role:admin']], function () {
-    Route::get('/onderwerpen',\App\Http\Livewire\Onderwerpen::class)->name('onderwerpen');
-    Route::get('/artikel/toevoegen',\App\Http\Livewire\ArtikelToevoegen::class)->name('artikel-toevoegen');
-    Route::get('/artikel/wijzigen',\App\Http\Livewire\ArtikelWijzigen::class)->name('artikel-wijzigen');
-    Route::get('/docent/aanmaken',\App\Http\Livewire\DocentAanmaken::class)->name('docent-aanmaken');
-    Route::get('/artikel/beheer',\App\Http\Livewire\ArtikelBeheer::class)->name('artikel-beheer');
-    Route::get('/vraag/beheer',\App\Http\Livewire\VraagBeheer::class)->name('vraag-beheer');
-    Route::get('/studenten/beheer',\App\Http\Livewire\StudentenBeheer::class)->name('studenten-beheer');
+    Route::get('/onderwerpen', Onderwerpen::class)->name('onderwerpen');
+    Route::get('/artikel/toevoegen', ArtikelToevoegen::class)->name('artikel-toevoegen');
+    Route::get('/artikel/wijzigen', ArtikelWijzigen::class)->name('artikel-wijzigen');
+    Route::get('/docent/aanmaken', DocentAanmaken::class)->name('docent-aanmaken');
+    Route::get('/artikel/beheer', ArtikelBeheer::class)->name('artikel-beheer');
+    Route::get('/vraag/beheer', VraagBeheer::class)->name('vraag-beheer');
+    Route::get('/studenten/beheer', StudentenBeheer::class)->name('studenten-beheer');
 });
 
 Route::group(['middleware' => ['verified-or-guest']], function () {
-    Route::get('/artikel/overzicht',\App\Http\Livewire\ArtikelOverzicht::class)->name('artikel-overzicht');
+    Route::get('/artikel/overzicht', ArtikelOverzicht::class)->name('artikel-overzicht');
     Route::get('/vragen/overzicht',vragenOverzicht::class)->name('vragen-overzicht');
-    Route::get('/vraag/{question:slug}',\App\Http\Livewire\VraagBekijken::class)->name('vraag-bekijken');
+    Route::get('/vraag/{question:slug}', VraagBekijken::class)->name('vraag-bekijken');
 
-    Route::get('/', \App\Http\Livewire\Index::class)->name('index');
-    Route::get('/artikel/{article:slug}', \App\Http\Livewire\ArtikelBekijken::class)->name('artikel-bekijken');
+    Route::get('/', Index::class)->name('index');
+    Route::get('/artikel/{article:slug}', ArtikelBekijken::class)->name('artikel-bekijken');
 
 });
 
 Route::group(['middleware' => ['verified']], function () {
-    Route::get('/gegevens/bewerken',\App\Http\Livewire\ProfielBewerken::class)->name('profiel-bewerken');
+    Route::get('/gegevens/bewerken', ProfielBewerken::class)->name('profiel-bewerken');
 });
 
 

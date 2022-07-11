@@ -22,7 +22,7 @@ class DocentAanmaken extends Component
         'last_name' => 'required|string',
         'email' => 'required|string|email|max:255|unique:users',
         'password' => 'required|string',
-        'passwordrep' => 'string|same:password',
+        'passwordrep' => 'same:password',
 
     ];
      protected $messages = [

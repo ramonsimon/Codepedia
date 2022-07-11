@@ -14,21 +14,21 @@
 
             <div class="flex justify-center">
                 <form wire:submit.prevent="submit" method="post" action="">
+                    @error('name') <span class="error">{{ $message }}</span> @enderror
                     <div class="flex-col mb-2">
-                        @error('name') <span class="error">{{ $message }}</span> @enderror
                         <input wire:model="name" type="text" name="name" id="name"
                                class="rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                                placeholder="Naam..."/>
                     </div>
+                    @error('last_name') <span class="error">{{ $message }}</span> @enderror
                     <div class="flex-col mb-2">
-                        @error('last_name') <span class="error">{{ $message }}</span> @enderror
                         <input wire:model="last_name" type="text" name="last_name" id="last_name"
                                class="rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                                placeholder="Achternaam..."/>
                     </div>
-
+                    @error('email') <span class="error">{{ $message }}</span> @enderror
                     <div wire:model="email" class="flex-col mb-2">
-                        @error('email') <span class="error">{{ $message }}</span> @enderror
+
                         <input type="email" name="email" id="email"
                                class="rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                                placeholder="Email..."/>

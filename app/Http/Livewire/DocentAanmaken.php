@@ -22,9 +22,16 @@ class DocentAanmaken extends Component
         'last_name' => 'required|string',
         'email' => 'required|string|email|max:255|unique:users',
         'password' => 'required|string',
-        'passwordrep' => 'required|string',
+        'passwordrep' => 'required|string|same:password',
 
     ];
+     protected $messages = [
+         'name.required' => 'Voornaam is verplicht',
+         'last_name.required' => 'Achternaam is verplicht',
+         'email.required' => 'Email is verplicht',
+         'password.required' => 'Wachtwoord is verplicht',
+         'passwordrep.same' => 'Wachtwoorden komen niet overeen',
+     ];
 
     public function submit(){
 

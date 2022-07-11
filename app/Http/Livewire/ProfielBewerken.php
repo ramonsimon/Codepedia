@@ -25,6 +25,13 @@ class ProfielBewerken extends Component
         'password' => 'nullable|min:8|max:255|string'
 
     ];
+    protected $messages = [
+        'name.required' => 'Voornaam is verplicht',
+        'lastname.required' => 'Achternaam is verplicht',
+        'password.min' => 'Wachtwoord moet minimaal 8 tekens bevatten',
+        'password.max' => 'Wachtwoord mag maximaal 255 tekens bevatten',
+        'password.string' => 'Wachtwoord moet een teken bevatten',
+    ];
 
     public function mount()
     {

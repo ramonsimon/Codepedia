@@ -52,6 +52,8 @@
                                class="rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                                placeholder="Wachtwoord..."`/>
                     </div>
+                    @error('name') <span class="error">{{ $message }}</span> @enderror
+                    @error('lastname') <span class="error">{{ $message }}</span> @enderror
                     @error('password') <span class="error">{{ $message }}</span> @enderror
                     @error('email') <span class="error">{{ $message }}</span> @enderror
 

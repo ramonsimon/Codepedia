@@ -174,24 +174,22 @@ class ArtikelBekijken extends Component
 
     public function showDiv($showdiv)
     {
-
-        if ($showdiv == $this->showDiv) {
+        if ($showdiv == $this->showDiv){
             $this->showDiv = null;
-        } else {
+        }else{
             $this->showDiv = $showdiv;
         }
-
+        $this->showSubComments($showdiv);
     }
 
     public function showSubComments($showsub)
     {
 
-        if ($showsub == $this->showSub) {
+        if ($showsub == $this->showSub){
             $this->showSub = null;
-        } else {
+        }else{
             $this->showSub = $showsub;
         }
-
     }
 
     public function render()

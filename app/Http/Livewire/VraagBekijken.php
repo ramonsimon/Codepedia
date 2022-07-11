@@ -137,6 +137,9 @@ class VraagBekijken extends Component
             return redirect(route('login'));
         }
 
+        if ($this->question->is_closed){
+            return;
+        }
 
         $votes_controller = new VotesController();
 
@@ -160,6 +163,10 @@ class VraagBekijken extends Component
     }
     public function addReply($id)
     {
+        if ($this->question->is_closed){
+            $this->sub_comment = '';
+            return;
+        }
         if (QuestionSubComments::where(['question_comments_id' => $id, 'user_id' =>Auth::id()])->get()->count() < 10) {
 
             $this->validate([

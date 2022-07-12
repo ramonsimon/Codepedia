@@ -40,20 +40,16 @@ class ArtikelWijzigen extends ModalComponent
 
     public function submit()
     {
-        $this->articleId = $this->article['id'];
+
         $this->description = clean(($this->description));
 
         $this->validate();
 
         Article::where('id', $this->articleId)->
-        update(['title' => $this->title,'description' => $this->description,'topic_id' => $this->topic_id]);
+        update(['title' => $this->title,'description' => $this->description,'topic_id' => $this->topic_id, 'sub_description' => $this->sub_description]);
 
-        return redirect('/artikel/beheer')->with([
-            'title' => 'Gelukt!',
-            'message' => 'Het artikel ' . $this->article['title'] . ' is veranderd naar ' . $this->title,
-            'bg' => 'bg-green-200',
-            'border' => 'border-green-600'
-        ]);
+        $this->emit('refresh');
+        $this->closeModal();
 
     }
 
@@ -62,9 +58,10 @@ class ArtikelWijzigen extends ModalComponent
         $this->article = $article;
         $this->onderwerpen = Topics::all();
         $this->title = $this->article['title'];
-        $this->body = $this->article['description'];
+        $this->description = $this->article['description'];
         $this->topic_id = $this->article['topic_id'];
         $this->sub_description = $this->article['sub_description'];
+        $this->articleId = $this->article['id'];
     }
 
     public function render()

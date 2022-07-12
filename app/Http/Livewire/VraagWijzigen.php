@@ -32,7 +32,7 @@ class VraagWijzigen extends ModalComponent
 
     public function submit()
     {
-        if(!$this->question->is_closed ) {
+        if(!$this->question->is_closed) {
             $this->description = clean(($this->description));
 
             $this->validate();

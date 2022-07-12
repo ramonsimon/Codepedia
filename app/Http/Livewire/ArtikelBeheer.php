@@ -12,6 +12,7 @@ use Livewire\WithPagination;
 
 class ArtikelBeheer extends Component
 {
+    protected $listeners = ['refresh' => 'render'];
     use WithPagination;
 
     public $topic = 'all';

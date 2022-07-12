@@ -10,8 +10,7 @@
             <div class="flex flex-col mb-2">
                 <input type="text" wire:model="title" id="name"
                        class="rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                       placeholder="Naam..."
-                       value="{{$article['title']}}"/>
+                       placeholder="Naam..."/>
             </div>
             <div class="mb-2">
                 {{--<select name="topic" id="topic89]01O23$%y 8--}}
@@ -33,7 +32,7 @@
                        class="rounded-lg flex-1 appearance-none border border-amber-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                        placeholder="Korte omschrijving..."/>
             </div>
-            <x-head.tinymce-config wire:model="description" value="{{$body}}"/>
+            <x-head.tinymce-config wire:model="description"/>
             <div class="mb-2">
                 <div class="mb-2" wire:ignore>
 

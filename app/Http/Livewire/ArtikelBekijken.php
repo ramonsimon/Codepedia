@@ -85,14 +85,10 @@ class ArtikelBekijken extends Component
             // Sets has_voted/has_downvoted to true according to which button the user clicked
             if ($type) {
                 $this->has_voted = true;
-                $this->alert('success', 'Upvote gegeven', [
-                    'position' => 'bottom-end'
-                ]);
+
             } else {
                 $this->has_downvoted = true;
-                $this->alert('success', 'Downvote gegeven', [
-                    'position' => 'bottom-end'
-                ]);
+
             }
         }
 

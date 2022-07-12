@@ -60,7 +60,7 @@ class ReactieWijzigen extends ModalComponent
 
 
         }
-        $this->alert('success', 'Reactie geplaatst', [
+        $this->alert('success', 'Reactie gewijzigd', [
             'position' => 'bottom-end'
         ]);
 
